@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE layout-templates PUBLIC "-//Liferay//DTD Layout Templates 7.2.0//EN" "http://www.liferay.com/dtd/liferay-layout-templates_7_2_0.dtd">
+
+<layout-templates>
+	<custom>
+		<layout-template id="MyGradleLayout" name="MyGradleLayout">
+			<template-path>/MyGradleLayout.ftl</template-path>
+			<thumbnail-path>/MyGradleLayout.png</thumbnail-path>
+		</layout-template>
+
+		<layout-template id="MyLayout232" name="MyLayout232 (2-10, 2-7-3, 5-7)">
+			<template-path>/MyLayout232.ftl</template-path>
+			<thumbnail-path>/MyLayout232.png</thumbnail-path>
+		</layout-template>
+
+	</custom>
+</layout-templates>
