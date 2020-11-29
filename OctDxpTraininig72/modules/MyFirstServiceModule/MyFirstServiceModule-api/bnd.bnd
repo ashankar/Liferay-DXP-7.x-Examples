@@ -1,0 +1,10 @@
+Bundle-Name: MyFirstServiceModule-api
+Bundle-SymbolicName: com.training.mysb.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.training.mysb.exception,\
+	com.training.mysb.model,\
+	com.training.mysb.service,\
+	com.training.mysb.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../MyFirstServiceModule-service/service.xml
