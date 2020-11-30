@@ -23,15 +23,15 @@ import javax.portlet.Portlet;
 import javax.portlet.PortletException;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 
 import org.osgi.service.component.annotations.Component;
 
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.util.ParamUtil;
-import com.liferay.portal.kernel.util.PortalUtil;
 import com.training.constants.MyModuleMainPortletKeys;
+import com.training.mysb.model.Employee;
+import com.training.mysb.service.EmployeeLocalServiceUtil;
 
 @Component(
 	immediate = true,
@@ -66,11 +66,62 @@ public class MyPortlet6 extends MVCPortlet {
 		
 		String s1 = ParamUtil.getString(actionRequest, "textField1");
 
-		System.out.println("IPCTest1 s1: " + s1);
+		System.out.println("Service Builder Process Action Test - s1: " + s1);
+		
+		
+		long empId=123;
+		
+		try {
+			
+			Employee employee=EmployeeLocalServiceUtil.getEmployee(empId);
+			
+			System.out.println(employee.getUserName());
+			System.out.println(employee.getMobile());
+			System.out.println(employee.getAddress());
+			
+		} catch (PortalException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		/*
+		 * try {
+		 * 
+		 * Employee employee=EmployeeLocalServiceUtil.createEmployee(empId);
+		 * employee.setUserName(s1); employee.setAddress("My Address");
+		 * employee.setMobile("8765578");
+		 * 
+		 * EmployeeLocalServiceUtil.addEmployee(employee);
+		 * 
+		 * }catch (Exception e) {
+		 * 
+		 * e.printStackTrace(); }
+		 */
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		System.out.println("IPCTest1 s1: " + s1);
 
-		HttpServletResponse response = PortalUtil.getHttpServletResponse(actionResponse);
-		Cookie cookie = new Cookie("param1", s1);
-		response.addCookie(cookie);
+//		HttpServletResponse response = PortalUtil.getHttpServletResponse(actionResponse);
+//		Cookie cookie = new Cookie("param1", s1);
+//		response.addCookie(cookie);
 
 		
 	}
