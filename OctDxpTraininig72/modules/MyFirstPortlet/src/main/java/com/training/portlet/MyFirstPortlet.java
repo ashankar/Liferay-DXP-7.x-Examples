@@ -1,9 +1,5 @@
 package com.training.portlet;
 
-import com.training.constants.MyFirstPortletKeys;
-
-import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
-
 import java.io.IOException;
 
 import javax.portlet.ActionRequest;
@@ -14,6 +10,10 @@ import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
 import org.osgi.service.component.annotations.Component;
+
+import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.training.constants.MyFirstPortletKeys;
+import com.training.mysb.service.EmployeeLocalServiceUtil;
 
 /**
  * @author anshankar
@@ -51,9 +51,47 @@ public class MyFirstPortlet extends MVCPortlet {
 				throws IOException, PortletException {
 
 		
-		System.out.println("Hello Process Action 1");
+		System.out.println("Hello Process Action Employee");
 		
-		super.processAction(actionRequest, actionResponse);
+		
+		try {
+			
+			long eid=1234l;
+			
+			EmployeeLocalServiceUtil.addNewEmployee(eid);
+			
+			
+			/*
+			 * Long x=123l;
+			 * 
+			 * 
+			 * EmployeeLocalServiceUtil.createEmployee(x);
+			 * 
+			 * EmployeeLocalServiceUtil.
+			 * 
+			 * Employee employee=EmployeeLocalServiceUtil.createEmployee(x);
+			 * 
+			 * Employee employee=EmployeeUtil.create(x);
+			 * 
+			 * 
+			 * 
+			 * employee.setAddress("Street 2, LA, CA"); employee.setUserName("My Name");
+			 * employee.setMobile(876768876);
+			 * 
+			 * 
+			 * EmployeeLocalServiceUtil.addEmployee(employee);
+			 */
+			 
+		
+		System.out.println("record inserted");
+		
+		}catch (Exception e) {
+
+		e.printStackTrace();
+		}
+		
+		
+		
 		}
 	
 	
