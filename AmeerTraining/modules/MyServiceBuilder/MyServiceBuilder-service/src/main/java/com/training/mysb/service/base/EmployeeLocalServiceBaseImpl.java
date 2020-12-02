@@ -39,6 +39,7 @@ import com.liferay.portal.kernel.util.PortalUtil;
 
 import com.training.mysb.model.Employee;
 import com.training.mysb.service.EmployeeLocalService;
+import com.training.mysb.service.persistence.AddressPersistence;
 import com.training.mysb.service.persistence.EmployeePersistence;
 
 import java.io.Serializable;
@@ -377,6 +378,9 @@ public abstract class EmployeeLocalServiceBaseImpl
 			throw new SystemException(e);
 		}
 	}
+
+	@Reference
+	protected AddressPersistence addressPersistence;
 
 	protected EmployeeLocalService employeeLocalService;
 

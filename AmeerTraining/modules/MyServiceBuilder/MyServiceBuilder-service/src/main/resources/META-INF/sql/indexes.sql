@@ -1,0 +1,1 @@
+create index IX_C6460BD9 on MySbNs_Address (uuid_[$COLUMN_LENGTH:75$]);

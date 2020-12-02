@@ -4,19 +4,13 @@
 <service-builder dependency-injector="ds" package-path="com.training.mysb">
 	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
     <namespace>MySbNs</namespace>
+   
+   
     <entity local-service="true" name="Employee"
     	remote-service="true">
 
-    	<!-- PK fields -->
-
     	<column name="employeeId" primary="true" type="long"></column>
-
-    	<!-- Group instance -->
-
     	<column name="groupId" type="long"></column>
-
-    	<!-- Audit fields -->
-
     	<column name="companyId" type="long"></column>
     	<column name="userId" type="long"></column>
     	<column name="userName" type="String"></column>
@@ -24,5 +18,14 @@
     	<column name="modifiedDate" type="Date"></column>
         <column name="address" type="String"></column>
         <column name="mobile" type="String"></column>
+    </entity>
+    <entity name="Address" local-service="true" remote-service="true" uuid="true">
+    	<column name="addrId" type="String" primary="true"></column>
+        <!-- <column name="addrId" type="long" primary="true"></column> -->
+        <column name="houseNo" type="String"></column>
+        <column name="StreetNo" type="String"></column>
+        <column name="city" type="String"></column>
+        <column name="state" type="String"></column>
+        <column name="country" type="String"></column>
     </entity>
 </service-builder>

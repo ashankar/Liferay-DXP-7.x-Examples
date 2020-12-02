@@ -11,5 +11,6 @@ public class MyModuleMainPortletKeys {
 	public static final String MY_PORTLET5 = "com_training_portlet_MyPortlet5";
 	public static final String MY_PORTLET6 = "com_training_portlet_MyPortlet6";
 	public static final String MY_PORTLET7 = "com_training_portlet_MyPortlet7";
+	public static final String MY_SERVICE_BUILDER_TEST_PORTLET = "com_training_portlet_MyServiceBuilderTestPortlet";
 
 }
