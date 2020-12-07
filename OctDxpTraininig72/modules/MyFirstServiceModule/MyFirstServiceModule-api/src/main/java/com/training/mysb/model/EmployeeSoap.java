@@ -44,6 +44,7 @@ public class EmployeeSoap implements Serializable {
 		soapModel.setDob(model.getDob());
 		soapModel.setMobile(model.getMobile());
 		soapModel.setAddress(model.getAddress());
+		soapModel.setDeptId(model.getDeptId());
 
 		return soapModel;
 	}
@@ -177,6 +178,14 @@ public class EmployeeSoap implements Serializable {
 		_address = address;
 	}
 
+	public long getDeptId() {
+		return _deptId;
+	}
+
+	public void setDeptId(long deptId) {
+		_deptId = deptId;
+	}
+
 	private long _employeeId;
 	private long _groupId;
 	private long _companyId;
@@ -187,5 +196,6 @@ public class EmployeeSoap implements Serializable {
 	private Date _dob;
 	private int _mobile;
 	private String _address;
+	private long _deptId;
 
 }

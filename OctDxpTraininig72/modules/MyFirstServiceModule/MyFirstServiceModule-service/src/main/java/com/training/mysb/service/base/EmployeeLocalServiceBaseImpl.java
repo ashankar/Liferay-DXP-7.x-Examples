@@ -39,7 +39,9 @@ import com.liferay.portal.kernel.util.PortalUtil;
 
 import com.training.mysb.model.Employee;
 import com.training.mysb.service.EmployeeLocalService;
+import com.training.mysb.service.persistence.DepartmentPersistence;
 import com.training.mysb.service.persistence.EmployeePersistence;
+import com.training.mysb.service.persistence.SalaryPersistence;
 
 import java.io.Serializable;
 
@@ -378,10 +380,16 @@ public abstract class EmployeeLocalServiceBaseImpl
 		}
 	}
 
+	@Reference
+	protected DepartmentPersistence departmentPersistence;
+
 	protected EmployeeLocalService employeeLocalService;
 
 	@Reference
 	protected EmployeePersistence employeePersistence;
+
+	@Reference
+	protected SalaryPersistence salaryPersistence;
 
 	@Reference
 	protected com.liferay.counter.kernel.service.CounterLocalService

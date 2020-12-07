@@ -79,7 +79,8 @@ public class EmployeeModelImpl
 		{"companyId", Types.BIGINT}, {"userId", Types.BIGINT},
 		{"userName", Types.VARCHAR}, {"createDate", Types.TIMESTAMP},
 		{"modifiedDate", Types.TIMESTAMP}, {"dob", Types.TIMESTAMP},
-		{"mobile", Types.INTEGER}, {"address", Types.VARCHAR}
+		{"mobile", Types.INTEGER}, {"address", Types.VARCHAR},
+		{"deptId", Types.BIGINT}
 	};
 
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP =
@@ -96,10 +97,11 @@ public class EmployeeModelImpl
 		TABLE_COLUMNS_MAP.put("dob", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("mobile", Types.INTEGER);
 		TABLE_COLUMNS_MAP.put("address", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("deptId", Types.BIGINT);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table MyFirstSbNs_Employee (employeeId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,dob DATE null,mobile INTEGER,address VARCHAR(75) null)";
+		"create table MyFirstSbNs_Employee (employeeId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,dob DATE null,mobile INTEGER,address VARCHAR(75) null,deptId LONG)";
 
 	public static final String TABLE_SQL_DROP =
 		"drop table MyFirstSbNs_Employee";
@@ -147,6 +149,7 @@ public class EmployeeModelImpl
 		model.setDob(soapModel.getDob());
 		model.setMobile(soapModel.getMobile());
 		model.setAddress(soapModel.getAddress());
+		model.setDeptId(soapModel.getDeptId());
 
 		return model;
 	}
@@ -326,6 +329,9 @@ public class EmployeeModelImpl
 		attributeGetterFunctions.put("address", Employee::getAddress);
 		attributeSetterBiConsumers.put(
 			"address", (BiConsumer<Employee, String>)Employee::setAddress);
+		attributeGetterFunctions.put("deptId", Employee::getDeptId);
+		attributeSetterBiConsumers.put(
+			"deptId", (BiConsumer<Employee, Long>)Employee::setDeptId);
 
 		_attributeGetterFunctions = Collections.unmodifiableMap(
 			attributeGetterFunctions);
@@ -475,6 +481,17 @@ public class EmployeeModelImpl
 		_address = address;
 	}
 
+	@JSON
+	@Override
+	public long getDeptId() {
+		return _deptId;
+	}
+
+	@Override
+	public void setDeptId(long deptId) {
+		_deptId = deptId;
+	}
+
 	@Override
 	public ExpandoBridge getExpandoBridge() {
 		return ExpandoBridgeFactoryUtil.getExpandoBridge(
@@ -517,6 +534,7 @@ public class EmployeeModelImpl
 		employeeImpl.setDob(getDob());
 		employeeImpl.setMobile(getMobile());
 		employeeImpl.setAddress(getAddress());
+		employeeImpl.setDeptId(getDeptId());
 
 		employeeImpl.resetOriginalValues();
 
@@ -639,6 +657,8 @@ public class EmployeeModelImpl
 			employeeCacheModel.address = null;
 		}
 
+		employeeCacheModel.deptId = getDeptId();
+
 		return employeeCacheModel;
 	}
 
@@ -726,6 +746,7 @@ public class EmployeeModelImpl
 	private Date _dob;
 	private int _mobile;
 	private String _address;
+	private long _deptId;
 	private Employee _escapedModel;
 
 }

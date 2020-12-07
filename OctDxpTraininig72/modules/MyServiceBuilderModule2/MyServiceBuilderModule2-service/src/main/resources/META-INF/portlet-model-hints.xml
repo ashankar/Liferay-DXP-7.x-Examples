@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.sb2.training.model.Doctor">
+		<field name="docId" type="long" />
+		<field name="name" type="String" />
+		<field name="speciality" type="String" />
+	</model>
+</model-hints>

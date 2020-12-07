@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 
 <model-hints>
+	<model name="com.training.mysb.model.Department">
+		<field name="uuid" type="String" />
+		<field name="deptId" type="long" />
+		<field name="name" type="String" />
+		<field name="hod" type="String" />
+	</model>
 	<model name="com.training.mysb.model.Employee">
 		<field name="employeeId" type="long" />
 		<field name="groupId" type="long" />
@@ -12,5 +18,12 @@
 		<field name="dob" type="Date" />
 		<field name="mobile" type="int" />
 		<field name="address" type="String" />
+		<field name="deptId" type="long" />
+	</model>
+	<model name="com.training.mysb.model.Salary">
+		<field name="uuid" type="String" />
+		<field name="salId" type="long" />
+		<field name="amount" type="long" />
+		<field name="employeeId" type="long" />
 	</model>
 </model-hints>

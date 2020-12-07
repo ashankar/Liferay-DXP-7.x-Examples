@@ -2,7 +2,17 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping auto-import="false" default-lazy="false">
+	<import class="com.training.mysb.model.Department" />
 	<import class="com.training.mysb.model.Employee" />
+	<import class="com.training.mysb.model.Salary" />
+	<class name="com.training.mysb.model.impl.DepartmentImpl" table="MyFirstSbNs_Department">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="deptId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" column="uuid_" name="uuid" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="hod" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
 	<class name="com.training.mysb.model.impl.EmployeeImpl" table="MyFirstSbNs_Employee">
 		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="employeeId" type="long">
 			<generator class="assigned" />
@@ -16,5 +26,14 @@
 		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="dob" type="org.hibernate.type.TimestampType" />
 		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="mobile" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="address" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="deptId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="com.training.mysb.model.impl.SalaryImpl" table="MyFirstSbNs_Salary">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="salId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" column="uuid_" name="uuid" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="amount" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="employeeId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 	</class>
 </hibernate-mapping>

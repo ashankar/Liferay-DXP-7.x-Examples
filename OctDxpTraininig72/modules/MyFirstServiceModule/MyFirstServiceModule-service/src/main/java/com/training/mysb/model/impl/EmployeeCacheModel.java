@@ -65,7 +65,7 @@ public class EmployeeCacheModel
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(21);
+		StringBundler sb = new StringBundler(23);
 
 		sb.append("{employeeId=");
 		sb.append(employeeId);
@@ -87,6 +87,8 @@ public class EmployeeCacheModel
 		sb.append(mobile);
 		sb.append(", address=");
 		sb.append(address);
+		sb.append(", deptId=");
+		sb.append(deptId);
 		sb.append("}");
 
 		return sb.toString();
@@ -138,6 +140,8 @@ public class EmployeeCacheModel
 			employeeImpl.setAddress(address);
 		}
 
+		employeeImpl.setDeptId(deptId);
+
 		employeeImpl.resetOriginalValues();
 
 		return employeeImpl;
@@ -159,6 +163,8 @@ public class EmployeeCacheModel
 
 		mobile = objectInput.readInt();
 		address = objectInput.readUTF();
+
+		deptId = objectInput.readLong();
 	}
 
 	@Override
@@ -190,6 +196,8 @@ public class EmployeeCacheModel
 		else {
 			objectOutput.writeUTF(address);
 		}
+
+		objectOutput.writeLong(deptId);
 	}
 
 	public long employeeId;
@@ -202,5 +210,6 @@ public class EmployeeCacheModel
 	public long dob;
 	public int mobile;
 	public String address;
+	public long deptId;
 
 }

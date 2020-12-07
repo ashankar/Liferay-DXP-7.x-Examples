@@ -228,4 +228,18 @@ public interface EmployeeModel
 	 */
 	public void setAddress(String address);
 
+	/**
+	 * Returns the dept ID of this employee.
+	 *
+	 * @return the dept ID of this employee
+	 */
+	public long getDeptId();
+
+	/**
+	 * Sets the dept ID of this employee.
+	 *
+	 * @param deptId the dept ID of this employee
+	 */
+	public void setDeptId(long deptId);
+
 }

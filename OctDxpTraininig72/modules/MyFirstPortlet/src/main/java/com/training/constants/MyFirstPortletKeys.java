@@ -19,5 +19,8 @@ public class MyFirstPortletKeys {
 	public static final String PORTLET_SESSION_IPC2 = "com_training_PortletSessionIPC2";
 	public static final String COOKIES_IPC1 = "com_training_CookiesIPC1";
 	public static final String COOKIES_IPC2 = "com_training_CookiesIPC2";
+	
+	public static final String MY_SERVICE_BUILDER_TEST_PORTLET = "com_training_portlet_MyServiceBuilderTestPortlet";
+	
 
 }

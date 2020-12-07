@@ -55,6 +55,7 @@ public class EmployeeWrapper
 		attributes.put("dob", getDob());
 		attributes.put("mobile", getMobile());
 		attributes.put("address", getAddress());
+		attributes.put("deptId", getDeptId());
 
 		return attributes;
 	}
@@ -120,6 +121,12 @@ public class EmployeeWrapper
 		if (address != null) {
 			setAddress(address);
 		}
+
+		Long deptId = (Long)attributes.get("deptId");
+
+		if (deptId != null) {
+			setDeptId(deptId);
+		}
 	}
 
 	/**
@@ -150,6 +157,16 @@ public class EmployeeWrapper
 	@Override
 	public Date getCreateDate() {
 		return model.getCreateDate();
+	}
+
+	/**
+	 * Returns the dept ID of this employee.
+	 *
+	 * @return the dept ID of this employee
+	 */
+	@Override
+	public long getDeptId() {
+		return model.getDeptId();
 	}
 
 	/**
@@ -275,6 +292,16 @@ public class EmployeeWrapper
 	@Override
 	public void setCreateDate(Date createDate) {
 		model.setCreateDate(createDate);
+	}
+
+	/**
+	 * Sets the dept ID of this employee.
+	 *
+	 * @param deptId the dept ID of this employee
+	 */
+	@Override
+	public void setDeptId(long deptId) {
+		model.setDeptId(deptId);
 	}
 
 	/**

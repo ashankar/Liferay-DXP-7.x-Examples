@@ -2,19 +2,19 @@
 <!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_2_0.dtd">
 
 <service-builder dependency-injector="ds" package-path="com.training.mysb">
+	
 	<namespace>MyFirstSbNs</namespace>
+	
+	
+	
 	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
+	
 	<entity name="Employee" local-service="true" remote-service="true">
-
-		<!-- PK fields -->
 
 		<column name="employeeId" primary="true" type="long"></column>
 
-		<!-- Group instance -->
-
 		<column name="groupId" type="long"></column>
 
-		<!-- Audit fields -->
 
 		<column name="companyId" type="long"></column>
 		<column name="userId" type="long"></column>
@@ -24,5 +24,20 @@
         <column name="dob" type="Date"></column>
         <column name="mobile" type="int"></column>
         <column name="address" type="String"></column>
+        <column name="deptId" type="long"></column>
 	</entity>
+	
+	<entity name="Salary" local-service="true" remote-service="true" uuid="true">
+		<column name="salId" primary="true" type="long"></column>
+		<column name="amount" type="long"></column>
+        <column name="employeeId" type="long"></column>
+	</entity>
+	
+	<entity name="Department" local-service="true" remote-service="true" uuid="true">
+		<column name="deptId" primary="true" type="long"></column>
+		<column name="name" type="String"></column>
+        <column name="hod" type="String"></column>
+	</entity>
+	
+	
 </service-builder>

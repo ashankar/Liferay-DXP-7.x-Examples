@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_2_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.sb2.training">
+	<namespace>mysbns</namespace>
+	
+	<entity local-service="true" name="Doctor" remote-service="false" uuid="false" table="mysbns_doctor" data-source="extDataSource">
+		<column name="docId" db-name="docId" primary="true" type="long" />
+		<column name="name" db-name="name" type="String" />
+		<column name="speciality" db-name="speciality" type="String" />
+	</entity>
+	
+	
+	
+</service-builder>
