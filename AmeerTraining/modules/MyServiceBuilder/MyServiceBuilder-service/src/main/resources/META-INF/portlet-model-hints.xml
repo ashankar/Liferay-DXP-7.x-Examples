@@ -1,24 +1,9 @@
 <?xml version="1.0"?>
 
 <model-hints>
-	<model name="com.training.mysb.model.Address">
-		<field name="uuid" type="String" />
-		<field name="addrId" type="String" />
-		<field name="houseNo" type="String" />
-		<field name="StreetNo" type="String" />
-		<field name="city" type="String" />
-		<field name="state" type="String" />
-		<field name="country" type="String" />
-	</model>
 	<model name="com.training.mysb.model.Employee">
 		<field name="employeeId" type="long" />
 		<field name="groupId" type="long" />
-		<field name="companyId" type="long" />
-		<field name="userId" type="long" />
 		<field name="userName" type="String" />
-		<field name="createDate" type="Date" />
-		<field name="modifiedDate" type="Date" />
-		<field name="address" type="String" />
-		<field name="mobile" type="String" />
 	</model>
 </model-hints>

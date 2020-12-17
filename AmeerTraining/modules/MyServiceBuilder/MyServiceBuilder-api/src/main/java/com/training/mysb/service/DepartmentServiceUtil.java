@@ -20,24 +20,24 @@ import org.osgi.framework.FrameworkUtil;
 import org.osgi.util.tracker.ServiceTracker;
 
 /**
- * Provides the remote service utility for Employee. This utility wraps
- * <code>com.training.mysb.service.impl.EmployeeServiceImpl</code> and is an
+ * Provides the remote service utility for Department. This utility wraps
+ * <code>com.training.mysb.service.impl.DepartmentServiceImpl</code> and is an
  * access point for service operations in application layer code running on a
  * remote server. Methods of this service are expected to have security checks
  * based on the propagated JAAS credentials because this service can be
  * accessed remotely.
  *
  * @author Brian Wing Shun Chan
- * @see EmployeeService
+ * @see DepartmentService
  * @generated
  */
 @ProviderType
-public class EmployeeServiceUtil {
+public class DepartmentServiceUtil {
 
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify this class directly. Add custom service methods to <code>com.training.mysb.service.impl.EmployeeServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
+	 * Never modify this class directly. Add custom service methods to <code>com.training.mysb.service.impl.DepartmentServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
 
 	/**
@@ -49,19 +49,19 @@ public class EmployeeServiceUtil {
 		return getService().getOSGiServiceIdentifier();
 	}
 
-	public static EmployeeService getService() {
+	public static DepartmentService getService() {
 		return _serviceTracker.getService();
 	}
 
-	private static ServiceTracker<EmployeeService, EmployeeService>
+	private static ServiceTracker<DepartmentService, DepartmentService>
 		_serviceTracker;
 
 	static {
-		Bundle bundle = FrameworkUtil.getBundle(EmployeeService.class);
+		Bundle bundle = FrameworkUtil.getBundle(DepartmentService.class);
 
-		ServiceTracker<EmployeeService, EmployeeService> serviceTracker =
-			new ServiceTracker<EmployeeService, EmployeeService>(
-				bundle.getBundleContext(), EmployeeService.class, null);
+		ServiceTracker<DepartmentService, DepartmentService> serviceTracker =
+			new ServiceTracker<DepartmentService, DepartmentService>(
+				bundle.getBundleContext(), DepartmentService.class, null);
 
 		serviceTracker.open();
 

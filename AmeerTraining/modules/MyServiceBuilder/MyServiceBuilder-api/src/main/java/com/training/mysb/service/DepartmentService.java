@@ -25,12 +25,12 @@ import com.liferay.portal.kernel.transaction.Transactional;
 import org.osgi.annotation.versioning.ProviderType;
 
 /**
- * Provides the remote service interface for Employee. Methods of this
+ * Provides the remote service interface for Department. Methods of this
  * service are expected to have security checks based on the propagated JAAS
  * credentials because this service can be accessed remotely.
  *
  * @author Brian Wing Shun Chan
- * @see EmployeeServiceUtil
+ * @see DepartmentServiceUtil
  * @generated
  */
 @AccessControlled
@@ -40,12 +40,12 @@ import org.osgi.annotation.versioning.ProviderType;
 	isolation = Isolation.PORTAL,
 	rollbackFor = {PortalException.class, SystemException.class}
 )
-public interface EmployeeService extends BaseService {
+public interface DepartmentService extends BaseService {
 
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this interface directly. Always use {@link EmployeeServiceUtil} to access the employee remote service. Add custom service methods to <code>com.training.mysb.service.impl.EmployeeServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
+	 * Never modify or reference this interface directly. Always use {@link DepartmentServiceUtil} to access the department remote service. Add custom service methods to <code>com.training.mysb.service.impl.DepartmentServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
 
 	/**

@@ -26,12 +26,9 @@ import javax.portlet.RenderResponse;
 
 import org.osgi.service.component.annotations.Component;
 
-import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.training.constants.MyModuleMainPortletKeys;
-import com.training.mysb.model.Employee;
-import com.training.mysb.service.EmployeeLocalServiceUtil;
 
 @Component(
 	immediate = true,
@@ -71,18 +68,17 @@ public class MyPortlet6 extends MVCPortlet {
 		
 		long empId=123;
 		
-		try {
-			
-			Employee employee=EmployeeLocalServiceUtil.getEmployee(empId);
-			
-			System.out.println(employee.getUserName());
-			System.out.println(employee.getMobile());
-			System.out.println(employee.getAddress());
-			
-		} catch (PortalException e) {
-			e.printStackTrace();
-		}
-		
+		/*
+		 * try {
+		 * 
+		 * Employee employee=EmployeeLocalServiceUtil.getEmployee(empId);
+		 * 
+		 * System.out.println(employee.getUserName());
+		 * System.out.println(employee.getMobile());
+		 * System.out.println(employee.getAddress());
+		 * 
+		 * } catch (PortalException e) { e.printStackTrace(); }
+		 */
 		
 		
 		

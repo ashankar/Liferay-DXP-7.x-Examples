@@ -37,6 +37,7 @@ import com.liferay.portal.kernel.util.PortalUtil;
 import com.training.mysb.model.Address;
 import com.training.mysb.service.AddressLocalService;
 import com.training.mysb.service.persistence.AddressPersistence;
+import com.training.mysb.service.persistence.DepartmentPersistence;
 import com.training.mysb.service.persistence.EmployeePersistence;
 
 import java.io.Serializable;
@@ -339,6 +340,9 @@ public abstract class AddressLocalServiceBaseImpl
 
 	@Reference
 	protected AddressPersistence addressPersistence;
+
+	@Reference
+	protected DepartmentPersistence departmentPersistence;
 
 	@Reference
 	protected EmployeePersistence employeePersistence;

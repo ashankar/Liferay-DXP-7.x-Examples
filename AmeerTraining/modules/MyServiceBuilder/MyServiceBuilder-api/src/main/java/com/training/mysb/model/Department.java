@@ -21,37 +21,37 @@ import com.liferay.portal.kernel.util.Accessor;
 import org.osgi.annotation.versioning.ProviderType;
 
 /**
- * The extended model interface for the Employee service. Represents a row in the &quot;employee&quot; database table, with each column mapped to a property of this class.
+ * The extended model interface for the Department service. Represents a row in the &quot;MySbNs_Department&quot; database table, with each column mapped to a property of this class.
  *
  * @author Brian Wing Shun Chan
- * @see EmployeeModel
+ * @see DepartmentModel
  * @generated
  */
-@ImplementationClassName("com.training.mysb.model.impl.EmployeeImpl")
+@ImplementationClassName("com.training.mysb.model.impl.DepartmentImpl")
 @ProviderType
-public interface Employee extends EmployeeModel, PersistedModel {
+public interface Department extends DepartmentModel, PersistedModel {
 
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify this interface directly. Add methods to <code>com.training.mysb.model.impl.EmployeeImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
+	 * Never modify this interface directly. Add methods to <code>com.training.mysb.model.impl.DepartmentImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<Employee, Long> EMPLOYEE_ID_ACCESSOR =
-		new Accessor<Employee, Long>() {
+	public static final Accessor<Department, String> DPET_ID_ACCESSOR =
+		new Accessor<Department, String>() {
 
 			@Override
-			public Long get(Employee employee) {
-				return employee.getEmployeeId();
+			public String get(Department department) {
+				return department.getDpetId();
 			}
 
 			@Override
-			public Class<Long> getAttributeClass() {
-				return Long.class;
+			public Class<String> getAttributeClass() {
+				return String.class;
 			}
 
 			@Override
-			public Class<Employee> getTypeClass() {
-				return Employee.class;
+			public Class<Department> getTypeClass() {
+				return Department.class;
 			}
 
 		};

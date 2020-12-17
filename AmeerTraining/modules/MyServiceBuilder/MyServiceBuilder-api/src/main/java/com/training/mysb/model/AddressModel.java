@@ -158,4 +158,18 @@ public interface AddressModel extends BaseModel<Address> {
 	 */
 	public void setCountry(String country);
 
+	/**
+	 * Returns the employee ID of this address.
+	 *
+	 * @return the employee ID of this address
+	 */
+	public long getEmployeeId();
+
+	/**
+	 * Sets the employee ID of this address.
+	 *
+	 * @param employeeId the employee ID of this address
+	 */
+	public void setEmployeeId(long employeeId);
+
 }

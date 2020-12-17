@@ -188,6 +188,12 @@ public interface EmployeeLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Employee getEmployee(long employeeId) throws PortalException;
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Employee> getEmployeeByName(String empName);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public Employee getEmployeeModel();
+
 	/**
 	 * Returns a range of all the employees.
 	 *

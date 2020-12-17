@@ -6,26 +6,56 @@
     <namespace>MySbNs</namespace>
    
    
-    <entity local-service="true" name="Employee"
-    	remote-service="true">
+    <entity local-service="true" name="Employee" remote-service="false" table="employee" data-source="myDataSource">
 
-    	<column name="employeeId" primary="true" type="long"></column>
-    	<column name="groupId" type="long"></column>
-    	<column name="companyId" type="long"></column>
-    	<column name="userId" type="long"></column>
-    	<column name="userName" type="String"></column>
-    	<column name="createDate" type="Date"></column>
-    	<column name="modifiedDate" type="Date"></column>
-        <column name="address" type="String"></column>
-        <column name="mobile" type="String"></column>
+    	<column name="employeeId" primary="true" type="long" db-name="employeeId" ></column>
+    	<column name="groupId" type="long" db-name="groupId"></column>
+    	<column name="userName" type="String" db-name="userName"></column>
+    	
+    	<!-- <column name="companyId" type="long" db-name="companyId"></column>
+    	<column name="userId" type="long" db-name="userId"></column>
+    	
+    	<column name="createDate" type="Date" db-name="createDate"></column>
+    	<column name="modifiedDate" type="Date" db-name="modifiedDate"></column>
+        <column name="address" type="String" db-name="address"></column>
+        <column name="mobile" type="String" db-name="mobile"></column>  -->
+        
+        <finder return-type="Collection" name="EmployeeName">
+        <finder-column name="userName"></finder-column>
+        </finder>
+        
+        <order by="asc">
+        <order-column name="userName"></order-column>
+        <order-column name="employeeId"></order-column>
+        </order>
+        
+        
     </entity>
-    <entity name="Address" local-service="true" remote-service="true" uuid="true">
-    	<column name="addrId" type="String" primary="true"></column>
-        <!-- <column name="addrId" type="long" primary="true"></column> -->
+    
+   <!--  <entity name="Address" local-service="true" remote-service="true" uuid="true" table="address" data-source="myDataSource">
+    	<column name="addrId" type="String" primary="true" db-name="addrId"></column>
+        <column name="addrId" type="long" primary="true"></column>
         <column name="houseNo" type="String"></column>
         <column name="StreetNo" type="String"></column>
         <column name="city" type="String"></column>
         <column name="state" type="String"></column>
         <column name="country" type="String"></column>
+        <column name="employeeId" type="long"></column>
+        
+        <reference entity="Employee" package-path="com.training.mysb"></reference>
+        
     </entity>
+
+	<entity name="Department" local-service="true" remote-service="true" uuid="true">
+    	<column name="dpetId" type="String" primary="true"></column>
+        <column name="name" type="String"></column>
+        <column name="employeeId" type="long"></column>
+        
+        <reference entity="Employee" package-path="com.training.mysb"></reference>
+    </entity> -->
+    
+    
 </service-builder>
+
+
+

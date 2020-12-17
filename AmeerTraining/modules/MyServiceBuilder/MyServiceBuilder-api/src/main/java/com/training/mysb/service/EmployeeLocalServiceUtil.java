@@ -211,6 +211,16 @@ public class EmployeeLocalServiceUtil {
 		return getService().getEmployee(employeeId);
 	}
 
+	public static java.util.List<com.training.mysb.model.Employee>
+		getEmployeeByName(String empName) {
+
+		return getService().getEmployeeByName(empName);
+	}
+
+	public static com.training.mysb.model.Employee getEmployeeModel() {
+		return getService().getEmployeeModel();
+	}
+
 	/**
 	 * Returns a range of all the employees.
 	 *

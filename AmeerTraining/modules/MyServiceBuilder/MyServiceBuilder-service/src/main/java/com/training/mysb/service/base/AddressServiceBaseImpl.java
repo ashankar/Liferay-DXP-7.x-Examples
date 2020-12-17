@@ -27,6 +27,7 @@ import com.liferay.portal.kernel.util.PortalUtil;
 import com.training.mysb.model.Address;
 import com.training.mysb.service.AddressService;
 import com.training.mysb.service.persistence.AddressPersistence;
+import com.training.mysb.service.persistence.DepartmentPersistence;
 import com.training.mysb.service.persistence.EmployeePersistence;
 
 import javax.sql.DataSource;
@@ -114,6 +115,9 @@ public abstract class AddressServiceBaseImpl
 
 	@Reference
 	protected AddressPersistence addressPersistence;
+
+	@Reference
+	protected DepartmentPersistence departmentPersistence;
 
 	@Reference
 	protected EmployeePersistence employeePersistence;

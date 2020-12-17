@@ -5,7 +5,15 @@ create table MySbNs_Address (
 	StreetNo VARCHAR(75) null,
 	city VARCHAR(75) null,
 	state_ VARCHAR(75) null,
-	country VARCHAR(75) null
+	country VARCHAR(75) null,
+	employeeId LONG
+);
+
+create table MySbNs_Department (
+	uuid_ VARCHAR(75) null,
+	dpetId VARCHAR(75) not null primary key,
+	name VARCHAR(75) null,
+	employeeId LONG
 );
 
 create table MySbNs_Employee (

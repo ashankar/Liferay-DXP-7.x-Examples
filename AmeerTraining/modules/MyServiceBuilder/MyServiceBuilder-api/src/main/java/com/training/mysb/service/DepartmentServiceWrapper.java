@@ -19,18 +19,18 @@ import com.liferay.portal.kernel.service.ServiceWrapper;
 import org.osgi.annotation.versioning.ProviderType;
 
 /**
- * Provides a wrapper for {@link EmployeeService}.
+ * Provides a wrapper for {@link DepartmentService}.
  *
  * @author Brian Wing Shun Chan
- * @see EmployeeService
+ * @see DepartmentService
  * @generated
  */
 @ProviderType
-public class EmployeeServiceWrapper
-	implements EmployeeService, ServiceWrapper<EmployeeService> {
+public class DepartmentServiceWrapper
+	implements DepartmentService, ServiceWrapper<DepartmentService> {
 
-	public EmployeeServiceWrapper(EmployeeService employeeService) {
-		_employeeService = employeeService;
+	public DepartmentServiceWrapper(DepartmentService departmentService) {
+		_departmentService = departmentService;
 	}
 
 	/**
@@ -40,19 +40,19 @@ public class EmployeeServiceWrapper
 	 */
 	@Override
 	public String getOSGiServiceIdentifier() {
-		return _employeeService.getOSGiServiceIdentifier();
+		return _departmentService.getOSGiServiceIdentifier();
 	}
 
 	@Override
-	public EmployeeService getWrappedService() {
-		return _employeeService;
+	public DepartmentService getWrappedService() {
+		return _departmentService;
 	}
 
 	@Override
-	public void setWrappedService(EmployeeService employeeService) {
-		_employeeService = employeeService;
+	public void setWrappedService(DepartmentService departmentService) {
+		_departmentService = departmentService;
 	}
 
-	private EmployeeService _employeeService;
+	private DepartmentService _departmentService;
 
 }

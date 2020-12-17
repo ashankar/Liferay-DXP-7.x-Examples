@@ -72,7 +72,7 @@ public class AddressModelImpl
 		{"uuid_", Types.VARCHAR}, {"addrId", Types.VARCHAR},
 		{"houseNo", Types.VARCHAR}, {"StreetNo", Types.VARCHAR},
 		{"city", Types.VARCHAR}, {"state_", Types.VARCHAR},
-		{"country", Types.VARCHAR}
+		{"country", Types.VARCHAR}, {"employeeId", Types.BIGINT}
 	};
 
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP =
@@ -86,10 +86,11 @@ public class AddressModelImpl
 		TABLE_COLUMNS_MAP.put("city", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("state_", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("country", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("employeeId", Types.BIGINT);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table MySbNs_Address (uuid_ VARCHAR(75) null,addrId VARCHAR(75) not null primary key,houseNo VARCHAR(75) null,StreetNo VARCHAR(75) null,city VARCHAR(75) null,state_ VARCHAR(75) null,country VARCHAR(75) null)";
+		"create table MySbNs_Address (uuid_ VARCHAR(75) null,addrId VARCHAR(75) not null primary key,houseNo VARCHAR(75) null,StreetNo VARCHAR(75) null,city VARCHAR(75) null,state_ VARCHAR(75) null,country VARCHAR(75) null,employeeId LONG)";
 
 	public static final String TABLE_SQL_DROP = "drop table MySbNs_Address";
 
@@ -136,6 +137,7 @@ public class AddressModelImpl
 		model.setCity(soapModel.getCity());
 		model.setState(soapModel.getState());
 		model.setCountry(soapModel.getCountry());
+		model.setEmployeeId(soapModel.getEmployeeId());
 
 		return model;
 	}
@@ -304,6 +306,9 @@ public class AddressModelImpl
 		attributeGetterFunctions.put("country", Address::getCountry);
 		attributeSetterBiConsumers.put(
 			"country", (BiConsumer<Address, String>)Address::setCountry);
+		attributeGetterFunctions.put("employeeId", Address::getEmployeeId);
+		attributeSetterBiConsumers.put(
+			"employeeId", (BiConsumer<Address, Long>)Address::setEmployeeId);
 
 		_attributeGetterFunctions = Collections.unmodifiableMap(
 			attributeGetterFunctions);
@@ -433,6 +438,17 @@ public class AddressModelImpl
 		_country = country;
 	}
 
+	@JSON
+	@Override
+	public long getEmployeeId() {
+		return _employeeId;
+	}
+
+	@Override
+	public void setEmployeeId(long employeeId) {
+		_employeeId = employeeId;
+	}
+
 	public long getColumnBitmask() {
 		return _columnBitmask;
 	}
@@ -463,6 +479,7 @@ public class AddressModelImpl
 		addressImpl.setCity(getCity());
 		addressImpl.setState(getState());
 		addressImpl.setCountry(getCountry());
+		addressImpl.setEmployeeId(getEmployeeId());
 
 		addressImpl.resetOriginalValues();
 
@@ -582,6 +599,8 @@ public class AddressModelImpl
 			addressCacheModel.country = null;
 		}
 
+		addressCacheModel.employeeId = getEmployeeId();
+
 		return addressCacheModel;
 	}
 
@@ -666,6 +685,7 @@ public class AddressModelImpl
 	private String _city;
 	private String _state;
 	private String _country;
+	private long _employeeId;
 	private long _columnBitmask;
 	private Address _escapedModel;
 

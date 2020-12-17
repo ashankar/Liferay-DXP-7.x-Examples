@@ -40,6 +40,7 @@ public class AddressSoap implements Serializable {
 		soapModel.setCity(model.getCity());
 		soapModel.setState(model.getState());
 		soapModel.setCountry(model.getCountry());
+		soapModel.setEmployeeId(model.getEmployeeId());
 
 		return soapModel;
 	}
@@ -149,6 +150,14 @@ public class AddressSoap implements Serializable {
 		_country = country;
 	}
 
+	public long getEmployeeId() {
+		return _employeeId;
+	}
+
+	public void setEmployeeId(long employeeId) {
+		_employeeId = employeeId;
+	}
+
 	private String _uuid;
 	private String _addrId;
 	private String _houseNo;
@@ -156,5 +165,6 @@ public class AddressSoap implements Serializable {
 	private String _city;
 	private String _state;
 	private String _country;
+	private long _employeeId;
 
 }

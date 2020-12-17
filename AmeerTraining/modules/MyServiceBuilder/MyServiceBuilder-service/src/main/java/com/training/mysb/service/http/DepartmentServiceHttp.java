@@ -18,7 +18,7 @@ import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * Provides the HTTP utility for the
- * <code>com.training.mysb.service.EmployeeServiceUtil</code> service
+ * <code>com.training.mysb.service.DepartmentServiceUtil</code> service
  * utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it requires an additional
@@ -40,9 +40,9 @@ import org.osgi.annotation.versioning.ProviderType;
  * </p>
  *
  * @author Brian Wing Shun Chan
- * @see EmployeeServiceSoap
+ * @see DepartmentServiceSoap
  * @generated
  */
 @ProviderType
-public class EmployeeServiceHttp {
+public class DepartmentServiceHttp {
 }

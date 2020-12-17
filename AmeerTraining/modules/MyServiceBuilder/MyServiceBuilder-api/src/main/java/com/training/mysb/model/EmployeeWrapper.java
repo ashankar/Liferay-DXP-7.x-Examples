@@ -17,7 +17,6 @@ package com.training.mysb.model;
 import com.liferay.portal.kernel.model.ModelWrapper;
 import com.liferay.portal.kernel.model.wrapper.BaseModelWrapper;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,13 +46,7 @@ public class EmployeeWrapper
 
 		attributes.put("employeeId", getEmployeeId());
 		attributes.put("groupId", getGroupId());
-		attributes.put("companyId", getCompanyId());
-		attributes.put("userId", getUserId());
 		attributes.put("userName", getUserName());
-		attributes.put("createDate", getCreateDate());
-		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("address", getAddress());
-		attributes.put("mobile", getMobile());
 
 		return attributes;
 	}
@@ -72,77 +65,11 @@ public class EmployeeWrapper
 			setGroupId(groupId);
 		}
 
-		Long companyId = (Long)attributes.get("companyId");
-
-		if (companyId != null) {
-			setCompanyId(companyId);
-		}
-
-		Long userId = (Long)attributes.get("userId");
-
-		if (userId != null) {
-			setUserId(userId);
-		}
-
 		String userName = (String)attributes.get("userName");
 
 		if (userName != null) {
 			setUserName(userName);
 		}
-
-		Date createDate = (Date)attributes.get("createDate");
-
-		if (createDate != null) {
-			setCreateDate(createDate);
-		}
-
-		Date modifiedDate = (Date)attributes.get("modifiedDate");
-
-		if (modifiedDate != null) {
-			setModifiedDate(modifiedDate);
-		}
-
-		String address = (String)attributes.get("address");
-
-		if (address != null) {
-			setAddress(address);
-		}
-
-		String mobile = (String)attributes.get("mobile");
-
-		if (mobile != null) {
-			setMobile(mobile);
-		}
-	}
-
-	/**
-	 * Returns the address of this employee.
-	 *
-	 * @return the address of this employee
-	 */
-	@Override
-	public String getAddress() {
-		return model.getAddress();
-	}
-
-	/**
-	 * Returns the company ID of this employee.
-	 *
-	 * @return the company ID of this employee
-	 */
-	@Override
-	public long getCompanyId() {
-		return model.getCompanyId();
-	}
-
-	/**
-	 * Returns the create date of this employee.
-	 *
-	 * @return the create date of this employee
-	 */
-	@Override
-	public Date getCreateDate() {
-		return model.getCreateDate();
 	}
 
 	/**
@@ -166,26 +93,6 @@ public class EmployeeWrapper
 	}
 
 	/**
-	 * Returns the mobile of this employee.
-	 *
-	 * @return the mobile of this employee
-	 */
-	@Override
-	public String getMobile() {
-		return model.getMobile();
-	}
-
-	/**
-	 * Returns the modified date of this employee.
-	 *
-	 * @return the modified date of this employee
-	 */
-	@Override
-	public Date getModifiedDate() {
-		return model.getModifiedDate();
-	}
-
-	/**
 	 * Returns the primary key of this employee.
 	 *
 	 * @return the primary key of this employee
@@ -193,16 +100,6 @@ public class EmployeeWrapper
 	@Override
 	public long getPrimaryKey() {
 		return model.getPrimaryKey();
-	}
-
-	/**
-	 * Returns the user ID of this employee.
-	 *
-	 * @return the user ID of this employee
-	 */
-	@Override
-	public long getUserId() {
-		return model.getUserId();
 	}
 
 	/**
@@ -215,49 +112,9 @@ public class EmployeeWrapper
 		return model.getUserName();
 	}
 
-	/**
-	 * Returns the user uuid of this employee.
-	 *
-	 * @return the user uuid of this employee
-	 */
-	@Override
-	public String getUserUuid() {
-		return model.getUserUuid();
-	}
-
 	@Override
 	public void persist() {
 		model.persist();
-	}
-
-	/**
-	 * Sets the address of this employee.
-	 *
-	 * @param address the address of this employee
-	 */
-	@Override
-	public void setAddress(String address) {
-		model.setAddress(address);
-	}
-
-	/**
-	 * Sets the company ID of this employee.
-	 *
-	 * @param companyId the company ID of this employee
-	 */
-	@Override
-	public void setCompanyId(long companyId) {
-		model.setCompanyId(companyId);
-	}
-
-	/**
-	 * Sets the create date of this employee.
-	 *
-	 * @param createDate the create date of this employee
-	 */
-	@Override
-	public void setCreateDate(Date createDate) {
-		model.setCreateDate(createDate);
 	}
 
 	/**
@@ -281,26 +138,6 @@ public class EmployeeWrapper
 	}
 
 	/**
-	 * Sets the mobile of this employee.
-	 *
-	 * @param mobile the mobile of this employee
-	 */
-	@Override
-	public void setMobile(String mobile) {
-		model.setMobile(mobile);
-	}
-
-	/**
-	 * Sets the modified date of this employee.
-	 *
-	 * @param modifiedDate the modified date of this employee
-	 */
-	@Override
-	public void setModifiedDate(Date modifiedDate) {
-		model.setModifiedDate(modifiedDate);
-	}
-
-	/**
 	 * Sets the primary key of this employee.
 	 *
 	 * @param primaryKey the primary key of this employee
@@ -311,16 +148,6 @@ public class EmployeeWrapper
 	}
 
 	/**
-	 * Sets the user ID of this employee.
-	 *
-	 * @param userId the user ID of this employee
-	 */
-	@Override
-	public void setUserId(long userId) {
-		model.setUserId(userId);
-	}
-
-	/**
 	 * Sets the user name of this employee.
 	 *
 	 * @param userName the user name of this employee
@@ -328,16 +155,6 @@ public class EmployeeWrapper
 	@Override
 	public void setUserName(String userName) {
 		model.setUserName(userName);
-	}
-
-	/**
-	 * Sets the user uuid of this employee.
-	 *
-	 * @param userUuid the user uuid of this employee
-	 */
-	@Override
-	public void setUserUuid(String userUuid) {
-		model.setUserUuid(userUuid);
 	}
 
 	@Override

@@ -14,11 +14,16 @@
 
 package com.training.mysb.service.impl;
 
-import com.liferay.portal.aop.AopService;
-
-import com.training.mysb.service.base.EmployeeLocalServiceBaseImpl;
+import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
+
+import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
+import com.liferay.portal.aop.AopService;
+import com.training.mysb.model.Employee;
+import com.training.mysb.service.EmployeeLocalServiceUtil;
+import com.training.mysb.service.base.EmployeeLocalServiceBaseImpl;
+import com.training.mysb.service.persistence.EmployeeUtil;
 
 /**
  * The implementation of the employee local service.
@@ -44,4 +49,49 @@ public class EmployeeLocalServiceImpl extends EmployeeLocalServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Use <code>com.training.mysb.service.EmployeeLocalService</code> via injection or a <code>org.osgi.util.tracker.ServiceTracker</code> or use <code>com.training.mysb.service.EmployeeLocalServiceUtil</code>.
 	 */
+	
+
+	public Employee getEmployeeModel()
+	{
+		
+		Employee employee=null;
+		
+		try {
+			long empId=CounterLocalServiceUtil.increment(Employee.class.getName());
+			
+			employee=EmployeeLocalServiceUtil.createEmployee(empId);
+			
+			
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		
+		
+		return employee;
+	}
+	
+	public List<Employee> getEmployeeByName(String empName)
+	{
+		
+		 List<Employee> employees=null;
+		
+		try {
+			
+			
+			employees= EmployeeUtil.findByEmployeeName(empName);
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		return employees;
+		
+	}
+	
+	
+	
+	
+	
 }

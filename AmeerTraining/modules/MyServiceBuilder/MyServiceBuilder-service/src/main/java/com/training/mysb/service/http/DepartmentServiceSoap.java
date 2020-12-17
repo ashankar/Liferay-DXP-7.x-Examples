@@ -18,7 +18,7 @@ import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * Provides the SOAP utility for the
- * <code>com.training.mysb.service.EmployeeServiceUtil</code> service
+ * <code>com.training.mysb.service.DepartmentServiceUtil</code> service
  * utility. The static methods of this class call the same methods of the
  * service utility. However, the signatures are different because it is
  * difficult for SOAP to support certain types.
@@ -27,10 +27,10 @@ import org.osgi.annotation.versioning.ProviderType;
  * ServiceBuilder follows certain rules in translating the methods. For example,
  * if the method in the service utility returns a <code>java.util.List</code>,
  * that is translated to an array of
- * <code>com.training.mysb.model.EmployeeSoap</code>. If the method in the
+ * <code>com.training.mysb.model.DepartmentSoap</code>. If the method in the
  * service utility returns a
- * <code>com.training.mysb.model.Employee</code>, that is translated to a
- * <code>com.training.mysb.model.EmployeeSoap</code>. Methods that SOAP
+ * <code>com.training.mysb.model.Department</code>, that is translated to a
+ * <code>com.training.mysb.model.DepartmentSoap</code>. Methods that SOAP
  * cannot safely wire are skipped.
  * </p>
  *
@@ -52,9 +52,9 @@ import org.osgi.annotation.versioning.ProviderType;
  * </p>
  *
  * @author Brian Wing Shun Chan
- * @see EmployeeServiceHttp
+ * @see DepartmentServiceHttp
  * @generated
  */
 @ProviderType
-public class EmployeeServiceSoap {
+public class DepartmentServiceSoap {
 }

@@ -213,6 +213,18 @@ public class EmployeeLocalServiceWrapper
 		return _employeeLocalService.getEmployee(employeeId);
 	}
 
+	@Override
+	public java.util.List<com.training.mysb.model.Employee> getEmployeeByName(
+		String empName) {
+
+		return _employeeLocalService.getEmployeeByName(empName);
+	}
+
+	@Override
+	public com.training.mysb.model.Employee getEmployeeModel() {
+		return _employeeLocalService.getEmployeeModel();
+	}
+
 	/**
 	 * Returns a range of all the employees.
 	 *

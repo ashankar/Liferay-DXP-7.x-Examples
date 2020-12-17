@@ -16,6 +16,7 @@
 package com.training.portlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -24,11 +25,10 @@ import javax.portlet.PortletException;
 
 import org.osgi.service.component.annotations.Component;
 
-import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.training.constants.MyModuleMainPortletKeys;
-import com.training.mysb.model.Address;
-import com.training.mysb.service.AddressLocalServiceUtil;
+import com.training.mysb.model.Employee;
+import com.training.mysb.service.EmployeeLocalServiceUtil;
 
 @Component(
 	immediate = true,
@@ -53,10 +53,42 @@ public class MyServiceBuilderTestPortlet extends MVCPortlet {
 			System.out.println(">>>>>>>>>>> In MyServiceBuilderTestPortlet : processAction ");
 	
 			try {
+				
+//				int totalRows=EmployeeLocalServiceUtil.getEmployeesCount();
+//				
+////				List<Employee> employees =EmployeeLocalServiceUtil.getEmployees(0, totalRows);
+//				
+//				List<Employee> employees =EmployeeLocalServiceUtil.getEmployeeByName("Bax");
+//				
+//				for(Employee employee : employees)
+//
+//				{
+//					System.out.println(employee.getEmployeeId());
+//					System.out.println(employee.getAddress());
+//					System.out.println(employee.getMobile());
+//					System.out.println(employee.getUserName());
+//				}
+				
+				
+				
+				
+				
+				 Employee employee= EmployeeLocalServiceUtil.getEmployeeModel();
+				 
+				 employee.setUserName("My Name" + employee.getEmployeeId());
+				 employee.setGroupId(employee.getEmployeeId()+1);
+				 
+				/// employee.setAddress("#1234, Street #5677, Greater Noida, UP, India"+employee.getEmployeeId());
+				// employee.setMobile("768886655");
+				 
+				 EmployeeLocalServiceUtil.addEmployee(employee);
+				 
 			
-			long addrId=CounterLocalServiceUtil.increment(Address.class.getName());	
+			/*long addrId=CounterLocalServiceUtil.increment(Address.class.getName());	
 				
 			Address address=AddressLocalServiceUtil.createAddress(addrId+"");
+			
+			
 			
 			address.setHouseNo("#123");
 			address.setStreetNo("St 4");
@@ -65,7 +97,9 @@ public class MyServiceBuilderTestPortlet extends MVCPortlet {
 			address.setCountry("India");
 			
 			
-			AddressLocalServiceUtil.addAddress(address);
+			AddressLocalServiceUtil.addAddress(address);*/
+			
+			
 			
 			System.out.println(">>>>>>>>>>> Address added... ");
 			}catch (Exception e) {

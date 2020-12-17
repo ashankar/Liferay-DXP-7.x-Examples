@@ -51,6 +51,7 @@ public class AddressWrapper
 		attributes.put("city", getCity());
 		attributes.put("state", getState());
 		attributes.put("country", getCountry());
+		attributes.put("employeeId", getEmployeeId());
 
 		return attributes;
 	}
@@ -98,6 +99,12 @@ public class AddressWrapper
 		if (country != null) {
 			setCountry(country);
 		}
+
+		Long employeeId = (Long)attributes.get("employeeId");
+
+		if (employeeId != null) {
+			setEmployeeId(employeeId);
+		}
 	}
 
 	/**
@@ -128,6 +135,16 @@ public class AddressWrapper
 	@Override
 	public String getCountry() {
 		return model.getCountry();
+	}
+
+	/**
+	 * Returns the employee ID of this address.
+	 *
+	 * @return the employee ID of this address
+	 */
+	@Override
+	public long getEmployeeId() {
+		return model.getEmployeeId();
 	}
 
 	/**
@@ -213,6 +230,16 @@ public class AddressWrapper
 	@Override
 	public void setCountry(String country) {
 		model.setCountry(country);
+	}
+
+	/**
+	 * Sets the employee ID of this address.
+	 *
+	 * @param employeeId the employee ID of this address
+	 */
+	@Override
+	public void setEmployeeId(long employeeId) {
+		model.setEmployeeId(employeeId);
 	}
 
 	/**

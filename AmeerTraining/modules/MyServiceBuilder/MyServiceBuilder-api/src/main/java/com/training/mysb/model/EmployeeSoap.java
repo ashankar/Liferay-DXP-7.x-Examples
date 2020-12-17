@@ -17,13 +17,12 @@ package com.training.mysb.model;
 import java.io.Serializable;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
 
 /**
- * This class is used by SOAP remote services, specifically {@link com.training.mysb.service.http.EmployeeServiceSoap}.
+ * This class is used by SOAP remote services.
  *
  * @author Brian Wing Shun Chan
  * @generated
@@ -36,13 +35,7 @@ public class EmployeeSoap implements Serializable {
 
 		soapModel.setEmployeeId(model.getEmployeeId());
 		soapModel.setGroupId(model.getGroupId());
-		soapModel.setCompanyId(model.getCompanyId());
-		soapModel.setUserId(model.getUserId());
 		soapModel.setUserName(model.getUserName());
-		soapModel.setCreateDate(model.getCreateDate());
-		soapModel.setModifiedDate(model.getModifiedDate());
-		soapModel.setAddress(model.getAddress());
-		soapModel.setMobile(model.getMobile());
 
 		return soapModel;
 	}
@@ -112,22 +105,6 @@ public class EmployeeSoap implements Serializable {
 		_groupId = groupId;
 	}
 
-	public long getCompanyId() {
-		return _companyId;
-	}
-
-	public void setCompanyId(long companyId) {
-		_companyId = companyId;
-	}
-
-	public long getUserId() {
-		return _userId;
-	}
-
-	public void setUserId(long userId) {
-		_userId = userId;
-	}
-
 	public String getUserName() {
 		return _userName;
 	}
@@ -136,46 +113,8 @@ public class EmployeeSoap implements Serializable {
 		_userName = userName;
 	}
 
-	public Date getCreateDate() {
-		return _createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		_createDate = createDate;
-	}
-
-	public Date getModifiedDate() {
-		return _modifiedDate;
-	}
-
-	public void setModifiedDate(Date modifiedDate) {
-		_modifiedDate = modifiedDate;
-	}
-
-	public String getAddress() {
-		return _address;
-	}
-
-	public void setAddress(String address) {
-		_address = address;
-	}
-
-	public String getMobile() {
-		return _mobile;
-	}
-
-	public void setMobile(String mobile) {
-		_mobile = mobile;
-	}
-
 	private long _employeeId;
 	private long _groupId;
-	private long _companyId;
-	private long _userId;
 	private String _userName;
-	private Date _createDate;
-	private Date _modifiedDate;
-	private String _address;
-	private String _mobile;
 
 }

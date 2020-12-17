@@ -25,8 +25,6 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
-import java.util.Date;
-
 import org.osgi.annotation.versioning.ProviderType;
 
 /**
@@ -65,26 +63,14 @@ public class EmployeeCacheModel
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(7);
 
 		sb.append("{employeeId=");
 		sb.append(employeeId);
 		sb.append(", groupId=");
 		sb.append(groupId);
-		sb.append(", companyId=");
-		sb.append(companyId);
-		sb.append(", userId=");
-		sb.append(userId);
 		sb.append(", userName=");
 		sb.append(userName);
-		sb.append(", createDate=");
-		sb.append(createDate);
-		sb.append(", modifiedDate=");
-		sb.append(modifiedDate);
-		sb.append(", address=");
-		sb.append(address);
-		sb.append(", mobile=");
-		sb.append(mobile);
 		sb.append("}");
 
 		return sb.toString();
@@ -96,42 +82,12 @@ public class EmployeeCacheModel
 
 		employeeImpl.setEmployeeId(employeeId);
 		employeeImpl.setGroupId(groupId);
-		employeeImpl.setCompanyId(companyId);
-		employeeImpl.setUserId(userId);
 
 		if (userName == null) {
 			employeeImpl.setUserName("");
 		}
 		else {
 			employeeImpl.setUserName(userName);
-		}
-
-		if (createDate == Long.MIN_VALUE) {
-			employeeImpl.setCreateDate(null);
-		}
-		else {
-			employeeImpl.setCreateDate(new Date(createDate));
-		}
-
-		if (modifiedDate == Long.MIN_VALUE) {
-			employeeImpl.setModifiedDate(null);
-		}
-		else {
-			employeeImpl.setModifiedDate(new Date(modifiedDate));
-		}
-
-		if (address == null) {
-			employeeImpl.setAddress("");
-		}
-		else {
-			employeeImpl.setAddress(address);
-		}
-
-		if (mobile == null) {
-			employeeImpl.setMobile("");
-		}
-		else {
-			employeeImpl.setMobile(mobile);
 		}
 
 		employeeImpl.resetOriginalValues();
@@ -144,15 +100,7 @@ public class EmployeeCacheModel
 		employeeId = objectInput.readLong();
 
 		groupId = objectInput.readLong();
-
-		companyId = objectInput.readLong();
-
-		userId = objectInput.readLong();
 		userName = objectInput.readUTF();
-		createDate = objectInput.readLong();
-		modifiedDate = objectInput.readLong();
-		address = objectInput.readUTF();
-		mobile = objectInput.readUTF();
 	}
 
 	@Override
@@ -161,43 +109,16 @@ public class EmployeeCacheModel
 
 		objectOutput.writeLong(groupId);
 
-		objectOutput.writeLong(companyId);
-
-		objectOutput.writeLong(userId);
-
 		if (userName == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
 			objectOutput.writeUTF(userName);
 		}
-
-		objectOutput.writeLong(createDate);
-		objectOutput.writeLong(modifiedDate);
-
-		if (address == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(address);
-		}
-
-		if (mobile == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(mobile);
-		}
 	}
 
 	public long employeeId;
 	public long groupId;
-	public long companyId;
-	public long userId;
 	public String userName;
-	public long createDate;
-	public long modifiedDate;
-	public String address;
-	public String mobile;
 
 }
