@@ -16,6 +16,8 @@
 package com.training.portlet;
 
 import java.io.IOException;
+import java.util.Date;
+import java.util.List;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -26,9 +28,16 @@ import org.osgi.service.component.annotations.Component;
 
 import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
-import com.sb2.training.model.Doctor;
-import com.sb2.training.service.DoctorLocalServiceUtil;
+import com.liferay.portal.kernel.util.DateFormatFactoryUtil;
+import com.liferay.portal.kernel.util.ParamUtil;
 import com.training.constants.MyFirstPortletKeys;
+import com.training.mysb.model.Department;
+import com.training.mysb.model.Employee;
+import com.training.mysb.model.Salary;
+import com.training.mysb.service.DepartmentLocalServiceUtil;
+import com.training.mysb.service.EmployeeLocalServiceUtil;
+import com.training.mysb.service.SalaryLocalServiceUtil;
+import com.training.mysb.service.persistence.EmployeeUtil;
 
 @Component(
 	immediate = true,
@@ -45,29 +54,83 @@ import com.training.constants.MyFirstPortletKeys;
 )
 public class MyServiceBuilderTestPortlet extends MVCPortlet {
 	
+	
+	  public void processAction1(ActionRequest actionRequest, ActionResponse
+	  actionResponse) throws IOException, PortletException {
+	  
+	  System.out.println("In MyServiceBuilderTestPortlet : processAction1");
+	  
+	  
+	  
+	  
+	  try {
+	  
+	  
+	  Employee employee=EmployeeLocalServiceUtil.getEmployeeModel();
+	  employee.setUserName(ParamUtil.getString(actionRequest, "empName"));
+	  employee.setDob(ParamUtil.getDate(actionRequest, "dob", DateFormatFactoryUtil.getSimpleDateFormat("dd-MM-YYYY")));
+	  employee.setMobile(ParamUtil.getInteger(actionRequest, "mobile"));
+	  employee.setAddress(ParamUtil.getString(actionRequest, "address"));
+
+	  EmployeeLocalServiceUtil.addNewEmployee(employee);
+	  
+	  
+	  System.out.println("A row added...");
+	  
+	  }catch (Exception e) {
+	  
+	  e.printStackTrace(); }
+	  
+	  }
+	  
+	  
+	  
+	  public void processAction2(ActionRequest actionRequest, ActionResponse
+				  actionResponse) throws IOException, PortletException {
+		  
+		  
+		  try {
+			  
+			  
+			  
+//			 EmployeeUtil.findByEmployeeName(userName);
+			  
+			  
+//			  int totalRows=EmployeeLocalServiceUtil.getEmployeesCount();
+			  
+//			 List<Employee> employees= EmployeeLocalServiceUtil.getEmployees(0, totalRows);
+			 
+			 List<Employee> employees= EmployeeLocalServiceUtil.getEmployeeByName("My Name");
+			 
+			 
+			 for(Employee employee : employees)
+			 {
+				 System.out.println(employee.getEmployeeId());
+				 System.out.println(employee.getUserName());
+//				 System.out.println(employee.getMobile());
+//				 System.out.println(employee.getDob());
+//				 System.out.println(employee.getAddress());
+			 }
+			 
+			  
+//			  System.out.println(EmployeeLocalServiceUtil.getEmployeeByName("My Name").getEmployeeId());
+			  
+			  
+			
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		  
+		  
+	  }
+	  
+	  
+	  
+	  
+	  
+	  
 	/*
-	 * public void processAction1(ActionRequest actionRequest, ActionResponse
-	 * actionResponse) throws IOException, PortletException {
-	 * 
-	 * System.out.println("In MyServiceBuilderTestPortlet : processAction1");
-	 * 
-	 * 
-	 * try {
-	 * 
-	 * long deptId=CounterLocalServiceUtil.increment(Department.class.getName());
-	 * 
-	 * Department department=DepartmentLocalServiceUtil.createDepartment(deptId);
-	 * department.setName("Dept"+deptId); department.setHod("HOD"+deptId);
-	 * DepartmentLocalServiceUtil.addDepartment(department);
-	 * 
-	 * System.out.println("A row added...");
-	 * 
-	 * }catch (Exception e) {
-	 * 
-	 * e.printStackTrace(); }
-	 * 
-	 * }
-	 * 
 	 * 
 	 * public void processAction2(ActionRequest actionRequest, ActionResponse
 	 * actionResponse) throws IOException, PortletException {
@@ -109,33 +172,36 @@ public class MyServiceBuilderTestPortlet extends MVCPortlet {
 	 */
 	
 	
-	
-	public void processAction3(ActionRequest actionRequest, ActionResponse actionResponse)
-			throws IOException, PortletException {
-
-		System.out.println("In MyServiceBuilderTestPortlet : processAction3");
-		
-		
-		try {
-			
-			  long docId=CounterLocalServiceUtil.increment(Doctor.class.getName());
-			  
-			  Doctor doctor=DoctorLocalServiceUtil.createDoctor(docId);
-			  doctor.setName("My Name" + docId);
-			  doctor.setSpeciality("Speciality" + docId);
-			  
-			  DoctorLocalServiceUtil.addDoctor(doctor);
-			  
-			  System.out.println("A row added...");
-			 
-		
-		}catch (Exception e) {
-		
-			e.printStackTrace();
-		}
-		
-	}
-	
+	  
+	/*
+	 * 
+	 * public void processAction3(ActionRequest actionRequest, ActionResponse
+	 * actionResponse) throws IOException, PortletException {
+	 * 
+	 * System.out.println("In MyServiceBuilderTestPortlet : processAction3");
+	 * 
+	 * 
+	 * 
+	 * 
+	 * try {
+	 * 
+	 * long docId=CounterLocalServiceUtil.increment(Doctor.class.getName());
+	 * 
+	 * Doctor doctor=DoctorLocalServiceUtil.createDoctor(docId);
+	 * doctor.setName("My Name" + docId); doctor.setSpeciality("Speciality" +
+	 * docId);
+	 * 
+	 * DoctorLocalServiceUtil.addDoctor(doctor);
+	 * 
+	 * System.out.println("A row added...");
+	 * 
+	 * 
+	 * }catch (Exception e) {
+	 * 
+	 * e.printStackTrace(); }
+	 * 
+	 * }
+	 */
 	
 	
 }

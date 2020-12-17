@@ -18,22 +18,38 @@
 
 
 
-<!-- <portlet:actionURL  var="actionURL1" name="processAction1">
+ <portlet:actionURL  var="actionURL" name="processAction1">
 </portlet:actionURL>
+
+
 
 <portlet:actionURL  var="actionURL2" name="processAction2">
-</portlet:actionURL> -->
-
-<portlet:actionURL  var="actionURL3" name="processAction3">
 </portlet:actionURL>
 
+<!-- <portlet:actionURL  var="actionURL3" name="processAction3">
+</portlet:actionURL> -->
 
 
-<%-- <a href="<%=actionURL1%>">Add Department</a> <br>
+<aui:form action="<%=actionURL %>" method="post">
+	<aui:input name="empName" label="Employee Name: " title="Employee Name" type="text"></aui:input><br>
+	<aui:input name="dob" label="Date of Birth: " title="Date of Birth" type="text"></aui:input><br>
+	<aui:input name="mobile" label="Mobile No: " title="Mobile No" type="text"></aui:input><br>
+	<aui:input name="address" label="Address: " title="Address:" type="text"></aui:input><br>
+	<aui:button value="Submit" type="submit"></aui:button>
+</aui:form>
 
-<a href="<%=actionURL2%>">Add Employee</a> <br> --%>
 
 
-<a href="<%=actionURL3%>">Add Doctor</a>
+
+
+<a href="<%=actionURL2%>">Get Employees</a> <br>
+
+
+
+
+
+
+
+<%-- <a href="<%=actionURL3%>">Add Doctor</a> --%>
 
 

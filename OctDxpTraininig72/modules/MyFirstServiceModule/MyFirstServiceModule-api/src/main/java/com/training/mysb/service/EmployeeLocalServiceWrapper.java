@@ -49,8 +49,8 @@ public class EmployeeLocalServiceWrapper
 	}
 
 	@Override
-	public void addNewEmployee(long empId) {
-		_employeeLocalService.addNewEmployee(empId);
+	public void addNewEmployee(com.training.mysb.model.Employee employee) {
+		_employeeLocalService.addNewEmployee(employee);
 	}
 
 	/**
@@ -216,6 +216,18 @@ public class EmployeeLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _employeeLocalService.getEmployee(employeeId);
+	}
+
+	@Override
+	public java.util.List<com.training.mysb.model.Employee> getEmployeeByName(
+		String empName) {
+
+		return _employeeLocalService.getEmployeeByName(empName);
+	}
+
+	@Override
+	public com.training.mysb.model.Employee getEmployeeModel() {
+		return _employeeLocalService.getEmployeeModel();
 	}
 
 	/**

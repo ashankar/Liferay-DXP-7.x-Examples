@@ -14,13 +14,17 @@
 
 package com.training.mysb.service.impl;
 
+import java.util.List;
+
+import org.osgi.service.component.annotations.Component;
+
+import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.aop.AopService;
+import com.training.mysb.exception.NoSuchEmployeeException;
 import com.training.mysb.model.Employee;
 import com.training.mysb.service.EmployeeLocalServiceUtil;
 import com.training.mysb.service.base.EmployeeLocalServiceBaseImpl;
 import com.training.mysb.service.persistence.EmployeeUtil;
-
-import org.osgi.service.component.annotations.Component;
 
 /**
  * The implementation of the employee local service.
@@ -48,31 +52,61 @@ public class EmployeeLocalServiceImpl extends EmployeeLocalServiceBaseImpl {
 	 */
 	
 	
-	public void addNewEmployee(long empId)
+	
+	public Employee getEmployeeModel()
 	{
 		
+		Employee employee=null;
+		
 		try {
-			
-		Employee employee= EmployeeLocalServiceUtil.createEmployee(empId);
+		long empId=CounterLocalServiceUtil.increment(Employee.class.getName());
 		
+		employee=EmployeeLocalServiceUtil.createEmployee(empId);
 		
-		  employee.setAddress("Street 2, LA, CA"); 
-		  employee.setUserName("My Name");
-		  employee.setMobile(876768876);
-		  
-		  
-		  EmployeeLocalServiceUtil.addEmployee(employee);
-		  
-		  
-		  System.out.println("record inserted from Impl");
 		}catch (Exception e) {
 
-		e.printStackTrace();
-			
+			e.printStackTrace();
 		}
-		  
+		
+		return employee;
+		
 	}
 	
+	
+	  public void addNewEmployee(Employee employee) {
+	  
+	  try {
+	  
+		  EmployeeLocalServiceUtil.addEmployee(employee);
+	  
+		  	System.out.println("record inserted from Impl"); 
+	  
+	  
+	  }
+	  catch (Exception e) {
+	  
+	  e.printStackTrace();
+	  
+	  }
+	  
+	  }
+	 
+	
+	  public List<Employee> getEmployeeByName(String empName)
+	  {
+		  List<Employee> employees=null;
+		  
+		  try {
+
+			  employees= EmployeeUtil.findByEmployeeName(empName);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		  
+		  return employees;
+		  
+	  }
 	
 	
 	

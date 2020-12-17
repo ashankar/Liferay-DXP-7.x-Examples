@@ -11,10 +11,7 @@ import javax.portlet.RenderResponse;
 
 import org.osgi.service.component.annotations.Component;
 
-import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
-import com.sb2.training.model.Doctor;
-import com.sb2.training.service.DoctorLocalServiceUtil;
 import com.training.constants.MyFirstPortletKeys;
 
 /**
@@ -58,24 +55,24 @@ public class MyFirstPortlet extends MVCPortlet {
 		
 		
 		
-		try {
-			
-			  long docId=CounterLocalServiceUtil.increment(Doctor.class.getName());
-			  
-			  Doctor doctor=DoctorLocalServiceUtil.createDoctor(docId);
-			  doctor.setName("My Name" + docId);
-			  doctor.setSpeciality("Speciality" + docId);
-			  
-			  DoctorLocalServiceUtil.addDoctor(doctor);
-			  
-			  System.out.println("A row added...");
-			 
-		
-		}catch (Exception e) {
-		
-			e.printStackTrace();
-		}
-		
+		/*
+		 * try {
+		 * 
+		 * long docId=CounterLocalServiceUtil.increment(Doctor.class.getName());
+		 * 
+		 * Doctor doctor=DoctorLocalServiceUtil.createDoctor(docId);
+		 * doctor.setName("My Name" + docId); doctor.setSpeciality("Speciality" +
+		 * docId);
+		 * 
+		 * DoctorLocalServiceUtil.addDoctor(doctor);
+		 * 
+		 * System.out.println("A row added...");
+		 * 
+		 * 
+		 * }catch (Exception e) {
+		 * 
+		 * e.printStackTrace(); }
+		 */
 		
 		
 		

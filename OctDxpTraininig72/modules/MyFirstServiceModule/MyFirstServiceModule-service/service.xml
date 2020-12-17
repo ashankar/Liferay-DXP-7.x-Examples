@@ -14,8 +14,6 @@
 		<column name="employeeId" primary="true" type="long"></column>
 
 		<column name="groupId" type="long"></column>
-
-
 		<column name="companyId" type="long"></column>
 		<column name="userId" type="long"></column>
 		<column name="userName" type="String"></column>
@@ -25,6 +23,18 @@
         <column name="mobile" type="int"></column>
         <column name="address" type="String"></column>
         <column name="deptId" type="long"></column>
+        
+        <order>
+       	 <order-column name="employeeId" order-by="asc"></order-column>
+         <order-column name="userName" order-by="asc"></order-column>
+        </order>
+        
+        <finder return-type="Collection" name="EmployeeName">
+        	<finder-column name="userName"></finder-column>        
+        </finder>
+        
+        
+        
 	</entity>
 	
 	<entity name="Salary" local-service="true" remote-service="true" uuid="true">

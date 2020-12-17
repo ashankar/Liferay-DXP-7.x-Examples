@@ -4,7 +4,7 @@
 <service-builder dependency-injector="ds" package-path="com.sb2.training">
 	<namespace>mysbns</namespace>
 	
-	<entity local-service="true" name="Doctor" remote-service="false" uuid="false" table="mysbns_doctor" data-source="extDataSource">
+	<entity local-service="true" name="Doctor" remote-service="false" uuid="false" table="doctor" data-source="extDataSource">
 		<column name="docId" db-name="docId" primary="true" type="long" />
 		<column name="name" db-name="name" type="String" />
 		<column name="speciality" db-name="speciality" type="String" />

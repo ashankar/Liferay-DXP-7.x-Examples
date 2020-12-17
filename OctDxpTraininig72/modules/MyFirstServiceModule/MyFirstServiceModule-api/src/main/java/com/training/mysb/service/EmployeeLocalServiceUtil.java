@@ -52,8 +52,10 @@ public class EmployeeLocalServiceUtil {
 		return getService().addEmployee(employee);
 	}
 
-	public static void addNewEmployee(long empId) {
-		getService().addNewEmployee(empId);
+	public static void addNewEmployee(
+		com.training.mysb.model.Employee employee) {
+
+		getService().addNewEmployee(employee);
 	}
 
 	/**
@@ -213,6 +215,16 @@ public class EmployeeLocalServiceUtil {
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return getService().getEmployee(employeeId);
+	}
+
+	public static java.util.List<com.training.mysb.model.Employee>
+		getEmployeeByName(String empName) {
+
+		return getService().getEmployeeByName(empName);
+	}
+
+	public static com.training.mysb.model.Employee getEmployeeModel() {
+		return getService().getEmployeeModel();
 	}
 
 	/**

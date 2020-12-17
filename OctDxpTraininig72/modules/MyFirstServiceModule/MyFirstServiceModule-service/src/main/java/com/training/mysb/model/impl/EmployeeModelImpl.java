@@ -26,6 +26,7 @@ import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.service.UserLocalServiceUtil;
+import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 
 import com.training.mysb.model.Employee;
@@ -107,16 +108,20 @@ public class EmployeeModelImpl
 		"drop table MyFirstSbNs_Employee";
 
 	public static final String ORDER_BY_JPQL =
-		" ORDER BY employee.employeeId ASC";
+		" ORDER BY employee.employeeId ASC, employee.userName ASC";
 
 	public static final String ORDER_BY_SQL =
-		" ORDER BY MyFirstSbNs_Employee.employeeId ASC";
+		" ORDER BY MyFirstSbNs_Employee.employeeId ASC, MyFirstSbNs_Employee.userName ASC";
 
 	public static final String DATA_SOURCE = "liferayDataSource";
 
 	public static final String SESSION_FACTORY = "liferaySessionFactory";
 
 	public static final String TX_MANAGER = "liferayTransactionManager";
+
+	public static final long USERNAME_COLUMN_BITMASK = 1L;
+
+	public static final long EMPLOYEEID_COLUMN_BITMASK = 2L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -347,6 +352,8 @@ public class EmployeeModelImpl
 
 	@Override
 	public void setEmployeeId(long employeeId) {
+		_columnBitmask = -1L;
+
 		_employeeId = employeeId;
 	}
 
@@ -412,7 +419,17 @@ public class EmployeeModelImpl
 
 	@Override
 	public void setUserName(String userName) {
+		_columnBitmask = -1L;
+
+		if (_originalUserName == null) {
+			_originalUserName = _userName;
+		}
+
 		_userName = userName;
+	}
+
+	public String getOriginalUserName() {
+		return GetterUtil.getString(_originalUserName);
 	}
 
 	@JSON
@@ -492,6 +509,10 @@ public class EmployeeModelImpl
 		_deptId = deptId;
 	}
 
+	public long getColumnBitmask() {
+		return _columnBitmask;
+	}
+
 	@Override
 	public ExpandoBridge getExpandoBridge() {
 		return ExpandoBridgeFactoryUtil.getExpandoBridge(
@@ -543,17 +564,29 @@ public class EmployeeModelImpl
 
 	@Override
 	public int compareTo(Employee employee) {
-		long primaryKey = employee.getPrimaryKey();
+		int value = 0;
 
-		if (getPrimaryKey() < primaryKey) {
-			return -1;
+		if (getEmployeeId() < employee.getEmployeeId()) {
+			value = -1;
 		}
-		else if (getPrimaryKey() > primaryKey) {
-			return 1;
+		else if (getEmployeeId() > employee.getEmployeeId()) {
+			value = 1;
 		}
 		else {
-			return 0;
+			value = 0;
 		}
+
+		if (value != 0) {
+			return value;
+		}
+
+		value = getUserName().compareTo(employee.getUserName());
+
+		if (value != 0) {
+			return value;
+		}
+
+		return 0;
 	}
 
 	@Override
@@ -597,7 +630,11 @@ public class EmployeeModelImpl
 	public void resetOriginalValues() {
 		EmployeeModelImpl employeeModelImpl = this;
 
+		employeeModelImpl._originalUserName = employeeModelImpl._userName;
+
 		employeeModelImpl._setModifiedDate = false;
+
+		employeeModelImpl._columnBitmask = 0;
 	}
 
 	@Override
@@ -740,6 +777,7 @@ public class EmployeeModelImpl
 	private long _companyId;
 	private long _userId;
 	private String _userName;
+	private String _originalUserName;
 	private Date _createDate;
 	private Date _modifiedDate;
 	private boolean _setModifiedDate;
@@ -747,6 +785,7 @@ public class EmployeeModelImpl
 	private int _mobile;
 	private String _address;
 	private long _deptId;
+	private long _columnBitmask;
 	private Employee _escapedModel;
 
 }
