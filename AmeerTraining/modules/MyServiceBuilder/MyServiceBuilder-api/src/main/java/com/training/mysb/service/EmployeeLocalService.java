@@ -80,6 +80,8 @@ public interface EmployeeLocalService
 	@Transactional(enabled = false)
 	public Employee createEmployee(long employeeId);
 
+	public void createNewEmployeeRecord(long groupId, String empName);
+
 	/**
 	 * Deletes the employee from the database. Also notifies the appropriate model listeners.
 	 *
@@ -192,6 +194,14 @@ public interface EmployeeLocalService
 	public List<Employee> getEmployeeByName(String empName);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Employee> getEmployeeByNameWithCustomQuery(
+		String colName, String empName);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Employee> getEmployeeByNameWithDynamicQuery(
+		String colName, String empName);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Employee getEmployeeModel();
 
 	/**
@@ -230,6 +240,9 @@ public interface EmployeeLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
 		throws PortalException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public boolean isEmployeeAvailable(String empName);
 
 	/**
 	 * Updates the employee in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.

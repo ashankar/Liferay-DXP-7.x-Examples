@@ -20,8 +20,11 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 </liferay-portlet:resourceURL>
 
 
+<a href="/group/my-site1/my-blog-page2">Page 2</a><br>
 
-<a href="#" onclick="callAjax('Value of Param1', 'Value of Param2');">Click X</a><br>
+
+<!-- <a href="#" onclick="callAjax('Value of Param1', 'Value of Param2');">Click X</a><br> -->
+
 
 
 <script type="text/javascript">

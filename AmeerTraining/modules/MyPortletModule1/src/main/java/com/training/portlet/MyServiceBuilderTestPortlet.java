@@ -30,89 +30,101 @@ import com.training.constants.MyModuleMainPortletKeys;
 import com.training.mysb.model.Employee;
 import com.training.mysb.service.EmployeeLocalServiceUtil;
 
-@Component(
-	immediate = true,
-	property = {
-		"com.liferay.portlet.display-category=category.app",
-		"com.liferay.portlet.instanceable=true",
-		"javax.portlet.init-param.template-path=/",
-		"javax.portlet.resource-bundle=content.Language",
-		"javax.portlet.security-role-ref=power-user,user",
+@Component(immediate = true, property = { "com.liferay.portlet.display-category=category.app",
+		"com.liferay.portlet.instanceable=true", "javax.portlet.init-param.template-path=/",
+		"javax.portlet.resource-bundle=content.Language", "javax.portlet.security-role-ref=power-user,user",
 		"javax.portlet.init-param.view-template=/myservicebuildertestportlet/view.jsp",
-		"javax.portlet.name=" + MyModuleMainPortletKeys.MY_SERVICE_BUILDER_TEST_PORTLET
-	},
-	service = Portlet.class
-)
+		"javax.portlet.name=" + MyModuleMainPortletKeys.MY_SERVICE_BUILDER_TEST_PORTLET }, service = Portlet.class)
 public class MyServiceBuilderTestPortlet extends MVCPortlet {
-	
-	
+
 	@Override
 	public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
 			throws IOException, PortletException {
 
-			System.out.println(">>>>>>>>>>> In MyServiceBuilderTestPortlet : processAction ");
-	
-			try {
-				
-//				int totalRows=EmployeeLocalServiceUtil.getEmployeesCount();
-//				
-////				List<Employee> employees =EmployeeLocalServiceUtil.getEmployees(0, totalRows);
-//				
-//				List<Employee> employees =EmployeeLocalServiceUtil.getEmployeeByName("Bax");
-//				
-//				for(Employee employee : employees)
+//		System.out.println(">>>>>>>>>>> In MyServiceBuilderTestPortlet : processAction ");
 //
-//				{
-//					System.out.println(employee.getEmployeeId());
-//					System.out.println(employee.getAddress());
-//					System.out.println(employee.getMobile());
-//					System.out.println(employee.getUserName());
-//				}
-				
-				
-				
-				
-				
-				 Employee employee= EmployeeLocalServiceUtil.getEmployeeModel();
-				 
-				 employee.setUserName("My Name" + employee.getEmployeeId());
-				 employee.setGroupId(employee.getEmployeeId()+1);
-				 
-				/// employee.setAddress("#1234, Street #5677, Greater Noida, UP, India"+employee.getEmployeeId());
-				// employee.setMobile("768886655");
-				 
-				 EmployeeLocalServiceUtil.addEmployee(employee);
-				 
-			
-			/*long addrId=CounterLocalServiceUtil.increment(Address.class.getName());	
-				
-			Address address=AddressLocalServiceUtil.createAddress(addrId+"");
-			
-			
-			
-			address.setHouseNo("#123");
-			address.setStreetNo("St 4");
-			address.setCity("GB Nagar");
-			address.setState("New Delhi");
-			address.setCountry("India");
-			
-			
-			AddressLocalServiceUtil.addAddress(address);*/
-			
-			
-			
-			System.out.println(">>>>>>>>>>> Address added... ");
-			}catch (Exception e) {
+////		List<Employee> employees= EmployeeLocalServiceUtil.getEmployeeByNameWithDynamicQuery("employeeid","<500");
+//		
+//		List<Employee> employees= EmployeeLocalServiceUtil.getEmployeeByNameWithCustomQuery("employeeid","<500");
+//		
+//		
+//		for(Employee emp: employees)
+//		{
+//			System.out.println(emp.getEmployeeId());
+//			System.out.println(emp.getGroupId());
+//			System.out.println(emp.getUserName());
+//		}
+//		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
+		 * try {
+		 * 
+		 * // int totalRows=EmployeeLocalServiceUtil.getEmployeesCount(); // ////
+		 * List<Employee> employees =EmployeeLocalServiceUtil.getEmployees(0,
+		 * totalRows); // // List<Employee> employees
+		 * =EmployeeLocalServiceUtil.getEmployeeByName("Bax"); // // for(Employee
+		 * employee : employees) // // { //
+		 * System.out.println(employee.getEmployeeId()); //
+		 * System.out.println(employee.getAddress()); //
+		 * System.out.println(employee.getMobile()); //
+		 * System.out.println(employee.getUserName()); // }
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * Employee employee= EmployeeLocalServiceUtil.getEmployeeModel();
+		 * 
+		 * employee.setUserName("My Name" + employee.getEmployeeId());
+		 * employee.setGroupId(employee.getEmployeeId()+1);
+		 * 
+		 * ///
+		 * employee.setAddress("#1234, Street #5677, Greater Noida, UP, India"+employee.
+		 * getEmployeeId()); // employee.setMobile("768886655");
+		 * 
+		 * EmployeeLocalServiceUtil.addEmployee(employee);
+		 * 
+		 * 
+		 * long addrId=CounterLocalServiceUtil.increment(Address.class.getName());
+		 * 
+		 * Address address=AddressLocalServiceUtil.createAddress(addrId+"");
+		 * 
+		 * 
+		 * 
+		 * address.setHouseNo("#123"); address.setStreetNo("St 4");
+		 * address.setCity("GB Nagar"); address.setState("New Delhi");
+		 * address.setCountry("India");
+		 * 
+		 * 
+		 * AddressLocalServiceUtil.addAddress(address);
+		 * 
+		 * 
+		 * 
+		 * System.out.println(">>>>>>>>>>> Address added... "); }catch (Exception e) {
+		 * 
+		 * e.printStackTrace();
+		 * 
+		 * }
+		 */
 
-			e.printStackTrace();
-				
-			}
-			
-			
-	
 	}
-	
-	
-	
-	
+
 }

@@ -6,7 +6,7 @@
     <namespace>MySbNs</namespace>
    
    
-    <entity local-service="true" name="Employee" remote-service="false" table="employee" data-source="myDataSource">
+    <entity local-service="true" name="Employee" remote-service="true" table="employee" data-source="myDataSource" >
 
     	<column name="employeeId" primary="true" type="long" db-name="employeeId" ></column>
     	<column name="groupId" type="long" db-name="groupId"></column>

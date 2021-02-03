@@ -22,7 +22,7 @@ import java.util.List;
 import org.osgi.annotation.versioning.ProviderType;
 
 /**
- * This class is used by SOAP remote services.
+ * This class is used by SOAP remote services, specifically {@link com.training.mysb.service.http.EmployeeServiceSoap}.
  *
  * @author Brian Wing Shun Chan
  * @generated

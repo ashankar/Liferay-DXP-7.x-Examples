@@ -18,6 +18,7 @@ import com.liferay.expando.kernel.model.ExpandoBridge;
 import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
 import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
+import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.ModelWrapper;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
@@ -27,6 +28,7 @@ import com.liferay.portal.kernel.util.ProxyUtil;
 
 import com.training.mysb.model.Employee;
 import com.training.mysb.model.EmployeeModel;
+import com.training.mysb.model.EmployeeSoap;
 
 import java.io.Serializable;
 
@@ -35,9 +37,11 @@ import java.lang.reflect.InvocationHandler;
 
 import java.sql.Types;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -55,6 +59,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * @see EmployeeImpl
  * @generated
  */
+@JSON(strict = true)
 @ProviderType
 public class EmployeeModelImpl
 	extends BaseModelImpl<Employee> implements EmployeeModel {
@@ -107,6 +112,46 @@ public class EmployeeModelImpl
 
 	public static void setFinderCacheEnabled(boolean finderCacheEnabled) {
 		_finderCacheEnabled = finderCacheEnabled;
+	}
+
+	/**
+	 * Converts the soap model instance into a normal model instance.
+	 *
+	 * @param soapModel the soap model instance to convert
+	 * @return the normal model instance
+	 */
+	public static Employee toModel(EmployeeSoap soapModel) {
+		if (soapModel == null) {
+			return null;
+		}
+
+		Employee model = new EmployeeImpl();
+
+		model.setEmployeeId(soapModel.getEmployeeId());
+		model.setGroupId(soapModel.getGroupId());
+		model.setUserName(soapModel.getUserName());
+
+		return model;
+	}
+
+	/**
+	 * Converts the soap model instances into normal model instances.
+	 *
+	 * @param soapModels the soap model instances to convert
+	 * @return the normal model instances
+	 */
+	public static List<Employee> toModels(EmployeeSoap[] soapModels) {
+		if (soapModels == null) {
+			return null;
+		}
+
+		List<Employee> models = new ArrayList<Employee>(soapModels.length);
+
+		for (EmployeeSoap soapModel : soapModels) {
+			models.add(toModel(soapModel));
+		}
+
+		return models;
 	}
 
 	public EmployeeModelImpl() {
@@ -249,6 +294,7 @@ public class EmployeeModelImpl
 			(Map)attributeSetterBiConsumers);
 	}
 
+	@JSON
 	@Override
 	public long getEmployeeId() {
 		return _employeeId;
@@ -261,6 +307,7 @@ public class EmployeeModelImpl
 		_employeeId = employeeId;
 	}
 
+	@JSON
 	@Override
 	public long getGroupId() {
 		return _groupId;
@@ -271,6 +318,7 @@ public class EmployeeModelImpl
 		_groupId = groupId;
 	}
 
+	@JSON
 	@Override
 	public String getUserName() {
 		if (_userName == null) {

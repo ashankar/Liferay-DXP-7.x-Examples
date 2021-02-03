@@ -59,6 +59,11 @@ public class EmployeeLocalServiceWrapper
 		return _employeeLocalService.createEmployee(employeeId);
 	}
 
+	@Override
+	public void createNewEmployeeRecord(long groupId, String empName) {
+		_employeeLocalService.createNewEmployeeRecord(groupId, empName);
+	}
+
 	/**
 	 * Deletes the employee from the database. Also notifies the appropriate model listeners.
 	 *
@@ -221,6 +226,22 @@ public class EmployeeLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<com.training.mysb.model.Employee>
+		getEmployeeByNameWithCustomQuery(String colName, String empName) {
+
+		return _employeeLocalService.getEmployeeByNameWithCustomQuery(
+			colName, empName);
+	}
+
+	@Override
+	public java.util.List<com.training.mysb.model.Employee>
+		getEmployeeByNameWithDynamicQuery(String colName, String empName) {
+
+		return _employeeLocalService.getEmployeeByNameWithDynamicQuery(
+			colName, empName);
+	}
+
+	@Override
 	public com.training.mysb.model.Employee getEmployeeModel() {
 		return _employeeLocalService.getEmployeeModel();
 	}
@@ -276,6 +297,11 @@ public class EmployeeLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _employeeLocalService.getPersistedModel(primaryKeyObj);
+	}
+
+	@Override
+	public boolean isEmployeeAvailable(String empName) {
+		return _employeeLocalService.isEmployeeAvailable(empName);
 	}
 
 	/**

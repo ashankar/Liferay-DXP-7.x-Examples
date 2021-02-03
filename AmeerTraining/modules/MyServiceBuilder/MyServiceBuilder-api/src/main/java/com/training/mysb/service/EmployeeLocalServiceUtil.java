@@ -64,6 +64,10 @@ public class EmployeeLocalServiceUtil {
 		return getService().createEmployee(employeeId);
 	}
 
+	public static void createNewEmployeeRecord(long groupId, String empName) {
+		getService().createNewEmployeeRecord(groupId, empName);
+	}
+
 	/**
 	 * Deletes the employee from the database. Also notifies the appropriate model listeners.
 	 *
@@ -217,6 +221,18 @@ public class EmployeeLocalServiceUtil {
 		return getService().getEmployeeByName(empName);
 	}
 
+	public static java.util.List<com.training.mysb.model.Employee>
+		getEmployeeByNameWithCustomQuery(String colName, String empName) {
+
+		return getService().getEmployeeByNameWithCustomQuery(colName, empName);
+	}
+
+	public static java.util.List<com.training.mysb.model.Employee>
+		getEmployeeByNameWithDynamicQuery(String colName, String empName) {
+
+		return getService().getEmployeeByNameWithDynamicQuery(colName, empName);
+	}
+
 	public static com.training.mysb.model.Employee getEmployeeModel() {
 		return getService().getEmployeeModel();
 	}
@@ -268,6 +284,10 @@ public class EmployeeLocalServiceUtil {
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return getService().getPersistedModel(primaryKeyObj);
+	}
+
+	public static boolean isEmployeeAvailable(String empName) {
+		return getService().isEmployeeAvailable(empName);
 	}
 
 	/**
