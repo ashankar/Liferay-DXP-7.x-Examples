@@ -233,6 +233,16 @@ public interface EmployeeLocalService
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
 		throws PortalException;
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Employee> getResultFromCustomSQLQuery(String empName);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Employee> getResultFromDynamicQuery(
+		String colName1, int searchValue1, String colName2, long searchValue2);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public boolean isEmployeeAvailable(String empName);
+
 	/**
 	 * Updates the employee in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	 *

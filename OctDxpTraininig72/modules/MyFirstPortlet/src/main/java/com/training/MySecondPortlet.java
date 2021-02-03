@@ -27,6 +27,7 @@ import javax.portlet.RenderResponse;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.training.constants.MyFirstPortletKeys;
+import com.training.constants.TrainingConstant;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -55,7 +56,6 @@ public class MySecondPortlet extends MVCPortlet {
 		System.out.println("Hello doView  Portlet 2");
 		
 		renderResponse.setProperty("beta", name);
-		
 		
 		
 		super.doView(renderRequest, renderResponse);

@@ -39,6 +39,11 @@ public class EmployeeServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to <code>com.training.mysb.service.impl.EmployeeServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
+	public static java.util.List<com.training.mysb.model.Employee>
+		getEmployeeByName(String empName) {
+
+		return getService().getEmployeeByName(empName);
+	}
 
 	/**
 	 * Returns the OSGi service identifier.
@@ -47,6 +52,10 @@ public class EmployeeServiceUtil {
 	 */
 	public static String getOSGiServiceIdentifier() {
 		return getService().getOSGiServiceIdentifier();
+	}
+
+	public static boolean isEmployeeAvailable(String empName) {
+		return getService().isEmployeeAvailable(empName);
 	}
 
 	public static EmployeeService getService() {

@@ -16,8 +16,9 @@
 package com.training.portlet;
 
 import java.io.IOException;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -26,18 +27,10 @@ import javax.portlet.PortletException;
 
 import org.osgi.service.component.annotations.Component;
 
-import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
-import com.liferay.portal.kernel.util.DateFormatFactoryUtil;
-import com.liferay.portal.kernel.util.ParamUtil;
 import com.training.constants.MyFirstPortletKeys;
-import com.training.mysb.model.Department;
 import com.training.mysb.model.Employee;
-import com.training.mysb.model.Salary;
-import com.training.mysb.service.DepartmentLocalServiceUtil;
 import com.training.mysb.service.EmployeeLocalServiceUtil;
-import com.training.mysb.service.SalaryLocalServiceUtil;
-import com.training.mysb.service.persistence.EmployeeUtil;
 
 @Component(
 	immediate = true,
@@ -61,6 +54,59 @@ public class MyServiceBuilderTestPortlet extends MVCPortlet {
 	  System.out.println("In MyServiceBuilderTestPortlet : processAction1");
 	  
 	  
+	  
+	  try {
+		  
+		  
+		  
+		  List<Employee> employees= EmployeeLocalServiceUtil.getResultFromCustomSQLQuery("My Name");
+		  
+		  
+		  
+//		  Map<String, Object> map=new HashMap<String, Object>();
+		  
+		  
+//		 List<Employee> employees= EmployeeLocalServiceUtil.getResultFromDynamicQuery("mobile", 876678887, "employeeId", 200L);
+		 
+		  
+		 
+			/*
+			 * for(Employee emp: employees) {
+			 * 
+			 * System.out.println(emp.getEmployeeId());
+			 * System.out.println(emp.getUserName()); System.out.println(emp.getAddress());
+			 * System.out.println(emp.getMobile());
+			 * 
+			 * }
+			 */
+		 
+		 
+		
+	} catch (Exception e) {
+
+		e.printStackTrace();
+	
+	}
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  /*
 	  
 	  
 	  try {
@@ -121,7 +167,7 @@ public class MyServiceBuilderTestPortlet extends MVCPortlet {
 
 			e.printStackTrace();
 		}
-		  
+	*/	  
 		  
 	  }
 	  

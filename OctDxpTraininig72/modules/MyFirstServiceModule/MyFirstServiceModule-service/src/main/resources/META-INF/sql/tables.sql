@@ -1,3 +1,7 @@
+create table MyFirstSbNs_CustomUser (
+	id_ LONG not null primary key
+);
+
 create table MyFirstSbNs_Department (
 	uuid_ VARCHAR(75) null,
 	deptId LONG not null primary key,
@@ -10,12 +14,12 @@ create table MyFirstSbNs_Employee (
 	groupId LONG,
 	companyId LONG,
 	userId LONG,
-	userName VARCHAR(75) null,
+	userName VARCHAR(200) null,
 	createDate DATE null,
 	modifiedDate DATE null,
 	dob DATE null,
 	mobile INTEGER,
-	address VARCHAR(75) null,
+	address VARCHAR(500) null,
 	deptId LONG
 );
 

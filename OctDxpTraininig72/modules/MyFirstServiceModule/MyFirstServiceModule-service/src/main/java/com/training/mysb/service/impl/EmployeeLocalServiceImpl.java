@@ -20,7 +20,11 @@ import org.osgi.service.component.annotations.Component;
 
 import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.aop.AopService;
-import com.training.mysb.exception.NoSuchEmployeeException;
+import com.liferay.portal.kernel.dao.orm.DynamicQuery;
+import com.liferay.portal.kernel.dao.orm.ProjectionFactoryUtil;
+import com.liferay.portal.kernel.dao.orm.SQLQuery;
+import com.liferay.portal.kernel.dao.orm.Session;
+import com.training.mysb.custom.QueryConstants;
 import com.training.mysb.model.Employee;
 import com.training.mysb.service.EmployeeLocalServiceUtil;
 import com.training.mysb.service.base.EmployeeLocalServiceBaseImpl;
@@ -50,6 +54,96 @@ public class EmployeeLocalServiceImpl extends EmployeeLocalServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Use <code>com.training.mysb.service.EmployeeLocalService</code> via injection or a <code>org.osgi.util.tracker.ServiceTracker</code> or use <code>com.training.mysb.service.EmployeeLocalServiceUtil</code>.
 	 */
+	
+	
+	
+	public List<Employee> getResultFromCustomSQLQuery(String empName)
+	{
+		
+		List<Employee> employees=null;
+		
+		Session session=null;
+		
+		try {
+			
+			session=employeePersistence.openSession();
+			
+			SQLQuery query=session.createSQLQuery(QueryConstants.GET_ALL_EMPLOYEE);
+			query.setString(0, empName);
+			query.setInteger(1, 102);
+			query.setCacheable(false);
+			
+			List<Object[]> rows=  query.list();
+			
+			
+			for(Object[] row: rows)
+			{
+				System.out.println(row[0]);
+				System.out.println(row[1]);
+				System.out.println(row[2]);
+				System.out.println(row[3]);
+				System.out.println(row[4]);
+				System.out.println(row[5]);
+			}
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			employeePersistence.closeSession(session);
+		}
+		
+		return employees;
+		
+	}
+	
+	
+	
+	
+	public List<Employee> getResultFromDynamicQuery(String colName1, int searchValue1, String colName2, long searchValue2)
+	{
+		
+		List<Employee> employees=null;
+		
+		System.out.println("In EmployeeLocalServiceImpl: getResultFromDynamicQuery");
+		
+		try {
+		
+		DynamicQuery dq=dynamicQuery()
+				//.add(RestrictionsFactoryUtil.eq(colName1, searchValue1))
+//				.add(RestrictionsFactoryUtil.lt(colName2, searchValue2))
+				
+				.setProjection(ProjectionFactoryUtil.property("dob"))
+				.setProjection(ProjectionFactoryUtil.rowCount());
+		
+		
+		
+//		employees=dynamicQuery(dq);
+		
+		
+		System.out.println(dynamicQuery(dq));
+		
+		System.out.println(">>>Finished call!");
+		
+		}catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		
+		return employees;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -108,6 +202,29 @@ public class EmployeeLocalServiceImpl extends EmployeeLocalServiceBaseImpl {
 		  
 	  }
 	
+	  
+	  
+	  public boolean isEmployeeAvailable(String empName)
+		{
+		
+		  try {
+		
+			List<Employee> employees= EmployeeUtil.findByEmployeeName(empName);
+			
+			if(employees == null || employees.size() == 0)
+			{
+				return false;
+			}
+			
+		  } catch (Exception e) {
+			
+			  e.printStackTrace();
+		  }
+			
+			return true;
+			
+		}
+	  
 	
 	
 }

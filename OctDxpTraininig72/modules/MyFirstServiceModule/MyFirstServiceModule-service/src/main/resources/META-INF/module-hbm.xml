@@ -2,9 +2,15 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping auto-import="false" default-lazy="false">
+	<import class="com.training.mysb.model.CustomUser" />
 	<import class="com.training.mysb.model.Department" />
 	<import class="com.training.mysb.model.Employee" />
 	<import class="com.training.mysb.model.Salary" />
+	<class name="com.training.mysb.model.impl.CustomUserImpl" table="MyFirstSbNs_CustomUser">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" column="id_" name="id" type="long">
+			<generator class="assigned" />
+		</id>
+	</class>
 	<class name="com.training.mysb.model.impl.DepartmentImpl" table="MyFirstSbNs_Department">
 		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="deptId" type="long">
 			<generator class="assigned" />

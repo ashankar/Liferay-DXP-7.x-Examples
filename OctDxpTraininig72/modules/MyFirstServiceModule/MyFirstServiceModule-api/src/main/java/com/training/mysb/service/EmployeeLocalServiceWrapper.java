@@ -283,6 +283,28 @@ public class EmployeeLocalServiceWrapper
 		return _employeeLocalService.getPersistedModel(primaryKeyObj);
 	}
 
+	@Override
+	public java.util.List<com.training.mysb.model.Employee>
+		getResultFromCustomSQLQuery(String empName) {
+
+		return _employeeLocalService.getResultFromCustomSQLQuery(empName);
+	}
+
+	@Override
+	public java.util.List<com.training.mysb.model.Employee>
+		getResultFromDynamicQuery(
+			String colName1, int searchValue1, String colName2,
+			long searchValue2) {
+
+		return _employeeLocalService.getResultFromDynamicQuery(
+			colName1, searchValue1, colName2, searchValue2);
+	}
+
+	@Override
+	public boolean isEmployeeAvailable(String empName) {
+		return _employeeLocalService.isEmployeeAvailable(empName);
+	}
+
 	/**
 	 * Updates the employee in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	 *

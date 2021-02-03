@@ -276,6 +276,25 @@ public class EmployeeLocalServiceUtil {
 		return getService().getPersistedModel(primaryKeyObj);
 	}
 
+	public static java.util.List<com.training.mysb.model.Employee>
+		getResultFromCustomSQLQuery(String empName) {
+
+		return getService().getResultFromCustomSQLQuery(empName);
+	}
+
+	public static java.util.List<com.training.mysb.model.Employee>
+		getResultFromDynamicQuery(
+			String colName1, int searchValue1, String colName2,
+			long searchValue2) {
+
+		return getService().getResultFromDynamicQuery(
+			colName1, searchValue1, colName2, searchValue2);
+	}
+
+	public static boolean isEmployeeAvailable(String empName) {
+		return getService().isEmployeeAvailable(empName);
+	}
+
 	/**
 	 * Updates the employee in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	 *

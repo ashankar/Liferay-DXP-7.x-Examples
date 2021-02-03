@@ -1,0 +1,3 @@
+Bundle-Name: MyEventListeners
+Bundle-SymbolicName: com.training.event
+Bundle-Version: 1.0.0

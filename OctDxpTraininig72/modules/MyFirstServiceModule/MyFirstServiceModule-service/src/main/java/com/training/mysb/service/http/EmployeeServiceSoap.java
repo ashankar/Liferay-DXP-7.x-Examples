@@ -14,11 +14,18 @@
 
 package com.training.mysb.service.http;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+
+import com.training.mysb.service.EmployeeServiceUtil;
+
+import java.rmi.RemoteException;
+
 import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * Provides the SOAP utility for the
- * <code>com.training.mysb.service.EmployeeServiceUtil</code> service
+ * <code>EmployeeServiceUtil</code> service
  * utility. The static methods of this class call the same methods of the
  * service utility. However, the signatures are different because it is
  * difficult for SOAP to support certain types.
@@ -57,4 +64,41 @@ import org.osgi.annotation.versioning.ProviderType;
  */
 @ProviderType
 public class EmployeeServiceSoap {
+
+	public static com.training.mysb.model.EmployeeSoap[] getEmployeeByName(
+			String empName)
+		throws RemoteException {
+
+		try {
+			java.util.List<com.training.mysb.model.Employee> returnValue =
+				EmployeeServiceUtil.getEmployeeByName(empName);
+
+			return com.training.mysb.model.EmployeeSoap.toSoapModels(
+				returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static boolean isEmployeeAvailable(String empName)
+		throws RemoteException {
+
+		try {
+			boolean returnValue = EmployeeServiceUtil.isEmployeeAvailable(
+				empName);
+
+			return returnValue;
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(EmployeeServiceSoap.class);
+
 }

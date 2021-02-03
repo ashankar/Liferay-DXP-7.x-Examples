@@ -15,8 +15,13 @@
 package com.training.mysb.service.impl;
 
 import com.liferay.portal.aop.AopService;
-
+import com.liferay.portal.kernel.jsonwebservice.JSONWebService;
+import com.training.mysb.model.Employee;
+import com.training.mysb.service.EmployeeLocalServiceUtil;
 import com.training.mysb.service.base.EmployeeServiceBaseImpl;
+import com.training.mysb.service.persistence.EmployeeUtil;
+
+import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -47,4 +52,39 @@ public class EmployeeServiceImpl extends EmployeeServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Always use <code>com.training.mysb.service.EmployeeServiceUtil</code> to access the employee remote service.
 	 */
+	
+	
+	public String testWs()
+	{
+		
+		return "Hello My WS";
+	}
+	
+	
+	public List<Employee> getEmployeeByName(String empName)
+	{
+		
+		List<Employee> employees = EmployeeLocalServiceUtil.getEmployeeByName(empName);
+		
+//		Employee employee= employees.get(0);
+//		
+//		employee.setGroupId(223);
+		
+		return employees;
+	}
+	
+	
+	@JSONWebService(method = "POST", value = "is-employee")
+	public boolean isEmployeeAvailable(String empName)
+	{
+		boolean isEmployee=false;
+		
+		isEmployee= EmployeeLocalServiceUtil.isEmployeeAvailable(empName);
+		
+		return isEmployee;
+		
+	}
+	
+	
+	
 }

@@ -1,0 +1,3 @@
+Bundle-Name: CustomAuth
+Bundle-SymbolicName: com.training.custom.auth
+Bundle-Version: 1.0.0

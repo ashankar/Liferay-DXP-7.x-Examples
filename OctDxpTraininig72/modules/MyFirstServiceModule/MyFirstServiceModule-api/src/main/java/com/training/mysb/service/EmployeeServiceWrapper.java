@@ -33,6 +33,13 @@ public class EmployeeServiceWrapper
 		_employeeService = employeeService;
 	}
 
+	@Override
+	public java.util.List<com.training.mysb.model.Employee> getEmployeeByName(
+		String empName) {
+
+		return _employeeService.getEmployeeByName(empName);
+	}
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *
@@ -41,6 +48,11 @@ public class EmployeeServiceWrapper
 	@Override
 	public String getOSGiServiceIdentifier() {
 		return _employeeService.getOSGiServiceIdentifier();
+	}
+
+	@Override
+	public boolean isEmployeeAvailable(String empName) {
+		return _employeeService.isEmployeeAvailable(empName);
 	}
 
 	@Override

@@ -13,7 +13,7 @@
 
 		<column name="employeeId" primary="true" type="long"></column>
 
-		<column name="groupId" type="long"></column>
+		<column name="groupId" type="long" ></column>
 		<column name="companyId" type="long"></column>
 		<column name="userId" type="long"></column>
 		<column name="userName" type="String"></column>
@@ -33,6 +33,19 @@
         	<finder-column name="userName"></finder-column>        
         </finder>
         
+       <!--  <finder return-type="Collection" name="AddressEmployee">
+        	<finder-column name="address"></finder-column>        
+        </finder>
+        
+         
+        <finder return-type="Collection" name="MobileEmployee">
+        	<finder-column name="mobile"></finder-column>        
+        </finder>
+        
+        <finder return-type="Collection" name="AddressAndMobileEmployee">
+       		 <finder-column name="address"></finder-column> 
+        	<finder-column name="mobile"></finder-column>        
+        </finder> -->
         
         
 	</entity>
@@ -48,6 +61,13 @@
 		<column name="name" type="String"></column>
         <column name="hod" type="String"></column>
 	</entity>
+	
+	
+	<entity name="CustomUser" local-service="true" remote-service="true">
+
+		<column name="id" primary="true" type="long"></column>
+	</entity>
+	
 	
 	
 </service-builder>

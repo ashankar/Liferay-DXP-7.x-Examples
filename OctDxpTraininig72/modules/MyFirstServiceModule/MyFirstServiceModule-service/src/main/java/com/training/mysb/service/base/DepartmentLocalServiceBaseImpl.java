@@ -39,6 +39,7 @@ import com.liferay.portal.kernel.util.PortalUtil;
 
 import com.training.mysb.model.Department;
 import com.training.mysb.service.DepartmentLocalService;
+import com.training.mysb.service.persistence.CustomUserPersistence;
 import com.training.mysb.service.persistence.DepartmentPersistence;
 import com.training.mysb.service.persistence.EmployeePersistence;
 import com.training.mysb.service.persistence.SalaryPersistence;
@@ -380,6 +381,9 @@ public abstract class DepartmentLocalServiceBaseImpl
 			throw new SystemException(e);
 		}
 	}
+
+	@Reference
+	protected CustomUserPersistence customUserPersistence;
 
 	protected DepartmentLocalService departmentLocalService;
 

@@ -20,7 +20,12 @@ import com.liferay.portal.kernel.jsonwebservice.JSONWebService;
 import com.liferay.portal.kernel.security.access.control.AccessControlled;
 import com.liferay.portal.kernel.service.BaseService;
 import com.liferay.portal.kernel.transaction.Isolation;
+import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
+
+import com.training.mysb.model.Employee;
+
+import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
 
@@ -47,6 +52,8 @@ public interface EmployeeService extends BaseService {
 	 *
 	 * Never modify or reference this interface directly. Always use {@link EmployeeServiceUtil} to access the employee remote service. Add custom service methods to <code>com.training.mysb.service.impl.EmployeeServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Employee> getEmployeeByName(String empName);
 
 	/**
 	 * Returns the OSGi service identifier.
@@ -54,5 +61,9 @@ public interface EmployeeService extends BaseService {
 	 * @return the OSGi service identifier
 	 */
 	public String getOSGiServiceIdentifier();
+
+	@JSONWebService(method = "POST", value = "is-employee")
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public boolean isEmployeeAvailable(String empName);
 
 }
