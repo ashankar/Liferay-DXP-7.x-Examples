@@ -14,5 +14,9 @@ public class MyPortletModule1PortletKeys {
 	public static final String EVENT_IPC_2 = "com_training_portlet_EventIPC2";
 	public static final String PORTLET_SESSION_IPC_1 = "com_training_portlet_PortletSessionIPC1";
 	public static final String PORTLET_SESSION_IPC_2 = "com_training_portlet_PortletSessionIPC2";
+	public static final String CLIENT_SIDE_IPC_1 = "com_training_portlet_ClientSideIPC1";
+	public static final String CLIENT_SIDE_IPC_2 = "com_training_portlet_ClientSideIPC2";
+	public static final String COOKIES_IPC1 = "com_training_portlet_CookiesIPC1";
+	public static final String COOKIES_IPC2 = "com_training_portlet_CookiesIPC2";
 
 }
