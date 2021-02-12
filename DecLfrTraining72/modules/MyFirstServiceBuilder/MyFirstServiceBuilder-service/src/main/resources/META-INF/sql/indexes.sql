@@ -1,0 +1,1 @@
+create index IX_3A498BC8 on mysbns_Employee (name[$COLUMN_LENGTH:75$], mobile[$COLUMN_LENGTH:75$]);

@@ -18,5 +18,6 @@ public class MyPortlet1PortletKeys {
 	public static final String MY_CLIENT_SIDE_IPC_TEST2 = "com_training_portlet_MyClientSideIPCTest2";
 	public static final String MY_COOKIES_IPC_TEST1 = "com_training_portlet_MyCookiesIPCTest1";
 	public static final String MY_COOKIES_IPC_TEST2 = "com_training_portlet_MyCookiesIPCTest2";
+	public static final String MY_SERVICE_BUILDER_PORTLET_1 = "com_training_portlet_MyServiceBuilderPortlet1";
 
 }

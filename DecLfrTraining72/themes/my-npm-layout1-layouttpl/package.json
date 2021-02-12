@@ -1,0 +1,20 @@
+{
+	"name": "my-npm-layout1-layouttpl",
+	"version": "1.0.0",
+	"main": "package.json",
+	"keywords": [
+		"liferay-theme"
+	],
+	"liferayLayoutTemplate": {
+		"version": "7.2"
+	},
+	"devDependencies": {
+		"gulp": "4.0.2",
+		"liferay-theme-tasks": "^10.1.0"
+	},
+	"scripts": {
+		"init": "gulp init",
+		"build": "gulp build",
+		"deploy": "gulp deploy"
+	}
+}
