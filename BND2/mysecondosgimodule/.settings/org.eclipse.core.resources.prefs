@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//src/com/training/osgi/bnd/Example.java=UTF-8
+encoding//test/com/training/osgi/bnd/ExampleTest.java=UTF-8
+encoding/bnd.bnd=UTF-8
+encoding/launch.bndrun=UTF-8
