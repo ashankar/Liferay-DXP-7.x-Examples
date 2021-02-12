@@ -1,0 +1,4 @@
+Bundle-Name: MyOsgiShare1
+Bundle-SymbolicName: com.training.osgi.share1
+Bundle-Version: 1.1.2
+Export-Package: com.training.osgi.share1.api; version=1.0.1
