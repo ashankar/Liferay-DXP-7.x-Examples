@@ -3,6 +3,7 @@ package com.training.osgi2;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
+import com.liferay.document.library.kernel.util.DLUtil;
 import com.training.osgi.share1.api.MyDateTime;
 
 /**
@@ -28,6 +29,7 @@ public class MySecondDemoComponent{
 //		EmployeeLocalServiceUtil.getEmployeeByName("dads");
 		
 //		employeeService.getEmployeeByName("");
+		
 	}
 
 	@Reference
