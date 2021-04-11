@@ -16,9 +16,6 @@
 package com.training.portlet;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -28,9 +25,9 @@ import javax.portlet.PortletException;
 import org.osgi.service.component.annotations.Component;
 
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.sb2.training.model.Doctor;
+import com.sb2.training.service.DoctorLocalServiceUtil;
 import com.training.constants.MyFirstPortletKeys;
-import com.training.mysb.model.Employee;
-import com.training.mysb.service.EmployeeLocalServiceUtil;
 
 @Component(
 	immediate = true,
@@ -57,9 +54,13 @@ public class MyServiceBuilderTestPortlet extends MVCPortlet {
 	  
 	  try {
 		  
+		  Doctor doctor=DoctorLocalServiceUtil.getDoctor(702);
+		  doctor.setName("My Changed Name");
+		  
+		  DoctorLocalServiceUtil.updateDoctor(doctor);
 		  
 		  
-		  List<Employee> employees= EmployeeLocalServiceUtil.getResultFromCustomSQLQuery("My Name");
+//		  List<Employee> employees= EmployeeLocalServiceUtil.getResultFromCustomSQLQuery("My Name");
 		  
 		  
 		  

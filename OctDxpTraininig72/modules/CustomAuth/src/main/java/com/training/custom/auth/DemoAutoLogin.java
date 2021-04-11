@@ -37,6 +37,8 @@ public class DemoAutoLogin implements AutoLogin {
 		
 		String[] s=new String[] {"test@liferay.com", "dgdfgdzftest", Boolean.TRUE.toString()};
 		
+//		String[] s=new String[] {"USERID-- works", "dgdfgdzftest", Boolean.TRUE.toString()};
+		
 		/*
 		 * try {
 		 * 

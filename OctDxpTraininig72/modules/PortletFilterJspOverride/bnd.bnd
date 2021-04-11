@@ -1,0 +1,3 @@
+Bundle-Name: PortletFilterJspOverride
+Bundle-SymbolicName: com.training.portlet.filter.jsp.override
+Bundle-Version: 1.0.0

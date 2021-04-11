@@ -7,6 +7,5 @@ dependencies {
 	compileOnly group: "javax.servlet", name: "javax.servlet-api"
 	compileOnly group: "jstl", name: "jstl"
 	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"
-	
-	//compileOnly project(":modules:MyServiceBuilderModule2:MyServiceBuilderModule2-api")
+	compileOnly project(":modules:MyServiceBuilderModule2:MyServiceBuilderModule2-api")
 }

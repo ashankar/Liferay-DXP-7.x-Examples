@@ -1,11 +1,11 @@
 package com.demo.my.model.listener;
 
+import org.osgi.service.component.annotations.Component;
+
 import com.liferay.portal.kernel.exception.ModelListenerException;
 import com.liferay.portal.kernel.model.BaseModelListener;
 import com.liferay.portal.kernel.model.ModelListener;
-import com.liferay.portal.kernel.model.User;
-
-import org.osgi.service.component.annotations.Component;
+import com.sb2.training.model.Doctor;
 
 /**
  * @author Anand
@@ -17,11 +17,11 @@ import org.osgi.service.component.annotations.Component;
 	},
 	service = ModelListener.class
 )
-public class MyDemoModelListener extends BaseModelListener<User> {
+public class MyDemoModelListener extends BaseModelListener<Doctor> {
 
 
 	@Override
-	public void onAfterUpdate(User model) throws ModelListenerException {
+	public void onAfterUpdate(Doctor model) throws ModelListenerException {
 
 		System.out.println(">>>>>>>>>> Hello MyDemoModelListener: onAfterUpdate... ");
 		
@@ -30,7 +30,7 @@ public class MyDemoModelListener extends BaseModelListener<User> {
 	}
 	
 	@Override
-	public void onBeforeCreate(User model) throws ModelListenerException {
+	public void onBeforeCreate(Doctor model) throws ModelListenerException {
 
 		
 		super.onBeforeCreate(model);

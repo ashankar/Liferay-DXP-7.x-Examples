@@ -1,0 +1,3 @@
+Bundle-Name: OverrideUserService1
+Bundle-SymbolicName: com.training.service.wrappper
+Bundle-Version: 1.0.0
