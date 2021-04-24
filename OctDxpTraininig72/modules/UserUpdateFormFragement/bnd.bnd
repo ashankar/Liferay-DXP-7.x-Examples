@@ -1,0 +1,4 @@
+Bundle-Name: UserUpdateFormFragement
+Bundle-SymbolicName: userupdateformfragement
+Bundle-Version: 1.0.0
+Fragment-Host: com.liferay.users.admin.web;bundle-version="4.0.13"
