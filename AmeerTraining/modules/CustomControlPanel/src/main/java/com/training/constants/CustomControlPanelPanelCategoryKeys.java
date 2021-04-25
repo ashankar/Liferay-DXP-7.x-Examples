@@ -1,0 +1,10 @@
+package com.training.constants;
+
+/**
+ * @author Anand
+ */
+public class CustomControlPanelPanelCategoryKeys {
+
+	public static final String CONTROL_PANEL_CATEGORY = "CustomControlPanel";
+
+}
