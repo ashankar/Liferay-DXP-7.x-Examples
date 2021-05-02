@@ -1,0 +1,3 @@
+Bundle-Name: CustomLogout
+Bundle-SymbolicName: com.demo.event
+Bundle-Version: 1.0.0

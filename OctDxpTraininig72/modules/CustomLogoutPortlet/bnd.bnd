@@ -1,0 +1,4 @@
+Bundle-Name: CustomLogoutPortlet
+Bundle-SymbolicName: com.demo.portlet
+Bundle-Version: 1.0.0
+Export-Package: com.demo.constants
