@@ -54,7 +54,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <a href="<%=request.getHeader("referer")%>"><button class="btn-primary" id="goBack" name="goBack">Go Back</button></a> 
 <br/>
 <br/>
-<a href="http://localhost:8083/c/portal/logout?myFlag=false"><button class="btn-primary" id="continue" name="goBack">Continue</button></a>
+<!-- <a href="http://localhost:8080/c/portal/logout?myFlag=false"><button class="btn-primary" id="continue" name="continue">Continue</button></a> -->
+<a href="/c/portal/logout?myFlag=false"><button class="btn-primary" id="continue" name="continue">Continue</button></a>
 </p>
 
 </div>

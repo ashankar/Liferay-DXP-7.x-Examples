@@ -38,7 +38,8 @@ public class CustomLogoutEventPre implements LifecycleAction {
 			if (myFlag) {
 				System.out.println(">>>>>>>>>>>>>>>>>>>> before redirect");
 
-				httpServletResponse.sendRedirect("http://localhost:8083/web/my-site1/custom-logout2");
+//				httpServletResponse.sendRedirect("http://localhost:8080/web/my-site1/custom-logout");
+				httpServletResponse.sendRedirect("/web/my-site1/custom-logout");
 				throw new ActionException();
 			}
 
