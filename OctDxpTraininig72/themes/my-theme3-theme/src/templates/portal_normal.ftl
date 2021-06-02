@@ -27,9 +27,18 @@ Finance Business TemplateMo
 https://templatemo.com/tm-545-finance-business
 
 -->
+
+<@liferay_util["include"] page=top_head_include />
   </head>
 
   <body>
+
+<@liferay_ui["quick-access"] contentId="#main-content" />
+
+<@liferay_util["include"] page=body_top_include />
+
+<@liferay.control_menu />
+
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -65,10 +74,11 @@ https://templatemo.com/tm-545-finance-business
 
     <header class="">
 
+<#assign preferences = freeMarkerPortletPreferences.getPreferences({"portletSetupPortletDecoratorId": "barebone", "destination": "/search"}) />
 
 
-<div class="navbar navbar-classic navbar-expand-md navbar-light pb-3">
-				<div class="container">
+<div class="navbar navbar-classic navbar-expand-md navbar-light pb-3" style="background-color: hsla(89, 43%, 51%, 0.3);">
+				<div class="container" >
 					<#include "${full_templates_path}/navigation.ftl" />
 				</div>
 			</div>
@@ -77,7 +87,7 @@ https://templatemo.com/tm-545-finance-business
 
 
 
-      <#--  <nav class="navbar navbar-expand-lg">
+     <#--   <nav class="navbar navbar-expand-lg">
         <div class="container">
           <a class="navbar-brand" href="index.html"><h2>Finance Business</h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -149,7 +159,30 @@ https://templatemo.com/tm-545-finance-business
     </div>
     <!-- Banner Ends Here -->
 
-    <div class="request-form">
+
+
+
+<section class="${portal_content_css_class}" id="content">
+		<h1 class="sr-only">${the_title}</h1>
+
+		<#if selectable>
+			<@liferay_util["include"] page=content_include />
+		<#else>
+			${portletDisplay.recycle()}
+
+			${portletDisplay.setTitle(the_title)}
+
+			<@liferay_theme["wrap-portlet"] page="portlet.ftl">
+				<@liferay_util["include"] page=content_include />
+			</@>
+		</#if>
+	</section>
+
+
+
+
+
+    <#--  <div class="request-form">
       <div class="container">
         <div class="row">
           <div class="col-md-8">
@@ -328,9 +361,9 @@ https://templatemo.com/tm-545-finance-business
           </div>
         </div>
       </div>
-    </div>
+    </div>  -->
 
-    <div class="callback-form">
+    <#--  <div class="callback-form">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -375,8 +408,8 @@ https://templatemo.com/tm-545-finance-business
         </div>
       </div>
     </div>
-
-    <div class="partners">
+  -->
+   <#--   <div class="partners">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -406,7 +439,7 @@ https://templatemo.com/tm-545-finance-business
           </div>
         </div>
       </div>
-    </div>
+    </div>  -->
 
 
     <!-- Footer Starts Here -->
