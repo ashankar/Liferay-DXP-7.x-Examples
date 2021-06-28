@@ -16,12 +16,34 @@
 
 <%@ include file="/myactionphaseportlet1/init.jsp" %>
 
-<portlet:actionURL  var="actionURL">
-
+<portlet:actionURL  var="actionURL" name="myProcessAction">
+<portlet:param name="key1" value="100" />
 </portlet:actionURL>
 
-<aui:form action="<%=actionURL %>" method="post">
+<portlet:actionURL  var="actionURL1" name="myProcessAction1">
+<portlet:param name="key1" value="200" />
+</portlet:actionURL>
+
+<portlet:actionURL  var="actionURL2" name="myProcessAction2">
+</portlet:actionURL>
+
+
+<form action="<%=actionURL %>" method="post">
+	<input name="<portlet:namespace/>alpha" type="text" /><br>
+	<input type="submit" name="Submit"/>
+</form>
+
+
+
+<a href="<%=actionURL1%>">Click Me 1</a>
+
+<a href="<%=actionURL2%>">Click Me 2</a>
+
+
+
+
+<%-- <aui:form action="<%=actionURL %>" method="post">
 	<aui:input name="alpha" label="Enter your name: " title="Name" type="text"></aui:input><br>
 	<aui:button value="Submit" type="submit"></aui:button>
-</aui:form>
+</aui:form> --%>
 

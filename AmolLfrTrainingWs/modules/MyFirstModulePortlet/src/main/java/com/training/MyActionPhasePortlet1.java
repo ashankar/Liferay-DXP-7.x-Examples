@@ -15,9 +15,16 @@
  */
 package com.training;
 
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
 import javax.portlet.Portlet;
+import javax.portlet.PortletException;
+
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.liferay.portal.kernel.util.ParamUtil;
 import com.training.constants.MyFirstModulePortletKeys;
+
+import java.io.IOException;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -37,5 +44,63 @@ import org.osgi.service.component.annotations.Component;
 public class MyActionPhasePortlet1 extends MVCPortlet {
 	
 	
+	
+	
+	
+	public void myProcessAction(ActionRequest actionRequest, ActionResponse actionResponse)
+			throws IOException, PortletException {
+		
+		  System.out.println("Hello MyActionPhasePortlet1:myProcessAction");
+		  
+		  System.out.println(ParamUtil.getString(actionRequest,"alpha"));
+		  System.out.println(ParamUtil.getInteger(actionRequest,"key1"));
+		
+	}
+	
+	
+	public void myProcessAction1(ActionRequest actionRequest, ActionResponse actionResponse)
+			throws IOException, PortletException {
+		
+		  System.out.println("Hello MyActionPhasePortlet1:myProcessAction1");
+		  
+		  System.out.println(ParamUtil.getString(actionRequest,"alpha"));
+		  System.out.println(ParamUtil.getInteger(actionRequest,"key1"));
+		
+	}
+	
+	
+	public void myProcessAction2(ActionRequest actionRequest, ActionResponse actionResponse)
+			throws IOException, PortletException {
+		
+		  System.out.println("Hello MyActionPhasePortlet1:myProcessAction2");
+		  
+		  System.out.println(ParamUtil.getString(actionRequest,"alpha"));
+		  System.out.println(ParamUtil.getInteger(actionRequest,"key1"));
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	 * @Override public void processAction(ActionRequest actionRequest,
+	 * ActionResponse actionResponse) throws IOException, PortletException {
+	 * 
+	 * 
+	 * System.out.println("Hello MyActionPhasePortlet1:processAction");
+	 * 
+	 * // System.out.println(actionRequest.getParameter("alpha")); //
+	 * System.out.println(actionRequest.getParameter("key1"));
+	 * 
+	 * 
+	 * System.out.println(ParamUtil.getString(actionRequest,"alpha"));
+	 * System.out.println(ParamUtil.getInteger(actionRequest,"key1"));
+	 * 
+	 * super.processAction(actionRequest, actionResponse); }
+	 */
 	
 }
