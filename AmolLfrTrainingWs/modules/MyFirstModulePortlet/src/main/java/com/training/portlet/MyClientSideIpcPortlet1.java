@@ -30,30 +30,25 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 	immediate = true,
 	property = {
-		"javax.portlet.version=3.0",
 		"com.liferay.portlet.display-category=category.app",
 		"com.liferay.portlet.instanceable=true",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.resource-bundle=content.Language",
 		"javax.portlet.security-role-ref=power-user,user",
-		"javax.portlet.init-param.view-template=/mypublicrenderparameterportlet2/view.jsp",
-		"javax.portlet.name=" + MyFirstModulePortletKeys.MY_PUBLIC_RENDER_PARAMETER_PORTLET_2,
-		"javax.portlet.supported-public-render-parameter=id1"
+		"javax.portlet.init-param.view-template=/myclientsideipcportlet1/view.jsp",
+		"javax.portlet.name=" + MyFirstModulePortletKeys.MY_CLIENT_SIDE_IPC_PORTLET_1
 	},
 	service = Portlet.class
 )
-public class MyPublicRenderParameterPortlet2 extends MVCPortlet {
+public class MyClientSideIpcPortlet1 extends MVCPortlet {
+	
 	
 	@Override
 	public void doView(RenderRequest renderRequest, RenderResponse renderResponse)
 			throws IOException, PortletException {
-	
 
-//		System.out.println(">>>>>>>>>>>>>>>> " + renderRequest.getParameter("id1"));
 		
-		System.out.println(">>>>>>>>>>>>>>>> " + renderRequest.getRenderParameters().getValue("id1"));
-		
-		
+		System.out.println("in MyClientSideIpcPortlet1:doView ");
 		
 		super.doView(renderRequest, renderResponse);
 	}

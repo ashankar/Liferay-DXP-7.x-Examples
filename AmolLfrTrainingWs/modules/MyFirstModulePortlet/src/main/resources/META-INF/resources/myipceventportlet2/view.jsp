@@ -14,16 +14,10 @@
  */
 --%>
 
-<%@ include file="/mypublicrenderparameterportlet2/init.jsp" %>
-
-<%-- <h1>Hello! <%=renderRequest.getParameter("id1") %></h1> --%>
-
-<h1>Hello! <%=renderRequest.getRenderParameters().getValue("id1")%></h1>
+<%@page import="com.liferay.portal.kernel.util.ParamUtil"%>
+<%@ include file="/myipceventportlet2/init.jsp" %>
 
 
+<%-- <h1>Hello! <%=renderRequest.getRenderParameters().getValue("alpha1")%></h1> --%>
 
-
-
-
-
-
+<h1>Hello! <%=ParamUtil.getString(renderRequest, "alpha1")%></h1>

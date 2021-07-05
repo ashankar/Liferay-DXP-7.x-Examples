@@ -14,16 +14,16 @@
  */
 --%>
 
-<%@ include file="/mypublicrenderparameterportlet2/init.jsp" %>
+<%@ include file="/myclientsideipcportlet2/init.jsp" %>
 
-<%-- <h1>Hello! <%=renderRequest.getParameter("id1") %></h1> --%>
+<script>
+	Liferay.on('myEvent', function(event) {
 
-<h1>Hello! <%=renderRequest.getRenderParameters().getValue("id1")%></h1>
+		var htmlString = event.param1;
 
+		jQuery('#recievedData').html(htmlString);
+	});
+</script>
 
-
-
-
-
-
+<div id="recievedData"></div>
 

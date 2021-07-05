@@ -14,16 +14,23 @@
  */
 --%>
 
-<%@ include file="/mypublicrenderparameterportlet2/init.jsp" %>
+<%@ include file="/mycookiesipcportlet2/init.jsp" %>
 
-<%-- <h1>Hello! <%=renderRequest.getParameter("id1") %></h1> --%>
+<%
 
-<h1>Hello! <%=renderRequest.getRenderParameters().getValue("id1")%></h1>
+Cookie[] cookies= renderRequest.getCookies();
+		 
+if(cookies != null){
 
+	for(int i=0; i<cookies.length; i++ )
+	{
+		if(cookies[i].getName().equals("param1"))
+		{
+			out.println(cookies[i].getValue());
+			System.out.println("Value: " + cookies[i].getValue());
+		}
+}
+	
+}
 
-
-
-
-
-
-
+%>

@@ -17,45 +17,46 @@ package com.training.portlet;
 
 import java.io.IOException;
 
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
 import javax.portlet.Portlet;
 import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
-
-import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
-import com.training.constants.MyFirstModulePortletKeys;
+import javax.xml.namespace.QName;
 
 import org.osgi.service.component.annotations.Component;
+
+import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.liferay.portal.kernel.util.ParamUtil;
+import com.training.constants.MyFirstModulePortletKeys;
 
 @Component(
 	immediate = true,
 	property = {
-		"javax.portlet.version=3.0",
 		"com.liferay.portlet.display-category=category.app",
 		"com.liferay.portlet.instanceable=true",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.resource-bundle=content.Language",
 		"javax.portlet.security-role-ref=power-user,user",
-		"javax.portlet.init-param.view-template=/mypublicrenderparameterportlet2/view.jsp",
-		"javax.portlet.name=" + MyFirstModulePortletKeys.MY_PUBLIC_RENDER_PARAMETER_PORTLET_2,
-		"javax.portlet.supported-public-render-parameter=id1"
+		"javax.portlet.init-param.view-template=/myipceventportlet1/view.jsp",
+		"javax.portlet.name=" + MyFirstModulePortletKeys.MY_IPC_EVENT_PORTLET_1,
+		"javax.portlet.supported-publishing-event=id1;http://www.liferay.com"
 	},
 	service = Portlet.class
 )
-public class MyPublicRenderParameterPortlet2 extends MVCPortlet {
+public class MyIpcEventPortlet1 extends MVCPortlet {
 	
 	@Override
-	public void doView(RenderRequest renderRequest, RenderResponse renderResponse)
+	public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
 			throws IOException, PortletException {
-	
 
-//		System.out.println(">>>>>>>>>>>>>>>> " + renderRequest.getParameter("id1"));
-		
-		System.out.println(">>>>>>>>>>>>>>>> " + renderRequest.getRenderParameters().getValue("id1"));
-		
-		
-		
-		super.doView(renderRequest, renderResponse);
+		System.out.println("In MyIpcEventPortlet1:processAction");
+		String s=ParamUtil.getString(actionRequest,"alpha");
+		System.out.println(s);
+	
+		QName qName=new QName("http://www.liferay.com", "id1");
+		actionResponse.setEvent(qName, s);
+	
 	}
+	
 	
 }

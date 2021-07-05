@@ -33,6 +33,7 @@ import com.training.constants.MyFirstModulePortletKeys;
 @Component(
 	immediate = true,
 	property = {
+		"javax.portlet.version=3.0",
 		"com.liferay.portlet.display-category=category.app",
 		"com.liferay.portlet.instanceable=true",
 		"javax.portlet.init-param.template-path=/",
@@ -78,8 +79,9 @@ public class MyPublicRenderParameterPortlet1 extends MVCPortlet {
 		
 		//actionRequest.setAttribute("beta", s);
 		
-		actionResponse.setRenderParameter("id1", s);
+		//actionResponse.setRenderParameter("id1", s);
 		
+		actionResponse.getRenderParameters().setValue("id1", s);
 		
 	}
 

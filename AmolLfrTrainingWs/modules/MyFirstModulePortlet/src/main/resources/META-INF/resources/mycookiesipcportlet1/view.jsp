@@ -14,16 +14,13 @@
  */
 --%>
 
-<%@ include file="/mypublicrenderparameterportlet2/init.jsp" %>
+<%@ include file="/mycookiesipcportlet1/init.jsp" %>
 
-<%-- <h1>Hello! <%=renderRequest.getParameter("id1") %></h1> --%>
+<portlet:actionURL var="myActionURL">
+</portlet:actionURL>
 
-<h1>Hello! <%=renderRequest.getRenderParameters().getValue("id1")%></h1>
-
-
-
-
-
-
-
+<aui:form method="post" action="<%=myActionURL%>" >
+<aui:input type="text" name="textField1"   id="textField1" label="Name"/>
+<aui:button type="submit" name="submit" value="Send" id="submit" />
+</aui:form>
 

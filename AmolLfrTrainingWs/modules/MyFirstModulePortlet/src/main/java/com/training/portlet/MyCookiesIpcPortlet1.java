@@ -17,45 +17,51 @@ package com.training.portlet;
 
 import java.io.IOException;
 
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
 import javax.portlet.Portlet;
 import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
-
-import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
-import com.training.constants.MyFirstModulePortletKeys;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 import org.osgi.service.component.annotations.Component;
+
+import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.util.PortalUtil;
+import com.training.constants.MyFirstModulePortletKeys;
 
 @Component(
 	immediate = true,
 	property = {
-		"javax.portlet.version=3.0",
 		"com.liferay.portlet.display-category=category.app",
 		"com.liferay.portlet.instanceable=true",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.resource-bundle=content.Language",
 		"javax.portlet.security-role-ref=power-user,user",
-		"javax.portlet.init-param.view-template=/mypublicrenderparameterportlet2/view.jsp",
-		"javax.portlet.name=" + MyFirstModulePortletKeys.MY_PUBLIC_RENDER_PARAMETER_PORTLET_2,
-		"javax.portlet.supported-public-render-parameter=id1"
+		"javax.portlet.init-param.view-template=/mycookiesipcportlet1/view.jsp",
+		"javax.portlet.name=" + MyFirstModulePortletKeys.MY_COOKIES_IPC_PORTLET_1
 	},
 	service = Portlet.class
 )
-public class MyPublicRenderParameterPortlet2 extends MVCPortlet {
+public class MyCookiesIpcPortlet1 extends MVCPortlet {
+	
 	
 	@Override
-	public void doView(RenderRequest renderRequest, RenderResponse renderResponse)
+	public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
 			throws IOException, PortletException {
-	
 
-//		System.out.println(">>>>>>>>>>>>>>>> " + renderRequest.getParameter("id1"));
+		System.out.println("In MyCookiesIpcPortlet1:processAction");
+
+		String s1 = ParamUtil.getString(actionRequest, "textField1");
+
+		System.out.println("IPCTest1 s1: " + s1);
+
+		HttpServletResponse response = PortalUtil.getHttpServletResponse(actionResponse);
+		Cookie cookie = new Cookie("param1", s1);
+		response.addCookie(cookie);
 		
-		System.out.println(">>>>>>>>>>>>>>>> " + renderRequest.getRenderParameters().getValue("id1"));
-		
-		
-		
-		super.doView(renderRequest, renderResponse);
 	}
+	
 	
 }

@@ -14,16 +14,7 @@
  */
 --%>
 
-<%@ include file="/mypublicrenderparameterportlet2/init.jsp" %>
+<%@page import="javax.portlet.PortletSession"%>
+<%@ include file="/myportletsessionportlet2/init.jsp" %>
 
-<%-- <h1>Hello! <%=renderRequest.getParameter("id1") %></h1> --%>
-
-<h1>Hello! <%=renderRequest.getRenderParameters().getValue("id1")%></h1>
-
-
-
-
-
-
-
-
+<h1>Hello! <%=portletSession.getAttribute("alpha1", PortletSession.APPLICATION_SCOPE)%></h1>
