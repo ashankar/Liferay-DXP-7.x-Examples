@@ -1,0 +1,1 @@
+create index IX_E2653EB8 on mysb_Department (uuid_[$COLUMN_LENGTH:75$]);

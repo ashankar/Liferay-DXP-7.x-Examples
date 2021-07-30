@@ -1,0 +1,5 @@
+Bundle-Name: MyThemeContrib1
+Bundle-SymbolicName: MyThemeContrib1
+Bundle-Version: 1.0.0
+Liferay-Theme-Contributor-Type: MyThemeContrib1
+Web-ContextPath: /MyThemeContrib1-theme-contributor

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE layout-templates PUBLIC "-//Liferay//DTD Layout Templates 7.2.0//EN" "http://www.liferay.com/dtd/liferay-layout-templates_7_2_0.dtd">
+
+<layout-templates>
+	<custom>
+		<layout-template id="my-npmlayout1" name="My NPM Layout1">
+			<template-path>/my_npmlayout1.ftl</template-path>
+			<thumbnail-path>/my_npmlayout1.png</thumbnail-path>
+		</layout-template>
+	</custom>
+</layout-templates>

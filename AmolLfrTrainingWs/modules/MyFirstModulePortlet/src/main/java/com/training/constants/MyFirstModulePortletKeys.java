@@ -19,5 +19,6 @@ public class MyFirstModulePortletKeys {
 	public static final String MY_CLIENT_SIDE_IPC_PORTLET_2 = "com_training_portlet_MyClientSideIpcPortlet2";
 	public static final String MY_COOKIES_IPC_PORTLET_1 = "com_training_portlet_MyCookiesIpcPortlet1";
 	public static final String MY_COOKIES_IPC_PORTLET_2 = "com_training_portlet_MyCookiesIpcPortlet2";
+	public static final String MY_SERVICE_BUILDER_TEST_PORTLET = "com_training_portlet_MyServiceBuilderTestPortlet";
 
 }

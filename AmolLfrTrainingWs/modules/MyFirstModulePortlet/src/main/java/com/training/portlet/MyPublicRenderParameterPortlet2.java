@@ -51,7 +51,7 @@ public class MyPublicRenderParameterPortlet2 extends MVCPortlet {
 
 //		System.out.println(">>>>>>>>>>>>>>>> " + renderRequest.getParameter("id1"));
 		
-		System.out.println(">>>>>>>>>>>>>>>> " + renderRequest.getRenderParameters().getValue("id1"));
+//		System.out.println(">>>>>>>>>>>>>>>> " + renderRequest.getRenderParameters().getValue("id1"));
 		
 		
 		

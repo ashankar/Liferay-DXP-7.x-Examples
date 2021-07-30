@@ -81,7 +81,7 @@ public class MyPublicRenderParameterPortlet1 extends MVCPortlet {
 		
 		//actionResponse.setRenderParameter("id1", s);
 		
-		actionResponse.getRenderParameters().setValue("id1", s);
+//		actionResponse.getRenderParameters().setValue("id1", s);
 		
 	}
 

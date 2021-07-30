@@ -57,7 +57,7 @@ public class MyIPCEventPortlet2 extends MVCPortlet {
 			String eventValue=event.getValue().toString();
 			System.out.println(eventValue);
 			
-			response.getRenderParameters().setValue("alpha1", eventValue);
+//			response.getRenderParameters().setValue("alpha1", eventValue);
 		}
 		
 
