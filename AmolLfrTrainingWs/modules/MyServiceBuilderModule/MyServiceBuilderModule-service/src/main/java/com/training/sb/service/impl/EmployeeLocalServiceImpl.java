@@ -14,11 +14,11 @@
 
 package com.training.sb.service.impl;
 
-import com.liferay.portal.aop.AopService;
-
-import com.training.sb.service.base.EmployeeLocalServiceBaseImpl;
 
 import org.osgi.service.component.annotations.Component;
+
+import com.liferay.portal.aop.AopService;
+import com.training.sb.service.base.EmployeeLocalServiceBaseImpl;
 
 /**
  * The implementation of the employee local service.
@@ -44,4 +44,41 @@ public class EmployeeLocalServiceImpl extends EmployeeLocalServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Use <code>com.training.sb.service.EmployeeLocalService</code> via injection or a <code>org.osgi.util.tracker.ServiceTracker</code> or use <code>com.training.sb.service.EmployeeLocalServiceUtil</code>.
 	 */
+	
+
+	public void helloPrint()
+	{
+		
+		System.out.println("Hellooooooooooooooooooooooooooooooooo");
+		
+		
+	}
+	
+	
+	
+	
+	
+	/*
+	 * public Employee getEmployeeByName(String name) {
+	 * 
+	 * List<Employee> employees=null;
+	 * 
+	 * try {
+	 * 
+	 * System.out.println("In EmployeeLocalServiceImpl getEmployeeByName: " + name);
+	 * 
+	 * employees= EmployeeUtil.findByEmployeeName(name);
+	 * 
+	 * System.out.println("In EmployeeLocalServiceImpl getEmployeeByName: After ");
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); }
+	 * 
+	 * 
+	 * return null;
+	 * 
+	 * }
+	 */
+	
+	
+	
 }

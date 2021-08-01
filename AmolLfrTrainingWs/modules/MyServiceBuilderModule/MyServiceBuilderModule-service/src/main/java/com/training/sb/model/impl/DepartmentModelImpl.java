@@ -22,7 +22,6 @@ import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.ModelWrapper;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
 import com.liferay.portal.kernel.service.ServiceContext;
-import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 
 import com.training.sb.model.Department;
@@ -67,7 +66,7 @@ public class DepartmentModelImpl
 	public static final String TABLE_NAME = "mysb_Department";
 
 	public static final Object[][] TABLE_COLUMNS = {
-		{"uuid_", Types.VARCHAR}, {"deptId", Types.BIGINT},
+		{"uuid_", Types.BIGINT}, {"deptId", Types.BIGINT},
 		{"name", Types.VARCHAR}
 	};
 
@@ -75,31 +74,26 @@ public class DepartmentModelImpl
 		new HashMap<String, Integer>();
 
 	static {
-		TABLE_COLUMNS_MAP.put("uuid_", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("uuid_", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("deptId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("name", Types.VARCHAR);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table mysb_Department (uuid_ VARCHAR(75) null,deptId LONG not null primary key,name VARCHAR(75) null)";
+		"create table mysb_Department (uuid_ LONG not null primary key,deptId LONG,name VARCHAR(75) null)";
 
 	public static final String TABLE_SQL_DROP = "drop table mysb_Department";
 
-	public static final String ORDER_BY_JPQL =
-		" ORDER BY department.deptId ASC";
+	public static final String ORDER_BY_JPQL = " ORDER BY department.uuid ASC";
 
 	public static final String ORDER_BY_SQL =
-		" ORDER BY mysb_Department.deptId ASC";
+		" ORDER BY mysb_Department.uuid_ ASC";
 
 	public static final String DATA_SOURCE = "liferayDataSource";
 
 	public static final String SESSION_FACTORY = "liferaySessionFactory";
 
 	public static final String TX_MANAGER = "liferayTransactionManager";
-
-	public static final long UUID_COLUMN_BITMASK = 1L;
-
-	public static final long DEPTID_COLUMN_BITMASK = 2L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -114,17 +108,17 @@ public class DepartmentModelImpl
 
 	@Override
 	public long getPrimaryKey() {
-		return _deptId;
+		return _uuid;
 	}
 
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		setDeptId(primaryKey);
+		setUuid(primaryKey);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _deptId;
+		return _uuid;
 	}
 
 	@Override
@@ -235,7 +229,7 @@ public class DepartmentModelImpl
 
 		attributeGetterFunctions.put("uuid", Department::getUuid);
 		attributeSetterBiConsumers.put(
-			"uuid", (BiConsumer<Department, String>)Department::setUuid);
+			"uuid", (BiConsumer<Department, Long>)Department::setUuid);
 		attributeGetterFunctions.put("deptId", Department::getDeptId);
 		attributeSetterBiConsumers.put(
 			"deptId", (BiConsumer<Department, Long>)Department::setDeptId);
@@ -250,28 +244,13 @@ public class DepartmentModelImpl
 	}
 
 	@Override
-	public String getUuid() {
-		if (_uuid == null) {
-			return "";
-		}
-		else {
-			return _uuid;
-		}
+	public long getUuid() {
+		return _uuid;
 	}
 
 	@Override
-	public void setUuid(String uuid) {
-		_columnBitmask |= UUID_COLUMN_BITMASK;
-
-		if (_originalUuid == null) {
-			_originalUuid = _uuid;
-		}
-
+	public void setUuid(long uuid) {
 		_uuid = uuid;
-	}
-
-	public String getOriginalUuid() {
-		return GetterUtil.getString(_originalUuid);
 	}
 
 	@Override
@@ -297,10 +276,6 @@ public class DepartmentModelImpl
 	@Override
 	public void setName(String name) {
 		_name = name;
-	}
-
-	public long getColumnBitmask() {
-		return _columnBitmask;
 	}
 
 	@Override
@@ -398,11 +373,6 @@ public class DepartmentModelImpl
 
 	@Override
 	public void resetOriginalValues() {
-		DepartmentModelImpl departmentModelImpl = this;
-
-		departmentModelImpl._originalUuid = departmentModelImpl._uuid;
-
-		departmentModelImpl._columnBitmask = 0;
 	}
 
 	@Override
@@ -410,12 +380,6 @@ public class DepartmentModelImpl
 		DepartmentCacheModel departmentCacheModel = new DepartmentCacheModel();
 
 		departmentCacheModel.uuid = getUuid();
-
-		String uuid = departmentCacheModel.uuid;
-
-		if ((uuid != null) && (uuid.length() == 0)) {
-			departmentCacheModel.uuid = null;
-		}
 
 		departmentCacheModel.deptId = getDeptId();
 
@@ -503,11 +467,9 @@ public class DepartmentModelImpl
 	private static boolean _entityCacheEnabled;
 	private static boolean _finderCacheEnabled;
 
-	private String _uuid;
-	private String _originalUuid;
+	private long _uuid;
 	private long _deptId;
 	private String _name;
-	private long _columnBitmask;
 	private Department _escapedModel;
 
 }

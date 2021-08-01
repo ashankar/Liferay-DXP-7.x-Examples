@@ -49,7 +49,7 @@ public class DepartmentCacheModel
 
 		DepartmentCacheModel departmentCacheModel = (DepartmentCacheModel)obj;
 
-		if (deptId == departmentCacheModel.deptId) {
+		if (uuid == departmentCacheModel.uuid) {
 			return true;
 		}
 
@@ -58,7 +58,7 @@ public class DepartmentCacheModel
 
 	@Override
 	public int hashCode() {
-		return HashUtil.hash(0, deptId);
+		return HashUtil.hash(0, uuid);
 	}
 
 	@Override
@@ -80,13 +80,7 @@ public class DepartmentCacheModel
 	public Department toEntityModel() {
 		DepartmentImpl departmentImpl = new DepartmentImpl();
 
-		if (uuid == null) {
-			departmentImpl.setUuid("");
-		}
-		else {
-			departmentImpl.setUuid(uuid);
-		}
-
+		departmentImpl.setUuid(uuid);
 		departmentImpl.setDeptId(deptId);
 
 		if (name == null) {
@@ -103,7 +97,7 @@ public class DepartmentCacheModel
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		uuid = objectInput.readUTF();
+		uuid = objectInput.readLong();
 
 		deptId = objectInput.readLong();
 		name = objectInput.readUTF();
@@ -111,12 +105,7 @@ public class DepartmentCacheModel
 
 	@Override
 	public void writeExternal(ObjectOutput objectOutput) throws IOException {
-		if (uuid == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(uuid);
-		}
+		objectOutput.writeLong(uuid);
 
 		objectOutput.writeLong(deptId);
 
@@ -128,7 +117,7 @@ public class DepartmentCacheModel
 		}
 	}
 
-	public String uuid;
+	public long uuid;
 	public long deptId;
 	public String name;
 

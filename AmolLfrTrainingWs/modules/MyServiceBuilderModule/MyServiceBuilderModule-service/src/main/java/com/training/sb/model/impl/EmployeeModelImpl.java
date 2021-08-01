@@ -25,6 +25,7 @@ import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.service.UserLocalServiceUtil;
+import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 
 import com.training.sb.model.Employee;
@@ -107,6 +108,10 @@ public class EmployeeModelImpl
 	public static final String SESSION_FACTORY = "liferaySessionFactory";
 
 	public static final String TX_MANAGER = "liferayTransactionManager";
+
+	public static final long NAME_COLUMN_BITMASK = 1L;
+
+	public static final long EMPID_COLUMN_BITMASK = 2L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -297,7 +302,17 @@ public class EmployeeModelImpl
 
 	@Override
 	public void setName(String name) {
+		_columnBitmask |= NAME_COLUMN_BITMASK;
+
+		if (_originalName == null) {
+			_originalName = _name;
+		}
+
 		_name = name;
+	}
+
+	public String getOriginalName() {
+		return GetterUtil.getString(_originalName);
 	}
 
 	@Override
@@ -400,6 +415,10 @@ public class EmployeeModelImpl
 	@Override
 	public void setDeptId(long deptId) {
 		_deptId = deptId;
+	}
+
+	public long getColumnBitmask() {
+		return _columnBitmask;
 	}
 
 	@Override
@@ -505,7 +524,11 @@ public class EmployeeModelImpl
 	public void resetOriginalValues() {
 		EmployeeModelImpl employeeModelImpl = this;
 
+		employeeModelImpl._originalName = employeeModelImpl._name;
+
 		employeeModelImpl._setModifiedDate = false;
+
+		employeeModelImpl._columnBitmask = 0;
 	}
 
 	@Override
@@ -640,6 +663,7 @@ public class EmployeeModelImpl
 
 	private long _empId;
 	private String _name;
+	private String _originalName;
 	private String _address;
 	private long _companyId;
 	private long _userId;
@@ -648,6 +672,7 @@ public class EmployeeModelImpl
 	private Date _modifiedDate;
 	private boolean _setModifiedDate;
 	private long _deptId;
+	private long _columnBitmask;
 	private Employee _escapedModel;
 
 }

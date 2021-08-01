@@ -36,12 +36,12 @@ public interface Department extends DepartmentModel, PersistedModel {
 	 *
 	 * Never modify this interface directly. Add methods to <code>com.training.sb.model.impl.DepartmentImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<Department, Long> DEPT_ID_ACCESSOR =
+	public static final Accessor<Department, Long> UUID_ACCESSOR =
 		new Accessor<Department, Long>() {
 
 			@Override
 			public Long get(Department department) {
-				return department.getDeptId();
+				return department.getUuid();
 			}
 
 			@Override

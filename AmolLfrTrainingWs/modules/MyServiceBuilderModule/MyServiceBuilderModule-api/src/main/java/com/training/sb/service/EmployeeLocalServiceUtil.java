@@ -255,6 +255,10 @@ public class EmployeeLocalServiceUtil {
 		return getService().getPersistedModel(primaryKeyObj);
 	}
 
+	public static void helloPrint() {
+		getService().helloPrint();
+	}
+
 	/**
 	 * Updates the employee in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	 *

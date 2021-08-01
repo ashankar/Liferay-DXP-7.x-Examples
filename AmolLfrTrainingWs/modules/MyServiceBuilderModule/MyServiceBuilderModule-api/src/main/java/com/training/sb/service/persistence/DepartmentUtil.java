@@ -127,170 +127,6 @@ public class DepartmentUtil {
 	}
 
 	/**
-	 * Returns all the departments where uuid = &#63;.
-	 *
-	 * @param uuid the uuid
-	 * @return the matching departments
-	 */
-	public static List<Department> findByUuid(String uuid) {
-		return getPersistence().findByUuid(uuid);
-	}
-
-	/**
-	 * Returns a range of all the departments where uuid = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>DepartmentModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
-	 * </p>
-	 *
-	 * @param uuid the uuid
-	 * @param start the lower bound of the range of departments
-	 * @param end the upper bound of the range of departments (not inclusive)
-	 * @return the range of matching departments
-	 */
-	public static List<Department> findByUuid(String uuid, int start, int end) {
-		return getPersistence().findByUuid(uuid, start, end);
-	}
-
-	/**
-	 * Returns an ordered range of all the departments where uuid = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>DepartmentModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
-	 * </p>
-	 *
-	 * @deprecated As of Mueller (7.2.x), replaced by {@link #findByUuid(String, int, int, OrderByComparator)}
-	 * @param uuid the uuid
-	 * @param start the lower bound of the range of departments
-	 * @param end the upper bound of the range of departments (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @param useFinderCache whether to use the finder cache
-	 * @return the ordered range of matching departments
-	 */
-	@Deprecated
-	public static List<Department> findByUuid(
-		String uuid, int start, int end,
-		OrderByComparator<Department> orderByComparator,
-		boolean useFinderCache) {
-
-		return getPersistence().findByUuid(
-			uuid, start, end, orderByComparator, useFinderCache);
-	}
-
-	/**
-	 * Returns an ordered range of all the departments where uuid = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>DepartmentModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
-	 * </p>
-	 *
-	 * @param uuid the uuid
-	 * @param start the lower bound of the range of departments
-	 * @param end the upper bound of the range of departments (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching departments
-	 */
-	public static List<Department> findByUuid(
-		String uuid, int start, int end,
-		OrderByComparator<Department> orderByComparator) {
-
-		return getPersistence().findByUuid(uuid, start, end, orderByComparator);
-	}
-
-	/**
-	 * Returns the first department in the ordered set where uuid = &#63;.
-	 *
-	 * @param uuid the uuid
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching department
-	 * @throws NoSuchDepartmentException if a matching department could not be found
-	 */
-	public static Department findByUuid_First(
-			String uuid, OrderByComparator<Department> orderByComparator)
-		throws com.training.sb.exception.NoSuchDepartmentException {
-
-		return getPersistence().findByUuid_First(uuid, orderByComparator);
-	}
-
-	/**
-	 * Returns the first department in the ordered set where uuid = &#63;.
-	 *
-	 * @param uuid the uuid
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching department, or <code>null</code> if a matching department could not be found
-	 */
-	public static Department fetchByUuid_First(
-		String uuid, OrderByComparator<Department> orderByComparator) {
-
-		return getPersistence().fetchByUuid_First(uuid, orderByComparator);
-	}
-
-	/**
-	 * Returns the last department in the ordered set where uuid = &#63;.
-	 *
-	 * @param uuid the uuid
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching department
-	 * @throws NoSuchDepartmentException if a matching department could not be found
-	 */
-	public static Department findByUuid_Last(
-			String uuid, OrderByComparator<Department> orderByComparator)
-		throws com.training.sb.exception.NoSuchDepartmentException {
-
-		return getPersistence().findByUuid_Last(uuid, orderByComparator);
-	}
-
-	/**
-	 * Returns the last department in the ordered set where uuid = &#63;.
-	 *
-	 * @param uuid the uuid
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching department, or <code>null</code> if a matching department could not be found
-	 */
-	public static Department fetchByUuid_Last(
-		String uuid, OrderByComparator<Department> orderByComparator) {
-
-		return getPersistence().fetchByUuid_Last(uuid, orderByComparator);
-	}
-
-	/**
-	 * Returns the departments before and after the current department in the ordered set where uuid = &#63;.
-	 *
-	 * @param deptId the primary key of the current department
-	 * @param uuid the uuid
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next department
-	 * @throws NoSuchDepartmentException if a department with the primary key could not be found
-	 */
-	public static Department[] findByUuid_PrevAndNext(
-			long deptId, String uuid,
-			OrderByComparator<Department> orderByComparator)
-		throws com.training.sb.exception.NoSuchDepartmentException {
-
-		return getPersistence().findByUuid_PrevAndNext(
-			deptId, uuid, orderByComparator);
-	}
-
-	/**
-	 * Removes all the departments where uuid = &#63; from the database.
-	 *
-	 * @param uuid the uuid
-	 */
-	public static void removeByUuid(String uuid) {
-		getPersistence().removeByUuid(uuid);
-	}
-
-	/**
-	 * Returns the number of departments where uuid = &#63;.
-	 *
-	 * @param uuid the uuid
-	 * @return the number of matching departments
-	 */
-	public static int countByUuid(String uuid) {
-		return getPersistence().countByUuid(uuid);
-	}
-
-	/**
 	 * Caches the department in the entity cache if it is enabled.
 	 *
 	 * @param department the department
@@ -311,24 +147,24 @@ public class DepartmentUtil {
 	/**
 	 * Creates a new department with the primary key. Does not add the department to the database.
 	 *
-	 * @param deptId the primary key for the new department
+	 * @param uuid the primary key for the new department
 	 * @return the new department
 	 */
-	public static Department create(long deptId) {
-		return getPersistence().create(deptId);
+	public static Department create(long uuid) {
+		return getPersistence().create(uuid);
 	}
 
 	/**
 	 * Removes the department with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param deptId the primary key of the department
+	 * @param uuid the primary key of the department
 	 * @return the department that was removed
 	 * @throws NoSuchDepartmentException if a department with the primary key could not be found
 	 */
-	public static Department remove(long deptId)
+	public static Department remove(long uuid)
 		throws com.training.sb.exception.NoSuchDepartmentException {
 
-		return getPersistence().remove(deptId);
+		return getPersistence().remove(uuid);
 	}
 
 	public static Department updateImpl(Department department) {
@@ -338,24 +174,24 @@ public class DepartmentUtil {
 	/**
 	 * Returns the department with the primary key or throws a <code>NoSuchDepartmentException</code> if it could not be found.
 	 *
-	 * @param deptId the primary key of the department
+	 * @param uuid the primary key of the department
 	 * @return the department
 	 * @throws NoSuchDepartmentException if a department with the primary key could not be found
 	 */
-	public static Department findByPrimaryKey(long deptId)
+	public static Department findByPrimaryKey(long uuid)
 		throws com.training.sb.exception.NoSuchDepartmentException {
 
-		return getPersistence().findByPrimaryKey(deptId);
+		return getPersistence().findByPrimaryKey(uuid);
 	}
 
 	/**
 	 * Returns the department with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param deptId the primary key of the department
+	 * @param uuid the primary key of the department
 	 * @return the department, or <code>null</code> if a department with the primary key could not be found
 	 */
-	public static Department fetchByPrimaryKey(long deptId) {
-		return getPersistence().fetchByPrimaryKey(deptId);
+	public static Department fetchByPrimaryKey(long uuid) {
+		return getPersistence().fetchByPrimaryKey(uuid);
 	}
 
 	/**

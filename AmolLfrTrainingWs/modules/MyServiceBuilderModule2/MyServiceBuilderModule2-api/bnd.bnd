@@ -1,0 +1,10 @@
+Bundle-Name: MyServiceBuilderModule2-api
+Bundle-SymbolicName: com.jun.training.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.jun.training.exception,\
+	com.jun.training.model,\
+	com.jun.training.service,\
+	com.jun.training.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../MyServiceBuilderModule2-service/service.xml

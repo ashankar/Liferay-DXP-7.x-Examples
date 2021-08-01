@@ -2,7 +2,7 @@
 
 <model-hints>
 	<model name="com.training.sb.model.Department">
-		<field name="uuid" type="String" />
+		<field name="uuid" type="long" />
 		<field name="deptId" type="long" />
 		<field name="name" type="String" />
 	</model>

@@ -15,11 +15,15 @@
 		<column name="userName" type="String" />
 		<column name="createDate" type="Date" />
 		<column name="modifiedDate" type="Date" />
-        <column name="deptId" type="long"></column> 
+        <column name="deptId" type="long"></column>
+        
+        <finder name="EmployeeName" return-type="Collection">
+        <finder-column name="name" />
+        </finder> 
 		
 	</entity>
 	
-	<entity local-service="true" name="Department" remote-service="false" uuid="true">
+	<entity local-service="true" name="Department" remote-service="false">
 		<column name="uuid" primary="true" type="long"/>
 		<column name="deptId" type="long"/>
 		<column name="name" type="String"/>

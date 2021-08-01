@@ -90,26 +90,26 @@ public abstract class DepartmentLocalServiceBaseImpl
 	/**
 	 * Creates a new department with the primary key. Does not add the department to the database.
 	 *
-	 * @param deptId the primary key for the new department
+	 * @param uuid the primary key for the new department
 	 * @return the new department
 	 */
 	@Override
 	@Transactional(enabled = false)
-	public Department createDepartment(long deptId) {
-		return departmentPersistence.create(deptId);
+	public Department createDepartment(long uuid) {
+		return departmentPersistence.create(uuid);
 	}
 
 	/**
 	 * Deletes the department with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param deptId the primary key of the department
+	 * @param uuid the primary key of the department
 	 * @return the department that was removed
 	 * @throws PortalException if a department with the primary key could not be found
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public Department deleteDepartment(long deptId) throws PortalException {
-		return departmentPersistence.remove(deptId);
+	public Department deleteDepartment(long uuid) throws PortalException {
+		return departmentPersistence.remove(uuid);
 	}
 
 	/**
@@ -212,20 +212,20 @@ public abstract class DepartmentLocalServiceBaseImpl
 	}
 
 	@Override
-	public Department fetchDepartment(long deptId) {
-		return departmentPersistence.fetchByPrimaryKey(deptId);
+	public Department fetchDepartment(long uuid) {
+		return departmentPersistence.fetchByPrimaryKey(uuid);
 	}
 
 	/**
 	 * Returns the department with the primary key.
 	 *
-	 * @param deptId the primary key of the department
+	 * @param uuid the primary key of the department
 	 * @return the department
 	 * @throws PortalException if a department with the primary key could not be found
 	 */
 	@Override
-	public Department getDepartment(long deptId) throws PortalException {
-		return departmentPersistence.findByPrimaryKey(deptId);
+	public Department getDepartment(long uuid) throws PortalException {
+		return departmentPersistence.findByPrimaryKey(uuid);
 	}
 
 	@Override
@@ -237,7 +237,7 @@ public abstract class DepartmentLocalServiceBaseImpl
 		actionableDynamicQuery.setClassLoader(getClassLoader());
 		actionableDynamicQuery.setModelClass(Department.class);
 
-		actionableDynamicQuery.setPrimaryKeyPropertyName("deptId");
+		actionableDynamicQuery.setPrimaryKeyPropertyName("uuid");
 
 		return actionableDynamicQuery;
 	}
@@ -254,7 +254,7 @@ public abstract class DepartmentLocalServiceBaseImpl
 		indexableActionableDynamicQuery.setClassLoader(getClassLoader());
 		indexableActionableDynamicQuery.setModelClass(Department.class);
 
-		indexableActionableDynamicQuery.setPrimaryKeyPropertyName("deptId");
+		indexableActionableDynamicQuery.setPrimaryKeyPropertyName("uuid");
 
 		return indexableActionableDynamicQuery;
 	}
@@ -266,7 +266,7 @@ public abstract class DepartmentLocalServiceBaseImpl
 		actionableDynamicQuery.setClassLoader(getClassLoader());
 		actionableDynamicQuery.setModelClass(Department.class);
 
-		actionableDynamicQuery.setPrimaryKeyPropertyName("deptId");
+		actionableDynamicQuery.setPrimaryKeyPropertyName("uuid");
 	}
 
 	/**

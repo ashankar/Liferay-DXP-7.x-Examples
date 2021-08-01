@@ -51,12 +51,12 @@ public class DepartmentLocalServiceWrapper
 	/**
 	 * Creates a new department with the primary key. Does not add the department to the database.
 	 *
-	 * @param deptId the primary key for the new department
+	 * @param uuid the primary key for the new department
 	 * @return the new department
 	 */
 	@Override
-	public com.training.sb.model.Department createDepartment(long deptId) {
-		return _departmentLocalService.createDepartment(deptId);
+	public com.training.sb.model.Department createDepartment(long uuid) {
+		return _departmentLocalService.createDepartment(uuid);
 	}
 
 	/**
@@ -75,15 +75,15 @@ public class DepartmentLocalServiceWrapper
 	/**
 	 * Deletes the department with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param deptId the primary key of the department
+	 * @param uuid the primary key of the department
 	 * @return the department that was removed
 	 * @throws PortalException if a department with the primary key could not be found
 	 */
 	@Override
-	public com.training.sb.model.Department deleteDepartment(long deptId)
+	public com.training.sb.model.Department deleteDepartment(long uuid)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _departmentLocalService.deleteDepartment(deptId);
+		return _departmentLocalService.deleteDepartment(uuid);
 	}
 
 	/**
@@ -188,8 +188,8 @@ public class DepartmentLocalServiceWrapper
 	}
 
 	@Override
-	public com.training.sb.model.Department fetchDepartment(long deptId) {
-		return _departmentLocalService.fetchDepartment(deptId);
+	public com.training.sb.model.Department fetchDepartment(long uuid) {
+		return _departmentLocalService.fetchDepartment(uuid);
 	}
 
 	@Override
@@ -202,15 +202,15 @@ public class DepartmentLocalServiceWrapper
 	/**
 	 * Returns the department with the primary key.
 	 *
-	 * @param deptId the primary key of the department
+	 * @param uuid the primary key of the department
 	 * @return the department
 	 * @throws PortalException if a department with the primary key could not be found
 	 */
 	@Override
-	public com.training.sb.model.Department getDepartment(long deptId)
+	public com.training.sb.model.Department getDepartment(long uuid)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _departmentLocalService.getDepartment(deptId);
+		return _departmentLocalService.getDepartment(uuid);
 	}
 
 	/**

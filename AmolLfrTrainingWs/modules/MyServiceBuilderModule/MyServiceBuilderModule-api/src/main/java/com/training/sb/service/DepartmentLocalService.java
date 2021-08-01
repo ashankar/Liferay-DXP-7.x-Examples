@@ -74,11 +74,11 @@ public interface DepartmentLocalService
 	/**
 	 * Creates a new department with the primary key. Does not add the department to the database.
 	 *
-	 * @param deptId the primary key for the new department
+	 * @param uuid the primary key for the new department
 	 * @return the new department
 	 */
 	@Transactional(enabled = false)
-	public Department createDepartment(long deptId);
+	public Department createDepartment(long uuid);
 
 	/**
 	 * Deletes the department from the database. Also notifies the appropriate model listeners.
@@ -92,12 +92,12 @@ public interface DepartmentLocalService
 	/**
 	 * Deletes the department with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param deptId the primary key of the department
+	 * @param uuid the primary key of the department
 	 * @return the department that was removed
 	 * @throws PortalException if a department with the primary key could not be found
 	 */
 	@Indexable(type = IndexableType.DELETE)
-	public Department deleteDepartment(long deptId) throws PortalException;
+	public Department deleteDepartment(long uuid) throws PortalException;
 
 	/**
 	 * @throws PortalException
@@ -173,7 +173,7 @@ public interface DepartmentLocalService
 		DynamicQuery dynamicQuery, Projection projection);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Department fetchDepartment(long deptId);
+	public Department fetchDepartment(long uuid);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -181,12 +181,12 @@ public interface DepartmentLocalService
 	/**
 	 * Returns the department with the primary key.
 	 *
-	 * @param deptId the primary key of the department
+	 * @param uuid the primary key of the department
 	 * @return the department
 	 * @throws PortalException if a department with the primary key could not be found
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Department getDepartment(long deptId) throws PortalException;
+	public Department getDepartment(long uuid) throws PortalException;
 
 	/**
 	 * Returns a range of all the departments.

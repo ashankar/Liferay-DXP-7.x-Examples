@@ -14,7 +14,6 @@
  */
 --%>
 
-<%@page import="com.training.sb.model.Employee"%>
 <%@page import="javax.portlet.RenderRequest"%>
 <%@ include file="/myservicebuildertestportlet/init.jsp" %>
 
@@ -29,7 +28,7 @@
 </aui:form>
 
 
-<% 
+<%-- <% 
 
 Employee emp=(Employee)renderRequest.getAttribute("emp");
 
@@ -37,6 +36,6 @@ Employee emp=(Employee)renderRequest.getAttribute("emp");
 
 <%=emp.getEmpId() %>
 <%=emp.getName() %>
-<%=emp.getAddress() %>
+<%=emp.getAddress() %> --%>
 
 

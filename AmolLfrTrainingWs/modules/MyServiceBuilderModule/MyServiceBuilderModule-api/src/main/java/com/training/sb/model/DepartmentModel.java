@@ -58,15 +58,14 @@ public interface DepartmentModel extends BaseModel<Department> {
 	 *
 	 * @return the uuid of this department
 	 */
-	@AutoEscape
-	public String getUuid();
+	public long getUuid();
 
 	/**
 	 * Sets the uuid of this department.
 	 *
 	 * @param uuid the uuid of this department
 	 */
-	public void setUuid(String uuid);
+	public void setUuid(long uuid);
 
 	/**
 	 * Returns the dept ID of this department.

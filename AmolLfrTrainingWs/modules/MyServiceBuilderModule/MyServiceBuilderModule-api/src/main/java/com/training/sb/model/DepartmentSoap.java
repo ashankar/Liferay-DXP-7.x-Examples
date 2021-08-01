@@ -82,18 +82,18 @@ public class DepartmentSoap implements Serializable {
 	}
 
 	public long getPrimaryKey() {
-		return _deptId;
-	}
-
-	public void setPrimaryKey(long pk) {
-		setDeptId(pk);
-	}
-
-	public String getUuid() {
 		return _uuid;
 	}
 
-	public void setUuid(String uuid) {
+	public void setPrimaryKey(long pk) {
+		setUuid(pk);
+	}
+
+	public long getUuid() {
+		return _uuid;
+	}
+
+	public void setUuid(long uuid) {
 		_uuid = uuid;
 	}
 
@@ -113,7 +113,7 @@ public class DepartmentSoap implements Serializable {
 		_name = name;
 	}
 
-	private String _uuid;
+	private long _uuid;
 	private long _deptId;
 	private String _name;
 

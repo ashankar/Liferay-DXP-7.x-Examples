@@ -1,6 +1,6 @@
 create table mysb_Department (
-	uuid_ VARCHAR(75) null,
-	deptId LONG not null primary key,
+	uuid_ LONG not null primary key,
+	deptId LONG,
 	name VARCHAR(75) null
 );
 

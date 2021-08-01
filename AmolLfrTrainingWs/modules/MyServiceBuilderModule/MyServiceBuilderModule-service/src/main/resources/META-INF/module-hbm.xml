@@ -5,10 +5,10 @@
 	<import class="com.training.sb.model.Department" />
 	<import class="com.training.sb.model.Employee" />
 	<class name="com.training.sb.model.impl.DepartmentImpl" table="mysb_Department">
-		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="deptId" type="long">
+		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" column="uuid_" name="uuid" type="long">
 			<generator class="assigned" />
 		</id>
-		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" column="uuid_" name="uuid" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="deptId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
 	<class name="com.training.sb.model.impl.EmployeeImpl" table="mysb_Employee">

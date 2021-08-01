@@ -55,13 +55,11 @@ public class DepartmentLocalServiceUtil {
 	/**
 	 * Creates a new department with the primary key. Does not add the department to the database.
 	 *
-	 * @param deptId the primary key for the new department
+	 * @param uuid the primary key for the new department
 	 * @return the new department
 	 */
-	public static com.training.sb.model.Department createDepartment(
-		long deptId) {
-
-		return getService().createDepartment(deptId);
+	public static com.training.sb.model.Department createDepartment(long uuid) {
+		return getService().createDepartment(uuid);
 	}
 
 	/**
@@ -79,14 +77,14 @@ public class DepartmentLocalServiceUtil {
 	/**
 	 * Deletes the department with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param deptId the primary key of the department
+	 * @param uuid the primary key of the department
 	 * @return the department that was removed
 	 * @throws PortalException if a department with the primary key could not be found
 	 */
-	public static com.training.sb.model.Department deleteDepartment(long deptId)
+	public static com.training.sb.model.Department deleteDepartment(long uuid)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return getService().deleteDepartment(deptId);
+		return getService().deleteDepartment(uuid);
 	}
 
 	/**
@@ -185,10 +183,8 @@ public class DepartmentLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery, projection);
 	}
 
-	public static com.training.sb.model.Department fetchDepartment(
-		long deptId) {
-
-		return getService().fetchDepartment(deptId);
+	public static com.training.sb.model.Department fetchDepartment(long uuid) {
+		return getService().fetchDepartment(uuid);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
@@ -200,14 +196,14 @@ public class DepartmentLocalServiceUtil {
 	/**
 	 * Returns the department with the primary key.
 	 *
-	 * @param deptId the primary key of the department
+	 * @param uuid the primary key of the department
 	 * @return the department
 	 * @throws PortalException if a department with the primary key could not be found
 	 */
-	public static com.training.sb.model.Department getDepartment(long deptId)
+	public static com.training.sb.model.Department getDepartment(long uuid)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return getService().getDepartment(deptId);
+		return getService().getDepartment(uuid);
 	}
 
 	/**

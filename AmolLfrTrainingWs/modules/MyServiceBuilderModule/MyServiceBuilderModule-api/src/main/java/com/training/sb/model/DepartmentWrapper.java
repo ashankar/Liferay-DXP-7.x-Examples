@@ -53,7 +53,7 @@ public class DepartmentWrapper
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		String uuid = (String)attributes.get("uuid");
+		Long uuid = (Long)attributes.get("uuid");
 
 		if (uuid != null) {
 			setUuid(uuid);
@@ -108,7 +108,7 @@ public class DepartmentWrapper
 	 * @return the uuid of this department
 	 */
 	@Override
-	public String getUuid() {
+	public long getUuid() {
 		return model.getUuid();
 	}
 
@@ -153,7 +153,7 @@ public class DepartmentWrapper
 	 * @param uuid the uuid of this department
 	 */
 	@Override
-	public void setUuid(String uuid) {
+	public void setUuid(long uuid) {
 		model.setUuid(uuid);
 	}
 
