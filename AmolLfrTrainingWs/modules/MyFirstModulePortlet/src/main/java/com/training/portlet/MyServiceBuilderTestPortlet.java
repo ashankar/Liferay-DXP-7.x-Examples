@@ -44,10 +44,38 @@ public class MyServiceBuilderTestPortlet extends MVCPortlet {
 	public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
 			throws IOException, PortletException {
 		
+		
+		
+		
+		
+		EmployeeLocalServiceUtil.getEmployeeWithCustomQuery("Amol");
+		
+		
+		
+		
+		
+		
+		/*
+		 * List<Employee> employees=
+		 * EmployeeLocalServiceUtil.getEmployeeWithDynamicQuery("name", "Am%");
+		 * 
+		 * System.out.println("From Controller"); System.out.println(employees);
+		 * 
+		 * for (Employee emp : employees)
+		 * 
+		 * { System.out.println(emp.getEmpId()); System.out.println(emp.getName());
+		 * System.out.println(emp.getAddress()); }
+		 * 
+		 * 
+		 */
+		
+		
 
-		long empId = ParamUtil.getLong(actionRequest, "empId");
-		String name = ParamUtil.getString(actionRequest, "name");
-		String address = ParamUtil.getString(actionRequest, "address");
+		/*
+		 * long empId = ParamUtil.getLong(actionRequest, "empId"); String name =
+		 * ParamUtil.getString(actionRequest, "name"); String address =
+		 * ParamUtil.getString(actionRequest, "address");
+		 */
 //		
 //		long empId=CounterLocalServiceUtil.increment(Employee.class.getName());
 //		Employee employee=EmployeeLocalServiceUtil.createEmployee(empId);
@@ -64,15 +92,15 @@ public class MyServiceBuilderTestPortlet extends MVCPortlet {
 		
 		//List<Employee> employees=EmployeeLocalServiceUtil.getEmployeeByName(name);
 		
-		List<Employee> employees=EmployeeLocalServiceUtil.getEmployees(0, EmployeeLocalServiceUtil.getEmployeesCount());
-		
-		for(Employee emp: employees)
-			
-		{
-			System.out.println(emp.getEmpId());
-			System.out.println(emp.getName());
-			System.out.println(emp.getAddress());
-		}
+		/*
+		 * List<Employee> employees=EmployeeLocalServiceUtil.getEmployees(0,
+		 * EmployeeLocalServiceUtil.getEmployeesCount());
+		 * 
+		 * for(Employee emp: employees)
+		 * 
+		 * { System.out.println(emp.getEmpId()); System.out.println(emp.getName());
+		 * System.out.println(emp.getAddress()); }
+		 */
 		
 
 	}

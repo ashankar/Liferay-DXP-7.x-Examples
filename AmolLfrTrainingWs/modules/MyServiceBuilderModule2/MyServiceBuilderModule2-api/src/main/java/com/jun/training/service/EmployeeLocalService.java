@@ -214,6 +214,13 @@ public interface EmployeeLocalService
 	public int getEmployeesCount();
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public void getEmployeeWithCustomQuery(String query);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Employee> getEmployeeWithDynamicQuery(
+		String fieldName, String searchValue);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public IndexableActionableDynamicQuery getIndexableActionableDynamicQuery();
 
 	/**

@@ -16,12 +16,14 @@ package com.jun.training.model.impl;
 
 import com.jun.training.model.Employee;
 import com.jun.training.model.EmployeeModel;
+import com.jun.training.model.EmployeeSoap;
 
 import com.liferay.expando.kernel.model.ExpandoBridge;
 import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
 import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.ModelWrapper;
 import com.liferay.portal.kernel.model.User;
@@ -38,10 +40,12 @@ import java.lang.reflect.InvocationHandler;
 
 import java.sql.Types;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -59,6 +63,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * @see EmployeeImpl
  * @generated
  */
+@JSON(strict = true)
 @ProviderType
 public class EmployeeModelImpl
 	extends BaseModelImpl<Employee> implements EmployeeModel {
@@ -94,7 +99,7 @@ public class EmployeeModelImpl
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table amolsb_Employee (empId LONG not null primary key,name VARCHAR(75) null,address VARCHAR(75) null,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,deptId LONG)";
+		"create table amolsb_Employee (empId LONG not null primary key,name VARCHAR(200) null,address VARCHAR(300) null,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,deptId LONG)";
 
 	public static final String TABLE_SQL_DROP = "drop table amolsb_Employee";
 
@@ -120,6 +125,52 @@ public class EmployeeModelImpl
 
 	public static void setFinderCacheEnabled(boolean finderCacheEnabled) {
 		_finderCacheEnabled = finderCacheEnabled;
+	}
+
+	/**
+	 * Converts the soap model instance into a normal model instance.
+	 *
+	 * @param soapModel the soap model instance to convert
+	 * @return the normal model instance
+	 */
+	public static Employee toModel(EmployeeSoap soapModel) {
+		if (soapModel == null) {
+			return null;
+		}
+
+		Employee model = new EmployeeImpl();
+
+		model.setEmpId(soapModel.getEmpId());
+		model.setName(soapModel.getName());
+		model.setAddress(soapModel.getAddress());
+		model.setCompanyId(soapModel.getCompanyId());
+		model.setUserId(soapModel.getUserId());
+		model.setUserName(soapModel.getUserName());
+		model.setCreateDate(soapModel.getCreateDate());
+		model.setModifiedDate(soapModel.getModifiedDate());
+		model.setDeptId(soapModel.getDeptId());
+
+		return model;
+	}
+
+	/**
+	 * Converts the soap model instances into normal model instances.
+	 *
+	 * @param soapModels the soap model instances to convert
+	 * @return the normal model instances
+	 */
+	public static List<Employee> toModels(EmployeeSoap[] soapModels) {
+		if (soapModels == null) {
+			return null;
+		}
+
+		List<Employee> models = new ArrayList<Employee>(soapModels.length);
+
+		for (EmployeeSoap soapModel : soapModels) {
+			models.add(toModel(soapModel));
+		}
+
+		return models;
 	}
 
 	public EmployeeModelImpl() {
@@ -281,6 +332,7 @@ public class EmployeeModelImpl
 			(Map)attributeSetterBiConsumers);
 	}
 
+	@JSON
 	@Override
 	public long getEmpId() {
 		return _empId;
@@ -291,6 +343,7 @@ public class EmployeeModelImpl
 		_empId = empId;
 	}
 
+	@JSON
 	@Override
 	public String getName() {
 		if (_name == null) {
@@ -316,6 +369,7 @@ public class EmployeeModelImpl
 		return GetterUtil.getString(_originalName);
 	}
 
+	@JSON
 	@Override
 	public String getAddress() {
 		if (_address == null) {
@@ -333,6 +387,7 @@ public class EmployeeModelImpl
 		_address = address;
 	}
 
+	@JSON
 	@Override
 	public long getCompanyId() {
 		return _companyId;
@@ -343,6 +398,7 @@ public class EmployeeModelImpl
 		_companyId = companyId;
 	}
 
+	@JSON
 	@Override
 	public long getUserId() {
 		return _userId;
@@ -369,6 +425,7 @@ public class EmployeeModelImpl
 	public void setUserUuid(String userUuid) {
 	}
 
+	@JSON
 	@Override
 	public String getUserName() {
 		if (_userName == null) {
@@ -384,6 +441,7 @@ public class EmployeeModelImpl
 		_userName = userName;
 	}
 
+	@JSON
 	@Override
 	public Date getCreateDate() {
 		return _createDate;
@@ -394,6 +452,7 @@ public class EmployeeModelImpl
 		_createDate = createDate;
 	}
 
+	@JSON
 	@Override
 	public Date getModifiedDate() {
 		return _modifiedDate;
@@ -410,6 +469,7 @@ public class EmployeeModelImpl
 		_modifiedDate = modifiedDate;
 	}
 
+	@JSON
 	@Override
 	public long getDeptId() {
 		return _deptId;

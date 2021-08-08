@@ -80,7 +80,7 @@ public class DepartmentModelImpl
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table amolsb_Department (uuid_ LONG not null primary key,deptId LONG,name VARCHAR(75) null)";
+		"create table amolsb_Department (uuid_ LONG not null primary key,deptId LONG,name VARCHAR(200) null)";
 
 	public static final String TABLE_SQL_DROP = "drop table amolsb_Department";
 

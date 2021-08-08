@@ -1,1 +1,1 @@
-create index IX_3B42CA1A on amolsb_Employee (name[$COLUMN_LENGTH:75$]);
+create index IX_3B42CA1A on amolsb_Employee (name[$COLUMN_LENGTH:200$]);

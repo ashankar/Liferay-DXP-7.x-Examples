@@ -4,7 +4,7 @@
 <service-builder dependency-injector="ds" package-path="com.jun.training">
 	<namespace>amolsb</namespace>
 	
-	<entity local-service="true" name="Employee" remote-service="false">
+	<entity local-service="true" name="Employee" remote-service="true">
 		<column name="empId" primary="true" type="long"/>
 		<column name="name" type="String" />
 		<column name="address" type="String" />
@@ -33,4 +33,7 @@
 		<column name="name" type="String"/>
 		
 	</entity>
+    <exceptions>
+        <exception>MyException</exception>
+    </exceptions>
 </service-builder>

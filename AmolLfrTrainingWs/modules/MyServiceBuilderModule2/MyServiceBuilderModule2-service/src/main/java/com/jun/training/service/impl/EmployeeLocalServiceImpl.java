@@ -22,6 +22,12 @@ import com.jun.training.model.Employee;
 import com.jun.training.service.base.EmployeeLocalServiceBaseImpl;
 import com.jun.training.service.persistence.EmployeeUtil;
 import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.dao.orm.DynamicQuery;
+import com.liferay.portal.kernel.dao.orm.OrderFactoryUtil;
+import com.liferay.portal.kernel.dao.orm.ProjectionFactoryUtil;
+import com.liferay.portal.kernel.dao.orm.RestrictionsFactoryUtil;
+import com.liferay.portal.kernel.dao.orm.SQLQuery;
+import com.liferay.portal.kernel.dao.orm.Session;
 
 /**
  * The implementation of the employee local service.
@@ -62,12 +68,100 @@ public class EmployeeLocalServiceImpl extends EmployeeLocalServiceBaseImpl {
 			
 			System.out.println("In EmployeeLocalServiceImpl: getEmployeeByName After");
 			
+			
 		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}
 		
 		return employees;
+		
+	}
+	
+	
+	public List<Employee> getEmployeeWithDynamicQuery(String fieldName, String searchValue)
+	{
+		
+		List<Employee> employees=null;
+		
+		try {
+
+			
+			
+			
+			DynamicQuery dq=dynamicQuery();
+			
+			
+			
+			
+			
+	/*Restriction*/		
+			
+//DynamicQuery dp=dynamicQuery().add(RestrictionsFactoryUtil.eq("name", searchValue));
+			
+			//DynamicQuery dp=dynamicQuery().add(RestrictionsFactoryUtil.eq(fieldName, searchValue));
+			
+//			dq=dq.add(RestrictionsFactoryUtil.like(fieldName, searchValue));
+			
+//			dq=dq.add(RestrictionsFactoryUtil.and(RestrictionsFactoryUtil.like(fieldName, searchValue), RestrictionsFactoryUtil.eq("empId", 102l)));
+//			
+
+			
+			/* Projection */
+			
+			dq=dq.add(RestrictionsFactoryUtil.like(fieldName, searchValue)).setProjection(ProjectionFactoryUtil.property("address")).addOrder(OrderFactoryUtil.asc("address"));
+			
+			
+			//employees=dynamicQuery(dq);	
+			
+			List<String> addresses=dynamicQuery(dq);
+			
+			System.out.println("From Service Impl");
+			System.out.println(addresses);
+			
+			
+		} catch (Exception e) {
+		}
+		
+		return employees;
+		
+	}
+	
+	
+	public void getEmployeeWithCustomQuery(String query)
+	{
+		
+		Session session=null;
+		List<Employee> employees=null;
+		
+		try {
+			
+			session=employeePersistence.openSession();
+			
+			SQLQuery sqlQuery=session.createSQLQuery("select * from amolsb_employee where name=?");
+			sqlQuery.setString(0, query);
+			
+			sqlQuery.setCacheable(false);
+			
+			List<Object[]> rows= sqlQuery.list();
+			
+			
+			System.out.println(rows);
+			
+			for(Object[] row: rows)
+			{
+				
+				System.out.println(row[0]);
+				System.out.println(row[1]);
+				System.out.println(row[2]);
+				
+			}
+			
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
 		
 	}
 	

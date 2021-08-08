@@ -249,6 +249,19 @@ public class EmployeeLocalServiceWrapper
 	}
 
 	@Override
+	public void getEmployeeWithCustomQuery(String query) {
+		_employeeLocalService.getEmployeeWithCustomQuery(query);
+	}
+
+	@Override
+	public java.util.List<com.jun.training.model.Employee>
+		getEmployeeWithDynamicQuery(String fieldName, String searchValue) {
+
+		return _employeeLocalService.getEmployeeWithDynamicQuery(
+			fieldName, searchValue);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery
 		getIndexableActionableDynamicQuery() {
 

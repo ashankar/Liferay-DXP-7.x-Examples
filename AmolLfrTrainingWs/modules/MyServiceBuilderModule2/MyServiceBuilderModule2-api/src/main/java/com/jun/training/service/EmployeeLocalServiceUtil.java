@@ -238,6 +238,16 @@ public class EmployeeLocalServiceUtil {
 		return getService().getEmployeesCount();
 	}
 
+	public static void getEmployeeWithCustomQuery(String query) {
+		getService().getEmployeeWithCustomQuery(query);
+	}
+
+	public static java.util.List<com.jun.training.model.Employee>
+		getEmployeeWithDynamicQuery(String fieldName, String searchValue) {
+
+		return getService().getEmployeeWithDynamicQuery(fieldName, searchValue);
+	}
+
 	public static
 		com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery
 			getIndexableActionableDynamicQuery() {
