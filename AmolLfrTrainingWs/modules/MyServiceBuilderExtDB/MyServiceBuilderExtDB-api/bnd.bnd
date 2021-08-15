@@ -1,0 +1,10 @@
+Bundle-Name: MyServiceBuilderExtDB-api
+Bundle-SymbolicName: com.sb.extdb.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.sb.extdb.exception,\
+	com.sb.extdb.model,\
+	com.sb.extdb.service,\
+	com.sb.extdb.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../MyServiceBuilderExtDB-service/service.xml

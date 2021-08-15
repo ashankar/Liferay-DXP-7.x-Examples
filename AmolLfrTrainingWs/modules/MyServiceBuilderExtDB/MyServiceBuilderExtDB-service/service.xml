@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_2_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.sb.extdb">
+	<namespace>amolext</namespace>
+	
+	<entity local-service="true" name="Employee" remote-service="false" table="employee" data-source="extDataSource">
+		<column name="empId" db-name="empid" primary="true" type="long"/>
+		<column name="name" db-name="name" type="String" />
+		<column name="address" db-name="address" type="String" />
+	</entity>
+	
+</service-builder>

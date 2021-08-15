@@ -25,12 +25,9 @@ import javax.portlet.PortletException;
 
 import org.osgi.service.component.annotations.Component;
 
-import com.jun.training.model.Employee;
-import com.jun.training.service.EmployeeLocalServiceUtil;
-import com.jun.training.service.persistence.EmployeeUtil;
-import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
-import com.liferay.portal.kernel.util.ParamUtil;
+import com.sb.extdb.model.Employee;
+import com.sb.extdb.service.EmployeeLocalServiceUtil;
 import com.training.constants.MyFirstModulePortletKeys;
 
 @Component(immediate = true, property = { "com.liferay.portlet.display-category=category.app",
@@ -46,14 +43,21 @@ public class MyServiceBuilderTestPortlet extends MVCPortlet {
 		
 		
 		
+		List<Employee> employees= EmployeeLocalServiceUtil.getEmployees(0, 2);
+		
+		for(Employee e:employees)
+		{
+			System.out.println(e.getEmpId());
+			System.out.println(e.getName());
+			System.out.println(e.getAddress());
+			
+		}
 		
 		
-		EmployeeLocalServiceUtil.getEmployeeWithCustomQuery("Amol");
 		
 		
 		
-		
-		
+//		EmployeeLocalServiceUtil.getEmployeeWithCustomQuery("Amol");
 		
 		/*
 		 * List<Employee> employees=
