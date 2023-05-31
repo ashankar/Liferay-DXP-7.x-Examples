@@ -1,20 +1,20 @@
 package com.training.portlet;
 
-import com.training.constants.MyPortlet1PortletKeys;
-
-import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
-import com.liferay.portal.kernel.util.ParamUtil;
-
 import java.io.IOException;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
 import javax.portlet.Portlet;
 import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.ResourceRequest;
+import javax.portlet.ResourceResponse;
 
 import org.osgi.service.component.annotations.Component;
+
+import com.liferay.portal.kernel.json.JSONFactoryUtil;
+import com.liferay.portal.kernel.json.JSONObject;
+import com.liferay.portal.kernel.portlet.JSONPortletResponseUtil;
+import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.liferay.portal.kernel.util.ParamUtil;
+import com.training.constants.MyPortlet1PortletKeys;
 
 /**
  * @author Anand
@@ -37,15 +37,124 @@ import org.osgi.service.component.annotations.Component;
 public class MyPortlet1Portlet extends MVCPortlet {
 	
 	
-	@Override
-	public void doView(RenderRequest renderRequest, RenderResponse renderResponse)
-			throws IOException, PortletException {
-		
-		System.out.println("Hello doView");
-		
-		super.doView(renderRequest, renderResponse);
-	}
 	
+@Override
+public void serveResource(ResourceRequest resourceRequest, ResourceResponse resourceResponse)
+		throws IOException, PortletException {
+
+	System.out.println("Hello Portlet-1 serveResource-1");
+	String s1 = ParamUtil.getString(resourceRequest, "param1");
+	String s2 = ParamUtil.getString(resourceRequest, "param2");
+	String s3 = ParamUtil.getString(resourceRequest, "param3");
+	System.out.println(s1);
+	System.out.println(s2);
+	System.out.println(s3);
+	
+	
+	JSONObject json=JSONFactoryUtil.createJSONObject();
+	json.put("key1", s1);
+	json.put("key2", s2);
+	json.put("key3", s3);
+	json.put("key4", "This is extra value");
+	
+	JSONPortletResponseUtil.writeJSON(resourceRequest, resourceResponse, json);
+
+	
+}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	
+//	@Override
+//	public void serveResource(ResourceRequest resourceRequest, ResourceResponse resourceResponse)
+//			throws IOException, PortletException {
+//
+//		System.out.println("Hello serveResource");
+//		String s1 = ParamUtil.getString(resourceRequest, "param1");
+//		String s2 = ParamUtil.getString(resourceRequest, "param2");
+//		String s3 = ParamUtil.getString(resourceRequest, "param3");
+//		System.out.println(s1);
+//		System.out.println(s2);
+//		System.out.println(s3);
+//		
+//		PrintWriter out= resourceResponse.getWriter();
+//		out.print("Hello serveResource Response");
+//		out.flush();
+//		
+//		super.serveResource(resourceRequest, resourceResponse);
+//	}
+//	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	 * @Override public void serveResource(ResourceRequest resourceRequest,
+	 * ResourceResponse resourceResponse) throws IOException, PortletException {
+	 * 
+	 * System.out.println("Hello serveResource"); String s1 =
+	 * ParamUtil.getString(resourceRequest, "param1"); String s2 =
+	 * ParamUtil.getString(resourceRequest, "param2"); System.out.println(s1);
+	 * System.out.println(s2);
+	 * 
+	 * PrintWriter out= resourceResponse.getWriter();
+	 * out.print("Hello serveResource Response"); out.flush();
+	 * 
+	 * super.serveResource(resourceRequest, resourceResponse); }
+	 */
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	 * @Override public void doView(RenderRequest renderRequest, RenderResponse
+	 * renderResponse) throws IOException, PortletException {
+	 * 
+	 * System.out.println("Hello doView");
+	 * 
+	 * super.doView(renderRequest, renderResponse); }
+	 */
 	
 //	public void myAction1(ActionRequest actionRequest, ActionResponse actionResponse)
 //			throws IOException, PortletException {
@@ -66,16 +175,16 @@ public class MyPortlet1Portlet extends MVCPortlet {
 //	}
 //	
 	
-	
-	public void myAction1(ActionRequest actionRequest, ActionResponse actionResponse)
-	throws IOException, PortletException {
-
-
-	System.out.println("Hello myAction1");
-	System.out.println(ParamUtil.getString(actionRequest, "key1"));
-	System.out.println(ParamUtil.getString(actionRequest, "alpha"));
-
-}
+//	
+//	public void myAction1(ActionRequest actionRequest, ActionResponse actionResponse)
+//	throws IOException, PortletException {
+//
+//
+//	System.out.println("Hello myAction1");
+//	System.out.println(ParamUtil.getString(actionRequest, "key1"));
+//	System.out.println(ParamUtil.getString(actionRequest, "alpha"));
+//
+//}
 	
 	
 	

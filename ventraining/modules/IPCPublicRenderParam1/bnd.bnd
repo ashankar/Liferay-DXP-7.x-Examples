@@ -1,0 +1,4 @@
+Bundle-Name: IPCPublicRenderParam1
+Bundle-SymbolicName: com.training.IPCPublicRenderParam1
+Bundle-Version: 1.0.0
+Export-Package: com.training.constants

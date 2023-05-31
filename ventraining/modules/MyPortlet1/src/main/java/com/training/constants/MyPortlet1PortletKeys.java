@@ -5,7 +5,6 @@ package com.training.constants;
  */
 public class MyPortlet1PortletKeys {
 
-	public static final String MYPORTLET1 =
-		"com_training_MyPortlet1Portlet";
+	public static final String MYPORTLET1 = "com_training_MyPortlet1Portlet";
 
 }
