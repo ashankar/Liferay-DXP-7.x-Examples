@@ -4,7 +4,12 @@ import com.training.constants.IPCPublicRenderParam2PortletKeys;
 
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 
+import java.io.IOException;
+
 import javax.portlet.Portlet;
+import javax.portlet.PortletException;
+import javax.portlet.RenderRequest;
+import javax.portlet.RenderResponse;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -28,4 +33,18 @@ import org.osgi.service.component.annotations.Component;
 	service = Portlet.class
 )
 public class IPCPublicRenderParam2Portlet extends MVCPortlet {
+	
+	
+	@Override
+	public void doView(RenderRequest renderRequest, RenderResponse renderResponse)
+			throws IOException, PortletException {
+		
+		
+		System.out.println(" doView - Portlet-2");
+		
+		renderRequest.getRenderParameters().getValue("id1");
+		
+		super.doView(renderRequest, renderResponse);
+	}
+	
 }

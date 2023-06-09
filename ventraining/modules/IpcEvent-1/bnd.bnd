@@ -1,0 +1,4 @@
+Bundle-Name: IpcEvent-1
+Bundle-SymbolicName: com.training.IpcEvent-1
+Bundle-Version: 1.0.0
+Export-Package: com.training.constants

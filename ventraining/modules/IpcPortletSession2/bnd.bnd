@@ -1,0 +1,4 @@
+Bundle-Name: IpcPortletSession2
+Bundle-SymbolicName: com.training.IpcPortletSession2
+Bundle-Version: 1.0.0
+Export-Package: com.training.constants
