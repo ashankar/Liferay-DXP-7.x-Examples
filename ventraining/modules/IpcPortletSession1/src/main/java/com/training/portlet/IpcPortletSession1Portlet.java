@@ -1,12 +1,18 @@
 package com.training.portlet;
 
-import com.training.constants.IpcPortletSession1PortletKeys;
+import java.io.IOException;
 
-import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
-
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
 import javax.portlet.Portlet;
+import javax.portlet.PortletException;
+import javax.portlet.PortletSession;
 
 import org.osgi.service.component.annotations.Component;
+
+import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.liferay.portal.kernel.util.ParamUtil;
+import com.training.constants.IpcPortletSession1PortletKeys;
 
 /**
  * @author Anand
@@ -14,7 +20,7 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 	immediate = true,
 	property = {
-		"com.liferay.portlet.display-category=category.sample",
+		"com.liferay.portlet.display-category=category.myapp",
 		"com.liferay.portlet.header-portlet-css=/css/main.css",
 		"com.liferay.portlet.instanceable=true",
 		"javax.portlet.display-name=IpcPortletSession1",
@@ -27,4 +33,22 @@ import org.osgi.service.component.annotations.Component;
 	service = Portlet.class
 )
 public class IpcPortletSession1Portlet extends MVCPortlet {
+	
+	@Override
+	public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
+			throws IOException, PortletException {
+
+		
+		System.out.println("In processAction");
+		
+		String s=ParamUtil.getString(actionRequest,"alpha");
+		
+		System.out.println(s);
+		
+		
+		PortletSession portletSession=actionRequest.getPortletSession();
+		portletSession.setAttribute("alpha1", s+"sS", PortletSession.APPLICATION_SCOPE);
+
+		
+	}
 }

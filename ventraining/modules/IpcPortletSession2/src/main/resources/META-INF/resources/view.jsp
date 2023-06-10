@@ -1,5 +1,4 @@
+<%@page import="javax.portlet.PortletSession"%>
 <%@ include file="/init.jsp" %>
 
-<p>
-	<b><liferay-ui:message key="ipcportletsession2.caption"/></b>
-</p>
+<%=portletSession.getAttribute("alpha1", PortletSession.PORTLET_SCOPE) %>

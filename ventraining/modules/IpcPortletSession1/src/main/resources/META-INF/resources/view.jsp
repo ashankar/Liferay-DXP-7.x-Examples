@@ -1,5 +1,9 @@
 <%@ include file="/init.jsp" %>
 
-<p>
-	<b><liferay-ui:message key="ipcportletsession1.caption"/></b>
-</p>
+<portlet:actionURL var="submitActionabs">
+</portlet:actionURL>
+
+<aui:form action="<%=submitActionabs %>" method="post">
+	<aui:input name="alpha" label="Enter your name: " title="Name" type="text"></aui:input><br>
+	<aui:button value="Submit" type="submit"></aui:button>
+</aui:form>

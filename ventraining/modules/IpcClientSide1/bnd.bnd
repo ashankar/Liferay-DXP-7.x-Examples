@@ -1,0 +1,4 @@
+Bundle-Name: IpcClientSide1
+Bundle-SymbolicName: com.training.IpcClientSide1
+Bundle-Version: 1.0.0
+Export-Package: com.training.constants
