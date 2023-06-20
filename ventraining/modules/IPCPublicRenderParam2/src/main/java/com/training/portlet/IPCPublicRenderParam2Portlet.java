@@ -19,6 +19,7 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 	immediate = true,
 	property = {
+		"javax.portlet.version=3.0",
 		"com.liferay.portlet.display-category=category.myapp",
 		"com.liferay.portlet.header-portlet-css=/css/main.css",
 		"com.liferay.portlet.instanceable=true",
@@ -35,14 +36,25 @@ import org.osgi.service.component.annotations.Component;
 public class IPCPublicRenderParam2Portlet extends MVCPortlet {
 	
 	
+	String myid=null;
+	
 	@Override
 	public void doView(RenderRequest renderRequest, RenderResponse renderResponse)
 			throws IOException, PortletException {
 		
 		
 		System.out.println(" doView - Portlet-2");
+		String param=renderRequest.getRenderParameters().getValue("id1");
 		
-		renderRequest.getRenderParameters().getValue("id1");
+		if(param != null)
+		{
+			myid=param;
+		}
+		
+		
+		System.out.println(myid);
+		
+		renderRequest.setAttribute("myid", myid);
 		
 		super.doView(renderRequest, renderResponse);
 	}

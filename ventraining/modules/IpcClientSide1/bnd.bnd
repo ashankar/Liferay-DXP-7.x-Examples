@@ -2,3 +2,7 @@ Bundle-Name: IpcClientSide1
 Bundle-SymbolicName: com.training.IpcClientSide1
 Bundle-Version: 1.0.0
 Export-Package: com.training.constants
+-jsp: *.jsp,*.jspf
+-plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
+-plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
+-sources: true

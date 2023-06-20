@@ -20,6 +20,7 @@ import com.training.constants.IpcPortletSession1PortletKeys;
 @Component(
 	immediate = true,
 	property = {
+		"javax.portlet.version=3.0",
 		"com.liferay.portlet.display-category=category.myapp",
 		"com.liferay.portlet.header-portlet-css=/css/main.css",
 		"com.liferay.portlet.instanceable=true",
@@ -47,7 +48,7 @@ public class IpcPortletSession1Portlet extends MVCPortlet {
 		
 		
 		PortletSession portletSession=actionRequest.getPortletSession();
-		portletSession.setAttribute("alpha1", s+"sS", PortletSession.APPLICATION_SCOPE);
+		portletSession.setAttribute("LIFERAY_SHARED_"+"alpha1", s+"sS", PortletSession.APPLICATION_SCOPE);
 
 		
 	}
