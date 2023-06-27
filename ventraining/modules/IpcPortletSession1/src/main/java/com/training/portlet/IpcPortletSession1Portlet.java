@@ -10,8 +10,13 @@ import javax.portlet.PortletSession;
 
 import org.osgi.service.component.annotations.Component;
 
+import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.util.ParamUtil;
+import com.sb2.training.model.Employee;
+import com.sb2.training.model.XyzOrg;
+import com.sb2.training.service.EmployeeLocalServiceUtil;
+import com.sb2.training.service.XyzOrgLocalServiceUtil;
 import com.training.constants.IpcPortletSession1PortletKeys;
 
 /**
@@ -50,6 +55,36 @@ public class IpcPortletSession1Portlet extends MVCPortlet {
 		PortletSession portletSession=actionRequest.getPortletSession();
 		portletSession.setAttribute("LIFERAY_SHARED_"+"alpha1", s+"sS", PortletSession.APPLICATION_SCOPE);
 
+		
+		try {
+
+//			long deptId=CounterLocalServiceUtil.increment(XyzOrg.class.getName());
+//			
+//			XyzOrg dept=XyzOrgLocalServiceUtil.createXyzOrg(deptId);
+//			dept.setDepName("ABC");
+//			
+//			XyzOrgLocalServiceUtil.addXyzOrg(dept);
+//			System.out.println("Department inserted: " + deptId);
+			
+			long empId=CounterLocalServiceUtil.increment(Employee.class.getName());
+			Employee employee=EmployeeLocalServiceUtil.createEmployee(empId);
+			employee.setDepId(XyzOrgLocalServiceUtil.getXyzOrg(102).getDepId());
+			employee.setGroupId(1);
+			employee.setUserId(123);
+			employee.setUserName(s);
+			employee.setAge(30);
+			employee.setAddress("New Delhi");
+			EmployeeLocalServiceUtil.addEmployee(employee);
+			
+			System.out.println("Employee inserted: " + empId);
+			
+			
+			
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 	}
 }

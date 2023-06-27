@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.sb2.training.model.Employee">
+		<field name="uuid" type="String" />
+		<field name="empId" type="long" />
+		<field name="depId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="age" type="int" />
+		<field name="address" type="String" />
+	</model>
+	<model name="com.sb2.training.model.XyzOrg">
+		<field name="uuid" type="String" />
+		<field name="depId" type="long" />
+		<field name="depName" type="String" />
+	</model>
+</model-hints>

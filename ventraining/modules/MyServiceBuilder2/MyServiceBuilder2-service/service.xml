@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_2_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.sb2.training">
+	<namespace>vt</namespace>
+	<entity local-service="true" name="Employee" remote-service="false" uuid="true">
+		
+		<column name="empId" primary="true" type="long" />
+		<column name="depId" type="long" />
+		<column name="groupId" type="long" />
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+		<column name="age" type="int" />
+		<column name="address" type="String" />
+
+
+		<!-- <order by="asc">
+			<order-column name="field1" />
+		</order>
+
+		Finder methods
+
+		<finder name="Field2" return-type="Collection">
+			<finder-column name="field2" />
+		</finder>
+
+		References
+
+		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetTag" package-path="com.liferay.portlet.asset" /> -->
+        
+		
+		
+	</entity>
+	
+	<entity local-service="true" name="XyzOrg" remote-service="false" uuid="true">
+		<column name="depId" primary="true" type="long" />
+		<column name="depName" type="String" />
+	</entity>
+	
+	
+</service-builder>

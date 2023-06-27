@@ -1,0 +1,10 @@
+Bundle-Name: MyServiceBuilder1-api
+Bundle-SymbolicName: com.sb.training.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.sb.training.exception,\
+	com.sb.training.model,\
+	com.sb.training.service,\
+	com.sb.training.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../MyServiceBuilder1-service/service.xml
