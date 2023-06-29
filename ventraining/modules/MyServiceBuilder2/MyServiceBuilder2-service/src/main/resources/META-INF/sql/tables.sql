@@ -9,7 +9,7 @@ create table vt_Employee (
 	createDate DATE null,
 	modifiedDate DATE null,
 	age INTEGER,
-	address VARCHAR(75) null
+	address VARCHAR(200) null
 );
 
 create table vt_XyzOrg (

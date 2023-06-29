@@ -99,13 +99,15 @@ public class EmployeeModelImpl
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table vt_Employee (uuid_ VARCHAR(75) null,empId LONG not null primary key,depId LONG,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,age INTEGER,address VARCHAR(75) null)";
+		"create table vt_Employee (uuid_ VARCHAR(75) null,empId LONG not null primary key,depId LONG,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,age INTEGER,address VARCHAR(200) null)";
 
 	public static final String TABLE_SQL_DROP = "drop table vt_Employee";
 
-	public static final String ORDER_BY_JPQL = " ORDER BY employee.empId ASC";
+	public static final String ORDER_BY_JPQL =
+		" ORDER BY employee.userName ASC";
 
-	public static final String ORDER_BY_SQL = " ORDER BY vt_Employee.empId ASC";
+	public static final String ORDER_BY_SQL =
+		" ORDER BY vt_Employee.userName ASC";
 
 	public static final String DATA_SOURCE = "liferayDataSource";
 
@@ -117,9 +119,9 @@ public class EmployeeModelImpl
 
 	public static final long GROUPID_COLUMN_BITMASK = 2L;
 
-	public static final long UUID_COLUMN_BITMASK = 4L;
+	public static final long USERNAME_COLUMN_BITMASK = 4L;
 
-	public static final long EMPID_COLUMN_BITMASK = 8L;
+	public static final long UUID_COLUMN_BITMASK = 8L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -421,7 +423,17 @@ public class EmployeeModelImpl
 
 	@Override
 	public void setUserName(String userName) {
+		_columnBitmask = -1L;
+
+		if (_originalUserName == null) {
+			_originalUserName = _userName;
+		}
+
 		_userName = userName;
+	}
+
+	public String getOriginalUserName() {
+		return GetterUtil.getString(_originalUserName);
 	}
 
 	@Override
@@ -536,17 +548,15 @@ public class EmployeeModelImpl
 
 	@Override
 	public int compareTo(Employee employee) {
-		long primaryKey = employee.getPrimaryKey();
+		int value = 0;
 
-		if (getPrimaryKey() < primaryKey) {
-			return -1;
+		value = getUserName().compareTo(employee.getUserName());
+
+		if (value != 0) {
+			return value;
 		}
-		else if (getPrimaryKey() > primaryKey) {
-			return 1;
-		}
-		else {
-			return 0;
-		}
+
+		return 0;
 	}
 
 	@Override
@@ -599,6 +609,8 @@ public class EmployeeModelImpl
 		employeeModelImpl._originalCompanyId = employeeModelImpl._companyId;
 
 		employeeModelImpl._setOriginalCompanyId = false;
+
+		employeeModelImpl._originalUserName = employeeModelImpl._userName;
 
 		employeeModelImpl._setModifiedDate = false;
 
@@ -751,6 +763,7 @@ public class EmployeeModelImpl
 	private boolean _setOriginalCompanyId;
 	private long _userId;
 	private String _userName;
+	private String _originalUserName;
 	private Date _createDate;
 	private Date _modifiedDate;
 	private boolean _setModifiedDate;

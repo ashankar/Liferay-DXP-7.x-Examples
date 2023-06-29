@@ -17,22 +17,18 @@
 		<column name="address" type="String" />
 
 
-		<!-- <order by="asc">
-			<order-column name="field1" />
+		 <order by="asc">
+			<order-column name="userName" />
 		</order>
 
-		Finder methods
-
-		<finder name="Field2" return-type="Collection">
-			<finder-column name="field2" />
+		<finder name="UserName" return-type="Employee">
+			<finder-column name="userName" />
 		</finder>
 
-		References
 
 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
-		<reference entity="AssetTag" package-path="com.liferay.portlet.asset" /> -->
+		<reference entity="AssetTag" package-path="com.liferay.portlet.asset" />
         
-		
 		
 	</entity>
 	
@@ -40,6 +36,9 @@
 		<column name="depId" primary="true" type="long" />
 		<column name="depName" type="String" />
 	</entity>
+    <exceptions>
+        <exception>MyException</exception>
+    </exceptions>
 	
 	
 </service-builder>

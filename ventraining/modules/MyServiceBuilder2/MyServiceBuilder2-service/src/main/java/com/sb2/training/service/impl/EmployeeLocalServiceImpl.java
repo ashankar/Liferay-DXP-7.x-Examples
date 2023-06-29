@@ -14,11 +14,24 @@
 
 package com.sb2.training.service.impl;
 
-import com.liferay.portal.aop.AopService;
-
-import com.sb2.training.service.base.EmployeeLocalServiceBaseImpl;
+import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
+
+import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.dao.orm.DynamicQuery;
+import com.liferay.portal.kernel.dao.orm.OrderFactoryUtil;
+import com.liferay.portal.kernel.dao.orm.ProjectionFactoryUtil;
+import com.liferay.portal.kernel.dao.orm.RestrictionsFactoryUtil;
+import com.liferay.portal.kernel.dao.orm.SQLQuery;
+import com.liferay.portal.kernel.dao.orm.Session;
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.poller.PollerException;
+import com.sb2.training.exception.MyExceptionException;
+import com.sb2.training.exception.NoSuchEmployeeException;
+import com.sb2.training.model.Employee;
+import com.sb2.training.service.base.EmployeeLocalServiceBaseImpl;
+import com.sb2.training.service.persistence.EmployeeUtil;
 
 /**
  * The implementation of the employee local service.
@@ -44,4 +57,96 @@ public class EmployeeLocalServiceImpl extends EmployeeLocalServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Use <code>com.sb2.training.service.EmployeeLocalService</code> via injection or a <code>org.osgi.util.tracker.ServiceTracker</code> or use <code>com.sb2.training.service.EmployeeLocalServiceUtil</code>.
 	 */
+	
+	
+	public Employee getEmpByUserName(String userName)
+	{
+		Employee emp=null;
+		
+		try {
+			
+			emp=EmployeeUtil.findByUserName(userName);
+			
+			
+		} catch (NoSuchEmployeeException e) {
+			e.printStackTrace();
+		}
+		
+		return emp;
+		
+	}
+	
+	public void demoRestriction()
+	{
+		
+		List<Employee> employees=null;
+		
+		try {
+			
+			System.out.println("Dynamic query: Restriction!" );
+			
+			DynamicQuery dq=dynamicQuery().add(RestrictionsFactoryUtil.eq("userName", "Venkata")).add(RestrictionsFactoryUtil.ge("age", 20)).addOrder(OrderFactoryUtil.asc("age"));
+			
+			employees=dynamicQuery(dq);
+			
+			
+			System.out.println("Got employee" + employees);
+			
+			
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	
+	public List<Employee> getEmployeeWithProjectionDQ(String address)
+	{
+		
+		List<Employee> employees=null;
+		
+		try {
+				DynamicQuery dq=dynamicQuery().setProjection(ProjectionFactoryUtil.max("empId"));
+				employees=dynamicQuery(dq);
+				
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		return employees;
+		
+	}
+	
+	public List<Object[]> excuteMyCustomQuery(String sqlQuery)
+	{
+		
+		Session session=null;
+		List<Object[]> rows=null;
+		
+		try {
+			
+				session=employeePersistence.openSession();
+				
+				SQLQuery query=session.createSQLQuery(sqlQuery);
+				rows= query.list();
+				
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		
+		}
+		
+		return rows;
+		
+	}
+	
+	
+	
+	
+	
 }

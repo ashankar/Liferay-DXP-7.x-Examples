@@ -541,6 +541,67 @@ public class EmployeeUtil {
 	}
 
 	/**
+	 * Returns the employee where userName = &#63; or throws a <code>NoSuchEmployeeException</code> if it could not be found.
+	 *
+	 * @param userName the user name
+	 * @return the matching employee
+	 * @throws NoSuchEmployeeException if a matching employee could not be found
+	 */
+	public static Employee findByUserName(String userName)
+		throws com.sb2.training.exception.NoSuchEmployeeException {
+
+		return getPersistence().findByUserName(userName);
+	}
+
+	/**
+	 * Returns the employee where userName = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @deprecated As of Mueller (7.2.x), replaced by {@link #fetchByUserName(String)}
+	 * @param userName the user name
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching employee, or <code>null</code> if a matching employee could not be found
+	 */
+	@Deprecated
+	public static Employee fetchByUserName(
+		String userName, boolean useFinderCache) {
+
+		return getPersistence().fetchByUserName(userName, useFinderCache);
+	}
+
+	/**
+	 * Returns the employee where userName = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param userName the user name
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching employee, or <code>null</code> if a matching employee could not be found
+	 */
+	public static Employee fetchByUserName(String userName) {
+		return getPersistence().fetchByUserName(userName);
+	}
+
+	/**
+	 * Removes the employee where userName = &#63; from the database.
+	 *
+	 * @param userName the user name
+	 * @return the employee that was removed
+	 */
+	public static Employee removeByUserName(String userName)
+		throws com.sb2.training.exception.NoSuchEmployeeException {
+
+		return getPersistence().removeByUserName(userName);
+	}
+
+	/**
+	 * Returns the number of employees where userName = &#63;.
+	 *
+	 * @param userName the user name
+	 * @return the number of matching employees
+	 */
+	public static int countByUserName(String userName) {
+		return getPersistence().countByUserName(userName);
+	}
+
+	/**
 	 * Caches the employee in the entity cache if it is enabled.
 	 *
 	 * @param employee the employee

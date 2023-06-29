@@ -98,6 +98,11 @@ public class EmployeeLocalServiceWrapper
 	}
 
 	@Override
+	public void demoRestriction() {
+		_employeeLocalService.demoRestriction();
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery() {
 		return _employeeLocalService.dynamicQuery();
 	}
@@ -188,6 +193,11 @@ public class EmployeeLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<Object[]> excuteMyCustomQuery(String sqlQuery) {
+		return _employeeLocalService.excuteMyCustomQuery(sqlQuery);
+	}
+
+	@Override
 	public com.sb2.training.model.Employee fetchEmployee(long empId) {
 		return _employeeLocalService.fetchEmployee(empId);
 	}
@@ -212,6 +222,11 @@ public class EmployeeLocalServiceWrapper
 		getActionableDynamicQuery() {
 
 		return _employeeLocalService.getActionableDynamicQuery();
+	}
+
+	@Override
+	public com.sb2.training.model.Employee getEmpByUserName(String userName) {
+		return _employeeLocalService.getEmpByUserName(userName);
 	}
 
 	/**
@@ -306,6 +321,13 @@ public class EmployeeLocalServiceWrapper
 	@Override
 	public int getEmployeesCount() {
 		return _employeeLocalService.getEmployeesCount();
+	}
+
+	@Override
+	public java.util.List<com.sb2.training.model.Employee>
+		getEmployeeWithProjectionDQ(String address) {
+
+		return _employeeLocalService.getEmployeeWithProjectionDQ(address);
 	}
 
 	@Override

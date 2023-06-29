@@ -98,6 +98,10 @@ public class EmployeeLocalServiceUtil {
 		return getService().deletePersistedModel(persistedModel);
 	}
 
+	public static void demoRestriction() {
+		getService().demoRestriction();
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.DynamicQuery
 		dynamicQuery() {
 
@@ -183,6 +187,12 @@ public class EmployeeLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery, projection);
 	}
 
+	public static java.util.List<Object[]> excuteMyCustomQuery(
+		String sqlQuery) {
+
+		return getService().excuteMyCustomQuery(sqlQuery);
+	}
+
 	public static com.sb2.training.model.Employee fetchEmployee(long empId) {
 		return getService().fetchEmployee(empId);
 	}
@@ -204,6 +214,12 @@ public class EmployeeLocalServiceUtil {
 		getActionableDynamicQuery() {
 
 		return getService().getActionableDynamicQuery();
+	}
+
+	public static com.sb2.training.model.Employee getEmpByUserName(
+		String userName) {
+
+		return getService().getEmpByUserName(userName);
 	}
 
 	/**
@@ -291,6 +307,12 @@ public class EmployeeLocalServiceUtil {
 	 */
 	public static int getEmployeesCount() {
 		return getService().getEmployeesCount();
+	}
+
+	public static java.util.List<com.sb2.training.model.Employee>
+		getEmployeeWithProjectionDQ(String address) {
+
+		return getService().getEmployeeWithProjectionDQ(address);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery

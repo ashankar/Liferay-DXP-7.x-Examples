@@ -376,6 +376,53 @@ public interface EmployeePersistence extends BasePersistence<Employee> {
 	public int countByUuid_C(String uuid, long companyId);
 
 	/**
+	 * Returns the employee where userName = &#63; or throws a <code>NoSuchEmployeeException</code> if it could not be found.
+	 *
+	 * @param userName the user name
+	 * @return the matching employee
+	 * @throws NoSuchEmployeeException if a matching employee could not be found
+	 */
+	public Employee findByUserName(String userName)
+		throws NoSuchEmployeeException;
+
+	/**
+	 * Returns the employee where userName = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @deprecated As of Mueller (7.2.x), replaced by {@link #fetchByUserName(String)}
+	 * @param userName the user name
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching employee, or <code>null</code> if a matching employee could not be found
+	 */
+	@Deprecated
+	public Employee fetchByUserName(String userName, boolean useFinderCache);
+
+	/**
+	 * Returns the employee where userName = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param userName the user name
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching employee, or <code>null</code> if a matching employee could not be found
+	 */
+	public Employee fetchByUserName(String userName);
+
+	/**
+	 * Removes the employee where userName = &#63; from the database.
+	 *
+	 * @param userName the user name
+	 * @return the employee that was removed
+	 */
+	public Employee removeByUserName(String userName)
+		throws NoSuchEmployeeException;
+
+	/**
+	 * Returns the number of employees where userName = &#63;.
+	 *
+	 * @param userName the user name
+	 * @return the number of matching employees
+	 */
+	public int countByUserName(String userName);
+
+	/**
 	 * Caches the employee in the entity cache if it is enabled.
 	 *
 	 * @param employee the employee

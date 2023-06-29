@@ -34,6 +34,7 @@ import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.SetUtil;
+import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.uuid.PortalUUIDUtil;
 
@@ -1465,6 +1466,240 @@ public class EmployeePersistenceImpl
 	private static final String _FINDER_COLUMN_UUID_C_COMPANYID_2 =
 		"employee.companyId = ?";
 
+	private FinderPath _finderPathFetchByUserName;
+	private FinderPath _finderPathCountByUserName;
+
+	/**
+	 * Returns the employee where userName = &#63; or throws a <code>NoSuchEmployeeException</code> if it could not be found.
+	 *
+	 * @param userName the user name
+	 * @return the matching employee
+	 * @throws NoSuchEmployeeException if a matching employee could not be found
+	 */
+	@Override
+	public Employee findByUserName(String userName)
+		throws NoSuchEmployeeException {
+
+		Employee employee = fetchByUserName(userName);
+
+		if (employee == null) {
+			StringBundler msg = new StringBundler(4);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("userName=");
+			msg.append(userName);
+
+			msg.append("}");
+
+			if (_log.isDebugEnabled()) {
+				_log.debug(msg.toString());
+			}
+
+			throw new NoSuchEmployeeException(msg.toString());
+		}
+
+		return employee;
+	}
+
+	/**
+	 * Returns the employee where userName = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @deprecated As of Mueller (7.2.x), replaced by {@link #fetchByUserName(String)}
+	 * @param userName the user name
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching employee, or <code>null</code> if a matching employee could not be found
+	 */
+	@Deprecated
+	@Override
+	public Employee fetchByUserName(String userName, boolean useFinderCache) {
+		return fetchByUserName(userName);
+	}
+
+	/**
+	 * Returns the employee where userName = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param userName the user name
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching employee, or <code>null</code> if a matching employee could not be found
+	 */
+	@Override
+	public Employee fetchByUserName(String userName) {
+		userName = Objects.toString(userName, "");
+
+		Object[] finderArgs = new Object[] {userName};
+
+		Object result = finderCache.getResult(
+			_finderPathFetchByUserName, finderArgs, this);
+
+		if (result instanceof Employee) {
+			Employee employee = (Employee)result;
+
+			if (!Objects.equals(userName, employee.getUserName())) {
+				result = null;
+			}
+		}
+
+		if (result == null) {
+			StringBundler query = new StringBundler(3);
+
+			query.append(_SQL_SELECT_EMPLOYEE_WHERE);
+
+			boolean bindUserName = false;
+
+			if (userName.isEmpty()) {
+				query.append(_FINDER_COLUMN_USERNAME_USERNAME_3);
+			}
+			else {
+				bindUserName = true;
+
+				query.append(_FINDER_COLUMN_USERNAME_USERNAME_2);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				if (bindUserName) {
+					qPos.add(userName);
+				}
+
+				List<Employee> list = q.list();
+
+				if (list.isEmpty()) {
+					finderCache.putResult(
+						_finderPathFetchByUserName, finderArgs, list);
+				}
+				else {
+					if (list.size() > 1) {
+						Collections.sort(list, Collections.reverseOrder());
+
+						if (_log.isWarnEnabled()) {
+							_log.warn(
+								"EmployeePersistenceImpl.fetchByUserName(String, boolean) with parameters (" +
+									StringUtil.merge(finderArgs) +
+										") yields a result set with more than 1 result. This violates the logical unique restriction. There is no order guarantee on which result is returned by this finder.");
+						}
+					}
+
+					Employee employee = list.get(0);
+
+					result = employee;
+
+					cacheResult(employee);
+				}
+			}
+			catch (Exception e) {
+				finderCache.removeResult(
+					_finderPathFetchByUserName, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		if (result instanceof List<?>) {
+			return null;
+		}
+		else {
+			return (Employee)result;
+		}
+	}
+
+	/**
+	 * Removes the employee where userName = &#63; from the database.
+	 *
+	 * @param userName the user name
+	 * @return the employee that was removed
+	 */
+	@Override
+	public Employee removeByUserName(String userName)
+		throws NoSuchEmployeeException {
+
+		Employee employee = findByUserName(userName);
+
+		return remove(employee);
+	}
+
+	/**
+	 * Returns the number of employees where userName = &#63;.
+	 *
+	 * @param userName the user name
+	 * @return the number of matching employees
+	 */
+	@Override
+	public int countByUserName(String userName) {
+		userName = Objects.toString(userName, "");
+
+		FinderPath finderPath = _finderPathCountByUserName;
+
+		Object[] finderArgs = new Object[] {userName};
+
+		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(2);
+
+			query.append(_SQL_COUNT_EMPLOYEE_WHERE);
+
+			boolean bindUserName = false;
+
+			if (userName.isEmpty()) {
+				query.append(_FINDER_COLUMN_USERNAME_USERNAME_3);
+			}
+			else {
+				bindUserName = true;
+
+				query.append(_FINDER_COLUMN_USERNAME_USERNAME_2);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				if (bindUserName) {
+					qPos.add(userName);
+				}
+
+				count = (Long)q.uniqueResult();
+
+				finderCache.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception e) {
+				finderCache.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_USERNAME_USERNAME_2 =
+		"employee.userName = ?";
+
+	private static final String _FINDER_COLUMN_USERNAME_USERNAME_3 =
+		"(employee.userName IS NULL OR employee.userName = '')";
+
 	public EmployeePersistenceImpl() {
 		setModelClass(Employee.class);
 
@@ -1492,6 +1727,10 @@ public class EmployeePersistenceImpl
 		finderCache.putResult(
 			_finderPathFetchByUUID_G,
 			new Object[] {employee.getUuid(), employee.getGroupId()}, employee);
+
+		finderCache.putResult(
+			_finderPathFetchByUserName, new Object[] {employee.getUserName()},
+			employee);
 
 		employee.resetOriginalValues();
 	}
@@ -1575,6 +1814,13 @@ public class EmployeePersistenceImpl
 			_finderPathCountByUUID_G, args, Long.valueOf(1), false);
 		finderCache.putResult(
 			_finderPathFetchByUUID_G, args, employeeModelImpl, false);
+
+		args = new Object[] {employeeModelImpl.getUserName()};
+
+		finderCache.putResult(
+			_finderPathCountByUserName, args, Long.valueOf(1), false);
+		finderCache.putResult(
+			_finderPathFetchByUserName, args, employeeModelImpl, false);
 	}
 
 	protected void clearUniqueFindersCache(
@@ -1599,6 +1845,24 @@ public class EmployeePersistenceImpl
 
 			finderCache.removeResult(_finderPathCountByUUID_G, args);
 			finderCache.removeResult(_finderPathFetchByUUID_G, args);
+		}
+
+		if (clearCurrent) {
+			Object[] args = new Object[] {employeeModelImpl.getUserName()};
+
+			finderCache.removeResult(_finderPathCountByUserName, args);
+			finderCache.removeResult(_finderPathFetchByUserName, args);
+		}
+
+		if ((employeeModelImpl.getColumnBitmask() &
+			 _finderPathFetchByUserName.getColumnBitmask()) != 0) {
+
+			Object[] args = new Object[] {
+				employeeModelImpl.getOriginalUserName()
+			};
+
+			finderCache.removeResult(_finderPathCountByUserName, args);
+			finderCache.removeResult(_finderPathFetchByUserName, args);
 		}
 	}
 
@@ -2160,7 +2424,8 @@ public class EmployeePersistenceImpl
 			entityCacheEnabled, finderCacheEnabled, EmployeeImpl.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByUuid",
 			new String[] {String.class.getName()},
-			EmployeeModelImpl.UUID_COLUMN_BITMASK);
+			EmployeeModelImpl.UUID_COLUMN_BITMASK |
+			EmployeeModelImpl.USERNAME_COLUMN_BITMASK);
 
 		_finderPathCountByUuid = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, Long.class,
@@ -2193,12 +2458,24 @@ public class EmployeePersistenceImpl
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByUuid_C",
 			new String[] {String.class.getName(), Long.class.getName()},
 			EmployeeModelImpl.UUID_COLUMN_BITMASK |
-			EmployeeModelImpl.COMPANYID_COLUMN_BITMASK);
+			EmployeeModelImpl.COMPANYID_COLUMN_BITMASK |
+			EmployeeModelImpl.USERNAME_COLUMN_BITMASK);
 
 		_finderPathCountByUuid_C = new FinderPath(
 			entityCacheEnabled, finderCacheEnabled, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByUuid_C",
 			new String[] {String.class.getName(), Long.class.getName()});
+
+		_finderPathFetchByUserName = new FinderPath(
+			entityCacheEnabled, finderCacheEnabled, EmployeeImpl.class,
+			FINDER_CLASS_NAME_ENTITY, "fetchByUserName",
+			new String[] {String.class.getName()},
+			EmployeeModelImpl.USERNAME_COLUMN_BITMASK);
+
+		_finderPathCountByUserName = new FinderPath(
+			entityCacheEnabled, finderCacheEnabled, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByUserName",
+			new String[] {String.class.getName()});
 	}
 
 	@Deactivate
