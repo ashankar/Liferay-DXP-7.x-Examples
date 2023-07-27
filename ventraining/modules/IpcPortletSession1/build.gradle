@@ -6,4 +6,5 @@ dependencies {
 	compileOnly group: "jstl", name: "jstl"
 	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"
 	compileOnly project(":modules:MyServiceBuilder2:MyServiceBuilder2-api")
+	
 }

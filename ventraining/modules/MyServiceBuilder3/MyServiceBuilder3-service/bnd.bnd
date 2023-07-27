@@ -1,0 +1,6 @@
+Bundle-Name: MyServiceBuilder3-service
+Bundle-SymbolicName: com.myextdb.sb.service
+Bundle-Version: 1.0.0
+Liferay-Require-SchemaVersion: 1.0.0
+Liferay-Service: true
+-dsannotations-options: inherit

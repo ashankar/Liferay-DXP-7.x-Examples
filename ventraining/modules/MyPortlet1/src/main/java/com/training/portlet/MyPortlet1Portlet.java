@@ -9,11 +9,14 @@ import javax.portlet.ResourceResponse;
 
 import org.osgi.service.component.annotations.Component;
 
+import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.portlet.JSONPortletResponseUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.util.ParamUtil;
+import com.myextdb.sb.model.Product;
+import com.myextdb.sb.service.ProductLocalServiceUtil;
 import com.training.constants.MyPortlet1PortletKeys;
 
 /**
@@ -59,26 +62,30 @@ public void serveResource(ResourceRequest resourceRequest, ResourceResponse reso
 	
 	JSONPortletResponseUtil.writeJSON(resourceRequest, resourceResponse, json);
 
-	
+	callMyDBService();
 }	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	  public void callMyDBService() {
+	  
+	  try {
+	  
+	  long prodId=CounterLocalServiceUtil.increment(Product.class.getName());
+	  
+	  Product p=ProductLocalServiceUtil.createProduct(prodId);
+	  p.setProdName("My Product" + prodId);
+	  
+	  ProductLocalServiceUtil.addProduct(p);
+	  
+	  System.out.println( prodId + " has been added!");
+	  
+	  }catch (Exception e) {
+	  
+	  e.printStackTrace(); }
+	  
+	  }
+	 
 	
 	
 	

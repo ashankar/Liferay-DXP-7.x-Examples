@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_2_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.mydb.sb">
+	<namespace>mytraindb</namespace>
+	
+	<entity local-service="true" name="Product" remote-service="false" uuid="true" table="mynssb_product" data-source="extDataSource">
+
+		<column name="productId" primary="true" type="long" db-name="productId" />
+		<column name="prodName" type="String" db-name="prodName" />
+		<column name="groupId" type="long" db-name="groupId" />
+		<column name="companyId" type="long" db-name="companyId" />
+		<column name="userId" type="long" db-name="userId" />
+		<column name="userName" type="String" db-name="userName" />
+		<column name="createDate" type="Date" db-name="createDate" />
+		<column name="modifiedDate" type="Date" db-name="modifiedDate" />
+
+	</entity>
+</service-builder>

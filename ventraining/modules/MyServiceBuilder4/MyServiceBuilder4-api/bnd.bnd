@@ -1,0 +1,10 @@
+Bundle-Name: MyServiceBuilder4-api
+Bundle-SymbolicName: com.mydb.sb.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.mydb.sb.exception,\
+	com.mydb.sb.model,\
+	com.mydb.sb.service,\
+	com.mydb.sb.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../MyServiceBuilder4-service/service.xml
