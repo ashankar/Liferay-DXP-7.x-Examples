@@ -5,10 +5,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.osgi.service.component.annotations.Component;
 
+import com.liferay.portal.kernel.model.Company;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.security.auto.login.AutoLogin;
 import com.liferay.portal.kernel.security.auto.login.AutoLoginException;
+import com.liferay.portal.kernel.service.CompanyLocalServiceUtil;
 import com.liferay.portal.kernel.service.UserLocalServiceUtil;
+import com.liferay.portal.kernel.util.PortalUtil;
 
 /**
  * @author Anand
@@ -44,9 +47,12 @@ try {
 	String pass=httpServletRequest.getParameter("pass");
 	String userId=null;
 	
-	
 	System.out.println(emailId);
 	System.out.println(pass);
+	
+	Company company= CompanyLocalServiceUtil.getCompanyByWebId("liferay.com");
+	
+	
 	
 //			System.out.println(">>>>>>>>>>>>>>>>>>>>> before");
 //			//Company company=PortalUtil.getCompany(httpServletRequest);
@@ -55,7 +61,7 @@ try {
 			// System.out.println(">>>>>>>>>>>>>>>>>>>>> company id:" + company.getCompanyId());
 			 
 	
-			User user=UserLocalServiceUtil.getUserByEmailAddress(20101l, emailId);
+			User user=UserLocalServiceUtil.getUserByEmailAddress(company.getCompanyId(), emailId);
 			
 			if(user !=null)
 			{
