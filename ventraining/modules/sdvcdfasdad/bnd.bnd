@@ -1,5 +1,0 @@
-Bundle-Name: sdvcdfasdad
-Bundle-SymbolicName: sdvcdfasdad
-Bundle-Version: 1.0.0
-Fragment-Host: com.liferay.blogs.web;bundle-version="4.0.35"
-Portal-Bundle-Version: 7.2.1
