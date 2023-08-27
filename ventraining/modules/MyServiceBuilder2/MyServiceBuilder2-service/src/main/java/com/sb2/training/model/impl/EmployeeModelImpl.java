@@ -20,6 +20,7 @@ import com.liferay.exportimport.kernel.lar.StagedModelType;
 import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.ModelWrapper;
 import com.liferay.portal.kernel.model.User;
@@ -32,6 +33,7 @@ import com.liferay.portal.kernel.util.ProxyUtil;
 
 import com.sb2.training.model.Employee;
 import com.sb2.training.model.EmployeeModel;
+import com.sb2.training.model.EmployeeSoap;
 
 import java.io.Serializable;
 
@@ -40,10 +42,12 @@ import java.lang.reflect.InvocationHandler;
 
 import java.sql.Types;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -61,6 +65,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * @see EmployeeImpl
  * @generated
  */
+@JSON(strict = true)
 @ProviderType
 public class EmployeeModelImpl
 	extends BaseModelImpl<Employee> implements EmployeeModel {
@@ -129,6 +134,54 @@ public class EmployeeModelImpl
 
 	public static void setFinderCacheEnabled(boolean finderCacheEnabled) {
 		_finderCacheEnabled = finderCacheEnabled;
+	}
+
+	/**
+	 * Converts the soap model instance into a normal model instance.
+	 *
+	 * @param soapModel the soap model instance to convert
+	 * @return the normal model instance
+	 */
+	public static Employee toModel(EmployeeSoap soapModel) {
+		if (soapModel == null) {
+			return null;
+		}
+
+		Employee model = new EmployeeImpl();
+
+		model.setUuid(soapModel.getUuid());
+		model.setEmpId(soapModel.getEmpId());
+		model.setDepId(soapModel.getDepId());
+		model.setGroupId(soapModel.getGroupId());
+		model.setCompanyId(soapModel.getCompanyId());
+		model.setUserId(soapModel.getUserId());
+		model.setUserName(soapModel.getUserName());
+		model.setCreateDate(soapModel.getCreateDate());
+		model.setModifiedDate(soapModel.getModifiedDate());
+		model.setAge(soapModel.getAge());
+		model.setAddress(soapModel.getAddress());
+
+		return model;
+	}
+
+	/**
+	 * Converts the soap model instances into normal model instances.
+	 *
+	 * @param soapModels the soap model instances to convert
+	 * @return the normal model instances
+	 */
+	public static List<Employee> toModels(EmployeeSoap[] soapModels) {
+		if (soapModels == null) {
+			return null;
+		}
+
+		List<Employee> models = new ArrayList<Employee>(soapModels.length);
+
+		for (EmployeeSoap soapModel : soapModels) {
+			models.add(toModel(soapModel));
+		}
+
+		return models;
 	}
 
 	public EmployeeModelImpl() {
@@ -296,6 +349,7 @@ public class EmployeeModelImpl
 			(Map)attributeSetterBiConsumers);
 	}
 
+	@JSON
 	@Override
 	public String getUuid() {
 		if (_uuid == null) {
@@ -321,6 +375,7 @@ public class EmployeeModelImpl
 		return GetterUtil.getString(_originalUuid);
 	}
 
+	@JSON
 	@Override
 	public long getEmpId() {
 		return _empId;
@@ -331,6 +386,7 @@ public class EmployeeModelImpl
 		_empId = empId;
 	}
 
+	@JSON
 	@Override
 	public long getDepId() {
 		return _depId;
@@ -341,6 +397,7 @@ public class EmployeeModelImpl
 		_depId = depId;
 	}
 
+	@JSON
 	@Override
 	public long getGroupId() {
 		return _groupId;
@@ -363,6 +420,7 @@ public class EmployeeModelImpl
 		return _originalGroupId;
 	}
 
+	@JSON
 	@Override
 	public long getCompanyId() {
 		return _companyId;
@@ -385,6 +443,7 @@ public class EmployeeModelImpl
 		return _originalCompanyId;
 	}
 
+	@JSON
 	@Override
 	public long getUserId() {
 		return _userId;
@@ -411,6 +470,7 @@ public class EmployeeModelImpl
 	public void setUserUuid(String userUuid) {
 	}
 
+	@JSON
 	@Override
 	public String getUserName() {
 		if (_userName == null) {
@@ -436,6 +496,7 @@ public class EmployeeModelImpl
 		return GetterUtil.getString(_originalUserName);
 	}
 
+	@JSON
 	@Override
 	public Date getCreateDate() {
 		return _createDate;
@@ -446,6 +507,7 @@ public class EmployeeModelImpl
 		_createDate = createDate;
 	}
 
+	@JSON
 	@Override
 	public Date getModifiedDate() {
 		return _modifiedDate;
@@ -462,6 +524,7 @@ public class EmployeeModelImpl
 		_modifiedDate = modifiedDate;
 	}
 
+	@JSON
 	@Override
 	public int getAge() {
 		return _age;
@@ -472,6 +535,7 @@ public class EmployeeModelImpl
 		_age = age;
 	}
 
+	@JSON
 	@Override
 	public String getAddress() {
 		if (_address == null) {

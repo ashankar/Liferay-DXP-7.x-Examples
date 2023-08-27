@@ -5,7 +5,7 @@
 	<namespace>mynssb</namespace>
 	
 	
-	<entity local-service="true" name="Product" remote-service="false" uuid="true" table="product" data-source="extDataSource">
+	<entity local-service="true" name="Product" remote-service="true" uuid="true" table="product" data-source="extDataSource">
 
 		<column name="productId" primary="true" type="long" db-name="productId" />
 		<column name="prodName" type="String" db-name="prodName" />
