@@ -1,1 +1,0 @@
-# Liferay-DXP-7.x-Examples

@@ -1,0 +1,8 @@
+Bundle-Name: mvc-portlet1
+Bundle-SymbolicName: com.mvcportlet1
+Bundle-Version: 1.0.0
+Export-Package: com.mvcportlet1.constants
+-jsp: *.jsp,*.jspf
+-plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
+-plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
+-sources: true
