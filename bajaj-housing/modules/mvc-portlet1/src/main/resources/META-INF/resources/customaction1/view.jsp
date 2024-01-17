@@ -14,11 +14,27 @@
  */
 --%>
 
-<%@ include file="/mvcportlet2/init.jsp" %>
+<%@ include file="/customaction1/init.jsp" %>
 
-<p>
-	<b><liferay-ui:message key="blade_portlet_jsp_JSPPortlet.caption" /></b>
-</p>
+<portlet:actionURL  var="actionURL1" name="myAction1">
+<portlet:param name="key1" value="My Value 1"/>
+</portlet:actionURL>
 
-Hello 2
+<portlet:actionURL  var="actionURL2" name="myAction2">
+<portlet:param name="key2" value="My Value 2"/>
+</portlet:actionURL>
+<a href="<%=actionURL1%>">Custom Action-1</a><br>
+<a href="<%=actionURL2%>">Custom Action-2</a>
+
+
+
+
+<form action="<%=actionURL1 %>" method="post">
+	Enter your name:<br> 
+	<input name="<portlet:namespace/>textboxname" type="text" /><br>
+	<input name="Submit" type="Submit" /><br>
+<form>
+
+
+
 
