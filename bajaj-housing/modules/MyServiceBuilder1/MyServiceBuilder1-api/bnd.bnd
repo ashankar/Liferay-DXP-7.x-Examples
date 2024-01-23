@@ -1,0 +1,10 @@
+Bundle-Name: MyServiceBuilder1-api
+Bundle-SymbolicName: com.bajaj.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.bajaj.exception,\
+	com.bajaj.model,\
+	com.bajaj.service,\
+	com.bajaj.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../MyServiceBuilder1-service/service.xml

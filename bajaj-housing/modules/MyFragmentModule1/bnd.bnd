@@ -1,0 +1,5 @@
+Bundle-Name: MyFragmentModule1
+Bundle-SymbolicName: myfragmentmodule1
+Bundle-Version: 1.0.0
+Fragment-Host: com.liferay.login.web;bundle-version="4.0.20"
+Portal-Bundle-Version: 7.2.1

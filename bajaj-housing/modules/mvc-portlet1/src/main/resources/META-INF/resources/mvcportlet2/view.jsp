@@ -16,9 +16,14 @@
 
 <%@ include file="/mvcportlet2/init.jsp" %>
 
-<p>
-	<b><liferay-ui:message key="blade_portlet_jsp_JSPPortlet.caption" /></b>
-</p>
+<portlet:actionURL var="actionURL">
+<portlet:param  name="key1"  value="My Value1" />
+<portlet:param  name="key2"  value="My Value2" />
+</portlet:actionURL>
 
-Hello 2
-
+<aui:form action="<%=actionURL %>" method="post">
+	<aui:input name="name" label="Enter Employee name: " title="Name" type="text"></aui:input><br>
+	<aui:input name="address" label="Enter Address: " title="Address" type="text"></aui:input><br>
+	<aui:input name="age" label="Enter Age: " title="age" type="number"></aui:input><br>
+	<aui:button value="Submit" type="submit"></aui:button>
+</aui:form>
