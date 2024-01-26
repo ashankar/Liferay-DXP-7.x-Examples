@@ -16,11 +16,13 @@ package com.bajaj.model.impl;
 
 import com.bajaj.model.Department;
 import com.bajaj.model.DepartmentModel;
+import com.bajaj.model.DepartmentSoap;
 
 import com.liferay.expando.kernel.model.ExpandoBridge;
 import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
 import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
+import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.ModelWrapper;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
@@ -36,10 +38,12 @@ import java.lang.reflect.InvocationHandler;
 import java.sql.Blob;
 import java.sql.Types;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -55,6 +59,7 @@ import java.util.function.Function;
  * @see DepartmentImpl
  * @generated
  */
+@JSON(strict = true)
 public class DepartmentModelImpl
 	extends BaseModelImpl<Department> implements DepartmentModel {
 
@@ -105,6 +110,46 @@ public class DepartmentModelImpl
 
 	public static void setFinderCacheEnabled(boolean finderCacheEnabled) {
 		_finderCacheEnabled = finderCacheEnabled;
+	}
+
+	/**
+	 * Converts the soap model instance into a normal model instance.
+	 *
+	 * @param soapModel the soap model instance to convert
+	 * @return the normal model instance
+	 */
+	public static Department toModel(DepartmentSoap soapModel) {
+		if (soapModel == null) {
+			return null;
+		}
+
+		Department model = new DepartmentImpl();
+
+		model.setUuid(soapModel.getUuid());
+		model.setDepId(soapModel.getDepId());
+		model.setDepName(soapModel.getDepName());
+
+		return model;
+	}
+
+	/**
+	 * Converts the soap model instances into normal model instances.
+	 *
+	 * @param soapModels the soap model instances to convert
+	 * @return the normal model instances
+	 */
+	public static List<Department> toModels(DepartmentSoap[] soapModels) {
+		if (soapModels == null) {
+			return null;
+		}
+
+		List<Department> models = new ArrayList<Department>(soapModels.length);
+
+		for (DepartmentSoap soapModel : soapModels) {
+			models.add(toModel(soapModel));
+		}
+
+		return models;
 	}
 
 	public DepartmentModelImpl() {
@@ -221,6 +266,7 @@ public class DepartmentModelImpl
 			(Map)attributeSetterBiConsumers);
 	}
 
+	@JSON
 	@Override
 	public String getUuid() {
 		if (_uuid == null) {
@@ -246,6 +292,7 @@ public class DepartmentModelImpl
 		return GetterUtil.getString(_originalUuid);
 	}
 
+	@JSON
 	@Override
 	public long getDepId() {
 		return _depId;
@@ -256,6 +303,7 @@ public class DepartmentModelImpl
 		_depId = depId;
 	}
 
+	@JSON
 	@Override
 	public String getDepName() {
 		if (_depName == null) {

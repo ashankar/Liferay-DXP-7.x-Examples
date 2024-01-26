@@ -3,7 +3,7 @@
 
 <service-builder dependency-injector="ds" package-path="com.bajaj">
 	<namespace>mybj</namespace>
-	<entity local-service="true" name="Employee" remote-service="false" uuid="true">
+	<entity local-service="true" name="Employee" remote-service="true" uuid="true">
 
 		<!-- PK fields -->
 
@@ -45,7 +45,7 @@
 		<reference entity="AssetTag" package-path="com.liferay.portlet.asset" /> -->
 	</entity>
 	
-	<entity local-service="true" name="Department" remote-service="false" uuid="true">
+	<entity local-service="true" name="Department" remote-service="true" uuid="true">
 		<column name="depId" primary="true" type="long" />
 		<column name="depName" type="String" />
 	</entity>
